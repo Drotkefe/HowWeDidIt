@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="GameScreen" Height="450" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
     </Grid>
 </Window>
