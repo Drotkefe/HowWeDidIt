@@ -22,7 +22,7 @@ namespace HowWeDidIt.Core.GameSettings
 
         // TODO
 
-        public string BackgroudPath => "Images/background.jpg";
+        public string BackgroudPath => "Images/background.png";
 
         public string CaveManPath => throw new NotImplementedException();
 

@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:HowWeDidIt"
         mc:Ignorable="d"
         Title="GameScreen" Height="450" Width="800">
+        <!--WindowState="Maximized"
+        WindowStyle="None">-->
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Images/background.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="Images/background.png" Stretch="UniformToFill"/>
         </Grid.Background>
     </Grid>
 </Window>

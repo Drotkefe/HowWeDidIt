@@ -8,10 +8,11 @@
 
   <ItemGroup>
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\background.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\background.jpg">
+    <Resource Include="Images\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
