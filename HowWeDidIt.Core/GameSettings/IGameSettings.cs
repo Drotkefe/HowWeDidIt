@@ -30,5 +30,22 @@ namespace HowWeDidIt.Core.GameSettings
         double GameAreaDefaultHeight { get; }
 
         #endregion
+
+        #region Rendering
+        public string CaveMan1L { get;}
+        public string CaveMan1R { get; }
+        public string CaveMan2L { get; }
+        public string CaveMan2R { get;  }
+        public string CaveMan3L { get;}
+        public string CaveMan3R { get; }
+        public string CaveMan4L { get; }
+        public string CaveMan4R { get;  }
+        public string CaveMan5L { get;  }
+        public string CaveMan5R { get;  }
+        public string CaveMan6L { get;  }
+        public string CaveMan6R { get; }
+        #endregion
+
+        int MaximalAllowedMovementState { get; set; }
     }
 }

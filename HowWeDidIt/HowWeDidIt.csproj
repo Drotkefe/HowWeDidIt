@@ -12,6 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HowWeDidIt.BusinessLogic\HowWeDidIt.BusinessLogic.csproj" />
+    <ProjectReference Include="..\HowWeDidIt.Core\HowWeDidIt.Core.csproj" />
+    <ProjectReference Include="..\HowWeDidIt.GameRenderer\HowWeDidIt.GameRenderer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
