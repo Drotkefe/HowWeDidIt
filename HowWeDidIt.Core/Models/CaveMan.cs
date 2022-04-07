@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowWeDidIt.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace HowWeDidIt.Models
         /// Represents y axis based signed displacement.
         /// </summary>
         public double DY { get; set; }
-        
+
         /// <summary>
         /// Gets the coordinates of its position and its speed vector
         /// </summary>
@@ -25,11 +26,24 @@ namespace HowWeDidIt.Models
         /// <param name="y"></param>
         /// <param name="dX"></param>
         /// <param name="dY"></param>
+        /// 
+
+        public int MovementState { get; set; }
+        public Orientations Orientation { get; set; }
+
+
         public CaveMan(double x, double y, double dX, double dY) : base(x, y)
         {
             DX = dX;
             DY = dY; // in our case DY = 0;
         }
 
+        public CaveMan(double x,double y,double dX, double dY, int movementState, Orientations orientation= Orientations.None) : base(x, y)
+        {
+            DX = dX;
+            DY = dY;
+            MovementState = movementState;
+            Orientation = orientation;
+        }
     }
 }

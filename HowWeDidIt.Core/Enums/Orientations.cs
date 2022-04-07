@@ -9,6 +9,7 @@ namespace HowWeDidIt.Core.Enums
     public enum Orientations
     {
         Left,
-        Right
+        Right,
+        None
     }
 }

@@ -29,6 +29,7 @@ namespace HowWeDidIt
         {
             GameScreen screen = new GameScreen();
             screen.Show();
+            Close();
         }
 
        
