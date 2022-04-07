@@ -38,7 +38,7 @@ namespace HowWeDidIt.Models
             DY = dY; // in our case DY = 0;
         }
 
-        public CaveMan(double x,double y,double dX, double dY, int movementState, Orientations orientation= Orientations.Left) : base(x, y)
+        public CaveMan(double x,double y,double dX, double dY, int movementState, Orientations orientation= Orientations.None) : base(x, y)
         {
             DX = dX;
             DY = dY;

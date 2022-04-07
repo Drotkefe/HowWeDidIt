@@ -16,8 +16,10 @@ namespace HowWeDidIt.GameRenderer
     {
         readonly IGameModel gameModel;
         readonly IGameSettings gameSettings;
+        Brush backgroundPattern;
+        ImageBrush caveManPattern;
 
-        readonly Lazy<ImageBrush> playerBrush;
+    
         readonly Lazy<ImageBrush> StandR;
         readonly Lazy<ImageBrush> R1;
         readonly Lazy<ImageBrush> R2;
@@ -34,14 +36,13 @@ namespace HowWeDidIt.GameRenderer
 
         readonly Dictionary<Orientations, Dictionary<int, Lazy<ImageBrush>>> playerBrushStorage;
 
-        //foods
-
         public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
         {
             this.gameModel = gameModel;
             this.gameSettings = gameSettings;
+            backgroundPattern = new ImageBrush(new BitmapImage(new System.Uri(gameSettings.BackgroudPath, System.UriKind.Relative)));
+            caveManPattern = new ImageBrush(new BitmapImage(new System.Uri(gameSettings.CaveManPath, System.UriKind.Relative)));
 
-            playerBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveManPath));
             StandR = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveManPath));
             R1 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan1R));
             R2 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan2R));
@@ -55,76 +56,109 @@ namespace HowWeDidIt.GameRenderer
             L4 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan4L));
             L5 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan5L));
             L6 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan6L));
-           
 
             playerBrushStorage = new Dictionary<Orientations, Dictionary<int, Lazy<ImageBrush>>>()
-            {
                 {
-                    Orientations.Right, new Dictionary<int, Lazy<ImageBrush>>()
                     {
-                        { 0, R1 },
-                        { 1, R2 },
-                        { 2, R3 },
-                        { 3, R4 },
-                        { 4, R5 },
-                        { 5, R6 }
-                    }
-                },
-                {
-                    Orientations.Left, new Dictionary<int, Lazy<ImageBrush>>()
+                        Orientations.Right, new Dictionary<int, Lazy<ImageBrush>>()
+                        {
+                            { 0, R1 },
+                            { 1, R2 },
+                            { 2, R3 },
+                            { 3, R4 },
+                            { 4, R5 },
+                            { 5, R6 }
+                        }
+                    },
                     {
-                        { 0, L1 },
-                        { 1, L2 },
-                        { 2, L3 },
-                        { 3, L4 },
-                        { 4, L5 },
-                        { 5, L6 }
-                    }
-                },
-            };
+                        Orientations.Left, new Dictionary<int, Lazy<ImageBrush>>()
+                        {
+                            { 0, L1 },
+                            { 1, L2 },
+                            { 2, L3 },
+                            { 3, L4 },
+                            { 4, L5 },
+                            { 5, L6 }
+                        }
+                    },
+                    //{
+                    //    Orientations.None, new Dictionary<int, Lazy<ImageBrush>>()
+                    //    {
+                    //        { 0, StandR },
+                    //        { 1, L6 },
+                    //    }
+                    //},
+                };
+
         }
 
         private ImageBrush LoadBrush(string brushPath)
         {
             var brush = new ImageBrush(new BitmapImage(new Uri(brushPath, UriKind.Relative)));
-
-            brush.TileMode = TileMode.Tile;
-            brush.Viewport = new Rect(0, 0, 100, 100); // When viewport is unset, should put to center once in case of individual sizes
-            brush.ViewportUnits = BrushMappingMode.Absolute;
-
             return brush;
         }
 
-        public Drawing GetDrawing()
+        public void Display(DrawingContext ctx)
         {
-            var dg = new DrawingGroup();
-            //dg.Children.Add(DrawPlayer());
-
-            return dg;
+            DrawBackground(ctx);
+            DrawCaveMan(ctx);
         }
 
-        //private Drawing DrawPlayer()
-        //{
-        //    var playerGeometry = new RectangleGeometry(new Rect(gameModel.CaveMan.X=400, gameModel.CaveMan.Y=300, 100, 100));
 
-        //    return new GeometryDrawing(GetProperPlayerBrush(), null, playerGeometry);
-        //}
 
-        private Brush GetProperPlayerBrush()
+        private void DrawCaveMan(DrawingContext ctx)
         {
-            var result = playerBrush.Value;
+            var halfWidth = 20;
+            var halfHeight = 20;
+            
+            var pattern = new Rect(
+                gameModel.CaveMan.X - halfWidth,
+                gameModel.CaveMan.Y - halfHeight,
+                55,
+                55);
+     
             switch (gameModel.CaveMan.Orientation)
             {
                 case Orientations.Right:
-                    result= playerBrushStorage[gameModel.CaveMan.Orientation][gameModel.CaveMan.MovementState].Value;
+                    caveManPattern = playerBrushStorage[gameModel.CaveMan.Orientation][gameModel.CaveMan.MovementState].Value;
                     break;
                 case Orientations.Left:
-                    result = playerBrushStorage[gameModel.CaveMan.Orientation][gameModel.CaveMan.MovementState].Value;
+                    caveManPattern = playerBrushStorage[gameModel.CaveMan.Orientation][gameModel.CaveMan.MovementState].Value;
                     break;
 
             }
-            result = StandR.Value;
-            return result;
+            ctx.DrawRectangle(caveManPattern, null, pattern);
+
         }
+
+        private void DrawBackground(DrawingContext ctx)
+        {
+            ctx.DrawRectangle(backgroundPattern,null,new Rect(0, 0, gameModel.GameAreaWidth, gameModel.GameAreaHeight));
+        }
+
+
+
+        //    //foods
+
+        //    public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
+        //    {
+        //        this.gameModel = gameModel;
+        //        this.gameSettings = gameSettings;
+
+
+
+
+       
+        
+
+        //    public Drawing GetDrawing()
+        //    {
+        //        var dg = new DrawingGroup();
+        //        //dg.Children.Add(DrawPlayer());
+
+        //        return dg;
+        //    }
+
+       
     }
 }

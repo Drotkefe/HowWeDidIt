@@ -9,6 +9,6 @@ namespace HowWeDidIt.GameRenderer
 {
     public interface IGameRenderer
     {
-        Drawing GetDrawing();
+        void Display(DrawingContext ctx);
     }
 }

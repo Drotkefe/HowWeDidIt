@@ -31,7 +31,7 @@ namespace HowWeDidIt.Models
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)
         {
-            CaveMan = new CaveMan(gameSettings.CaveManInitXPosition, gameAreaHeight / 2, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
+            CaveMan = new CaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             // Recipe = select one Recipe random            
         }
