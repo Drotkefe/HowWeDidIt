@@ -6,5 +6,5 @@
         xmlns:Controls="clr-namespace:HowWeDidIt.Controls"
         mc:Ignorable="d"
         Title="GameScreen" Height="450" Width="800">
-    <Controls:Control x:Name="Control"></Controls:Control>
+    <Controls:GameScreenControl x:Name="Control"></Controls:GameScreenControl>
 </Window>

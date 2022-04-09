@@ -14,7 +14,7 @@ using System.Windows.Threading;
 
 namespace HowWeDidIt.Controls
 {
-    public class Control : FrameworkElement
+    public class GameScreenControl : FrameworkElement
     {
         IGameSettings gameSettings;
         //IGameRepository gameRepository;
@@ -22,7 +22,7 @@ namespace HowWeDidIt.Controls
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
 
-        public Control()
+        public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
         }
@@ -40,8 +40,6 @@ namespace HowWeDidIt.Controls
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
-
-                
             }
         }
 
