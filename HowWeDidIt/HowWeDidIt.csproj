@@ -8,26 +8,6 @@
 
   <ItemGroup>
     <None Remove="Images\background.jpg" />
-    <None Remove="Images\background.png" />
-    <None Remove="Images\FoodItems\burgonya.png" />
-    <None Remove="Images\FoodItems\comb.png" />
-    <None Remove="Images\FoodItems\lilahagyma.png" />
-    <None Remove="Images\FoodItems\répa.png" />
-    <None Remove="Images\FoodItems\tojás.png" />
-    <None Remove="Images\FoodItems\uran.png" />
-    <None Remove="Images\mozgas\1L.png" />
-    <None Remove="Images\mozgas\1R.png" />
-    <None Remove="Images\mozgas\2L.png" />
-    <None Remove="Images\mozgas\2R.png" />
-    <None Remove="Images\mozgas\3L.png" />
-    <None Remove="Images\mozgas\3R.png" />
-    <None Remove="Images\mozgas\4L.png" />
-    <None Remove="Images\mozgas\4R.png" />
-    <None Remove="Images\mozgas\5L.png" />
-    <None Remove="Images\mozgas\5R.png" />
-    <None Remove="Images\mozgas\6L.png" />
-    <None Remove="Images\mozgas\6R.png" />
-    <None Remove="Images\StandR.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,66 +17,66 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\background.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\burgonya.png">
+    <None Update="Images\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\comb.png">
+    </None>
+    <None Update="Images\FoodItems\burgonya.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\lilahagyma.png">
+    </None>
+    <None Update="Images\FoodItems\comb.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\répa.png">
+    </None>
+    <None Update="Images\FoodItems\lilahagyma.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\tojás.png">
+    </None>
+    <None Update="Images\FoodItems\répa.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\FoodItems\uran.png">
+    </None>
+    <None Update="Images\FoodItems\tojás.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\1L.png">
+    </None>
+    <None Update="Images\FoodItems\uran.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\1R.png">
+    </None>
+    <None Update="Images\mozgas\1L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\2L.png">
+    </None>
+    <None Update="Images\mozgas\1R.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\2R.png">
+    </None>
+    <None Update="Images\mozgas\2L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\3L.png">
+    </None>
+    <None Update="Images\mozgas\2R.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\3R.png">
+    </None>
+    <None Update="Images\mozgas\3L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\4L.png">
+    </None>
+    <None Update="Images\mozgas\3R.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\4R.png">
+    </None>
+    <None Update="Images\mozgas\4L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\5L.png">
+    </None>
+    <None Update="Images\mozgas\4R.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\5R.png">
+    </None>
+    <None Update="Images\mozgas\5L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\6L.png">
+    </None>
+    <None Update="Images\mozgas\5R.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\mozgas\6R.png">
+    </None>
+    <None Update="Images\mozgas\6L.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\StandR.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </None>
+    <None Update="Images\mozgas\6R.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\StandR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
