@@ -11,20 +11,26 @@ namespace HowWeDidIt.Models
     {
         public CaveMan CaveMan { get; private set; }
         public Recipe Recipe { get; private set; }
-        public List<FoodItem> FoodItems { get; private set; }
+        //public List<FoodItem> FoodItems { get; private set; }
+
+        public Dictionary<FoodItem, int> Capacity { get; } = new Dictionary<FoodItem, int>();
+
+        public Dictionary<FoodItem, int> CollectedFood { get; } = new Dictionary<FoodItem, int>();
+        
 
         public int Vitality { get; set; }
         public int Money { get; set; }
         public int GameScore { get; set; }
 
         public double GameAreaHeight { get; set; }
-        public double GameAreaWidth { get; set; }        
+        public double GameAreaWidth { get; set; }
+
 
         public GameModel(double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
         {
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
-            FoodItems = new List<FoodItem>();
+            //FoodItems = new List<FoodItem>();
 
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
         }
