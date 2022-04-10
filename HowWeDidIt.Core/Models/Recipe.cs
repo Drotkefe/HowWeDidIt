@@ -10,9 +10,11 @@ namespace HowWeDidIt.Models
     {
         public string Name { get; set; }
         public string[,] FoodItems { get; set; }        // ezt hogy értitek? string mátrix? -> FoodItems Lista?
-        public string[,] Crate { get; set; }            // ez miért itt van a receptben? + string mátrix
+        //public string[,] Crate { get; set; }            // ez miért itt van a receptben? + string mátrix
         public int CookingTime { get; set; }
         private bool cooked;
+
+
 
         public bool Cooked
         {
