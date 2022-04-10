@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowWeDidIt.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace HowWeDidIt.Models
 {
     public class FoodItem : GameItem
     {
-        public string Name { get; set; }
+        public Foods Name { get; set; }
         public int GarbageValue { get; set; }
         public int DumpValue { get; set; }
 

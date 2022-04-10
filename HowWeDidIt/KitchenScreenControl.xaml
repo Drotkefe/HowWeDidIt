@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Window.DataContext>
-        <ViewModels:KitchenScreenControlVM />
+        <ViewModels:KitchenScreenWindowVM />
     </Window.DataContext>
     <Grid Cursor="Hand">
         <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
         <Label Grid.Column="5" Grid.Row="3" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
 
         <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -46,7 +46,7 @@
             </Button.Resources>
         </Button>
         <Button Grid.Column="1" Grid.Row="2" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\carrot.png" Margin="10"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>

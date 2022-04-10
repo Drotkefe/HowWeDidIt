@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Core.GameSettings;
+﻿using HowWeDidIt.Core.Enums;
+using HowWeDidIt.Core.GameSettings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace HowWeDidIt.Models
         public Recipe Recipe { get; private set; }
         //public List<FoodItem> FoodItems { get; private set; }
 
-        public Dictionary<FoodItem, int> Capacity { get; set; }
+        public Dictionary<Foods, int> FoodCapacities { get; set; }
 
-        public Dictionary<FoodItem, int> CollectedFood { get; private set; }
+        public Dictionary<Foods, int> CollectedFoods { get; private set; }
 
 
         public int Vitality { get; set; }
@@ -31,8 +32,8 @@ namespace HowWeDidIt.Models
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
             //FoodItems = new List<FoodItem>();
-            Capacity = new Dictionary<FoodItem, int>();
-            CollectedFood = new Dictionary<FoodItem, int>();
+            FoodCapacities = new Dictionary<Foods, int>();
+            CollectedFoods = new Dictionary<Foods, int>();
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
         }
 

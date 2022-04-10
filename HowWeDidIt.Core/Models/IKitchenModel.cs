@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Models;
+﻿using HowWeDidIt.Core.Enums;
+using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace HowWeDidIt.Core.Models
     {
         Recipe Recipe { get; set; }
 
-        Dictionary<FoodItem, int> CollectedFoods { get; set; }
+        Dictionary<Foods, int> CollectedFoods { get; set; }
+        Dictionary<Foods, int> FoodCapacities { get; set; }
+        
 
         int GarbageCount { get; set; }
         int GarbageCapacity { get; set; }
