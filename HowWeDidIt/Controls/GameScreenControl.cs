@@ -25,6 +25,7 @@ namespace HowWeDidIt.Controls
         public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
+            
         }
 
         private void HowWeDidIt_Controller_Loaded(object sender, RoutedEventArgs e)
@@ -40,30 +41,38 @@ namespace HowWeDidIt.Controls
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
+                
             }
         }
 
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            var entrance = false;
             switch (e.Key)
             {
                 case Key.Left:
-                    gameLogic.Move(-gameSettings.CaveManInitXVelocity, 0);
+                    entrance=gameLogic.Move(-gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Right:
-                    gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
+                    entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.A:
-                    gameLogic.Move(-gameSettings.CaveManInitXVelocity, 0);
+                    entrance = gameLogic.Move(-gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.D:
-                    gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
+                    entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Down:
                     new KitchenScreenWindow(gameModel).Show();
                     break;
 
+            }
+            if (entrance)
+            {
+                MessageBox.Show("Beléptünk a konyhába, sok sikert Andris");
+                var window = Window.GetWindow(this);
+                window.Close();
             }
 
 
