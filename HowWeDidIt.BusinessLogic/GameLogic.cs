@@ -26,8 +26,9 @@ namespace HowWeDidIt.BusinessLogic
 
         }
 
-        public void Move(double dx, double dy)
+        public bool Move(double dx, double dy)
         {
+            bool entrance = false;
             if(dx == -14)
             {
                 GameModel.CaveMan.Orientation = Core.Enums.Orientations.Left;
@@ -40,10 +41,15 @@ namespace HowWeDidIt.BusinessLogic
             if (newX > 80 && newX < GameModel.GameAreaWidth-10)
             {
                 GameModel.CaveMan.X = newX;
+                if (newX <= 100)//entering cave
+                {
+                    entrance = true;
+                }
             }
             GameModel.CaveMan.MovementState = (GameModel.CaveMan.MovementState + 1) % gameSettings.MaximalAllowedMovementState;
             Thread.Sleep(70);
             CallRefresh?.Invoke(this, EventArgs.Empty);
+            return entrance;
 
         }
     }
