@@ -34,6 +34,7 @@ namespace HowWeDidIt.ViewModels
         }
         public KitchenScreenWindowVM(IKitchenModel model)
         {
+
             this.player = model;
             ingredients = new IngredientsVM()
             {
