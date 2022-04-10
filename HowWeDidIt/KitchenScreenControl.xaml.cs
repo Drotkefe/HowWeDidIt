@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowWeDidIt.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +17,17 @@ using System.Windows.Shapes;
 namespace HowWeDidIt
 {
     /// <summary>
-    /// Interaction logic for KitchenScreenControl.xaml
+    /// Interaction logic for KitchenScreenWindow.xaml
     /// </summary>
-    public partial class KitchenScreenControl : UserControl
+    public partial class KitchenScreenWindow : Window
     {
-        public KitchenScreenControl()
+        public GameModel Player { get; set; }
+
+        public KitchenScreenWindow(IGameModel player)
         {
             InitializeComponent();
 
-
+            DataContext = player;
         }
     }
 }

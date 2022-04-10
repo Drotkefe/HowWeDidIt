@@ -10,12 +10,12 @@ namespace HowWeDidIt.Models
     {
         CaveMan CaveMan { get; }
         Recipe Recipe { get; }
+
+
         //List<FoodItem> FoodItems { get; }
-
-
         Dictionary<FoodItem, int> Capacity { get; }
         Dictionary<FoodItem, int> CollectedFood { get; }
-       
+
 
         int Vitality { get; set; }
         int Money { get; set; }

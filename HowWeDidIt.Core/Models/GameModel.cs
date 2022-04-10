@@ -13,10 +13,10 @@ namespace HowWeDidIt.Models
         public Recipe Recipe { get; private set; }
         //public List<FoodItem> FoodItems { get; private set; }
 
-        public Dictionary<FoodItem, int> Capacity { get; } = new Dictionary<FoodItem, int>();
+        public Dictionary<FoodItem, int> Capacity { get; set; }
 
-        public Dictionary<FoodItem, int> CollectedFood { get; } = new Dictionary<FoodItem, int>();
-        
+        public Dictionary<FoodItem, int> CollectedFood { get; private set; }
+
 
         public int Vitality { get; set; }
         public int Money { get; set; }
@@ -31,7 +31,8 @@ namespace HowWeDidIt.Models
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
             //FoodItems = new List<FoodItem>();
-
+            Capacity = new Dictionary<FoodItem, int>();
+            CollectedFood = new Dictionary<FoodItem, int>();
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
         }
 

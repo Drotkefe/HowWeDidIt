@@ -60,6 +60,9 @@ namespace HowWeDidIt.Controls
                 case Key.D:
                     gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
+                case Key.Down:
+                    new KitchenScreenWindow(gameModel).Show();
+                    break;
 
             }
 
