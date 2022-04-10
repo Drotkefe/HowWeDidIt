@@ -9,4 +9,8 @@
     <ProjectReference Include="..\HowWeDidIt.Core\HowWeDidIt.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
 </Project>

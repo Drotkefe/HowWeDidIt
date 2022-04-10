@@ -12,7 +12,7 @@ namespace HowWeDidIt.BusinessLogic
         IGameModel GameModel { get; }
         event EventHandler CallRefresh;
 
-        void Move(double dx, double dy);
+        bool Move(double dx, double dy);
         //void Save(); későbbre
     }
 }

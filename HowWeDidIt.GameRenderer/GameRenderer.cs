@@ -102,9 +102,13 @@ namespace HowWeDidIt.GameRenderer
         {
             DrawBackground(ctx);
             DrawCaveMan(ctx);
+            
         }
 
-
+        //private void DrawCaveEntrance(DrawingContext ctx)
+        //{
+        //    ctx.DrawRectangle(null, new Pen(Brushes.Black, 2), new Rect(87, 295, 55, 55));
+        //}
 
         private void DrawCaveMan(DrawingContext ctx)
         {
@@ -140,10 +144,7 @@ namespace HowWeDidIt.GameRenderer
 
         //    //foods
 
-        //    public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
-        //    {
-        //        this.gameModel = gameModel;
-        //        this.gameSettings = gameSettings;
+      
 
 
 
@@ -151,14 +152,7 @@ namespace HowWeDidIt.GameRenderer
        
         
 
-        //    public Drawing GetDrawing()
-        //    {
-        //        var dg = new DrawingGroup();
-        //        //dg.Children.Add(DrawPlayer());
-
-        //        return dg;
-        //    }
-
+       
        
     }
 }
