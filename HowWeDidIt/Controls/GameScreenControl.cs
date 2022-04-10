@@ -64,16 +64,13 @@ namespace HowWeDidIt.Controls
                     entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Down:
-                    new KitchenScreenWindow(gameModel).Show();
+                    entrance = gameLogic.Move(0, 0);
+                    if (entrance)
+                        new KitchenScreenWindow(gameModel).Show();
                     break;
 
             }
-            if (entrance)
-            {
-                MessageBox.Show("Beléptünk a konyhába, sok sikert Andris");
-                var window = Window.GetWindow(this);
-                window.Close();
-            }
+            
 
 
 
