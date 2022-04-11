@@ -35,5 +35,6 @@ namespace HowWeDidIt.Models
             DX = dX;
             DY = dY; // in our case DY = 0;
         }
+
     }
 }
