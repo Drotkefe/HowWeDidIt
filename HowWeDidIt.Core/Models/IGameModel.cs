@@ -9,11 +9,11 @@ namespace HowWeDidIt.Models
 {
     public interface IGameModel
     {
-        CaveMan CaveMan { get; }
+        CaveManMovement CaveMan { get; }
         Recipe Recipe { get; }
 
 
-        //List<FoodItem> FoodItems { get; }
+        //List<FoodItemMovement> FoodItems { get; }
         Dictionary<Foods, int> CollectedFoods { get; }
         Dictionary<Foods, int> FoodCapacities { get; }
 
