@@ -10,10 +10,15 @@ namespace HowWeDidIt.Core.Models
     public class FoodItem
     {
         public Foods Name { get; }
-        public int CookingByProduct { get; set; }
-        public int Garbage { get; set; }
+        public int CookingByProduct { get; }
+        public int Garbage { get; }
 
-        
+        public FoodItem(Foods name, int cookingByProduct, int garbage)
+        {
+            Name = name;
+            CookingByProduct = cookingByProduct;
+            Garbage = garbage;
+        }
     }
 
 }

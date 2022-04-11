@@ -19,11 +19,13 @@
     <None Remove="Images\Kitchen\CaveWall.png" />
     <None Remove="Images\Kitchen\egg.png" />
     <None Remove="Images\Kitchen\ExitSquare.png" />
+    <None Remove="Images\Kitchen\hand.png" />
     <None Remove="Images\Kitchen\hygiene_alert.jpg" />
     <None Remove="Images\Kitchen\meat.png" />
     <None Remove="Images\Kitchen\onion.png" />
     <None Remove="Images\Kitchen\pot.png" />
     <None Remove="Images\Kitchen\potato.png" />
+    <None Remove="Images\Kitchen\uranium.png" />
     <None Remove="Images\mozgas\1L.png" />
     <None Remove="Images\mozgas\1R.png" />
     <None Remove="Images\mozgas\2L.png" />
@@ -70,6 +72,9 @@
     <Content Include="Images\Kitchen\ExitSquare.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Kitchen\hand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Kitchen\hygiene_alert.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -83,6 +88,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Kitchen\potato.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Kitchen\uranium.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\mozgas\1L.png">

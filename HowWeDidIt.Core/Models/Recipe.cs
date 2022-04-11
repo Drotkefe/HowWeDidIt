@@ -11,12 +11,9 @@ namespace HowWeDidIt.Models
     {
         public string Name { get; set; }
         public List<FoodItem> FoodItems { get; set; } 
+        public TimeSpan CookingTime { get; set; }
 
-        public int CookingTime { get; set; }
         private bool cooked;
-
-
-
         public bool Cooked
         {
             get { return cooked; }
@@ -27,8 +24,15 @@ namespace HowWeDidIt.Models
         public int VitalityValue { get; set; }
         public int MoneyValue { get; set; }
 
-
-
-
+        public Recipe(string name, List<FoodItem> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
+        {
+            Name = name;
+            FoodItems = foodItems;
+            CookingTime = cookingTime;
+            this.cooked = cooked;
+            RecipeScore = recipeScore;
+            VitalityValue = vitalityValue;
+            MoneyValue = moneyValue;
+        }
     }
 }

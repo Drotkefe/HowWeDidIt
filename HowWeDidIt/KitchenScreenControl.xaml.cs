@@ -1,4 +1,6 @@
-﻿using HowWeDidIt.Models;
+﻿using HowWeDidIt.Core.Models;
+using HowWeDidIt.Models;
+using HowWeDidIt.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +23,14 @@ namespace HowWeDidIt
     /// </summary>
     public partial class KitchenScreenWindow : Window
     {
-        public GameModel Player { get; set; }
+        public IKitchenModel vm { get; set; } // NOT GOOD
 
-        public KitchenScreenWindow(IGameModel player)
+        public KitchenScreenWindow()
         {
             InitializeComponent();
-
-            DataContext = player;
+            vm = new KitchenModel();
+            DataContext = vm;
         }
+
     }
 }
