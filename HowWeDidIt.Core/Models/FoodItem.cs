@@ -19,6 +19,7 @@ namespace HowWeDidIt.Core.Models
             CookingByProduct = cookingByProduct;
             Garbage = garbage;
         }
+
     }
 
 }

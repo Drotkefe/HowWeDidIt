@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace HowWeDidIt
 {
     /// <summary>
@@ -20,15 +21,21 @@ namespace HowWeDidIt
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MediaPlayer mediaPlayer=new MediaPlayer();
+
         public MainWindow()
         {
             InitializeComponent();
+            mediaPlayer.Open(new Uri(string.Format("{0}\\menu_music.wav",AppDomain.CurrentDomain.BaseDirectory)));
+            mediaPlayer.Play();
+            mediaPlayer.Volume=0.1;
         }
 
         private void New_Game_Click(object sender, RoutedEventArgs e)
         {
             GameScreen screen = new GameScreen();
             screen.Show();
+            mediaPlayer.Stop();
             Close();
         }
 
