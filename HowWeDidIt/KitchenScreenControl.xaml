@@ -5,11 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ViewModels="clr-namespace:HowWeDidIt.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Cursor="Hand"          
+             >
     <Window.DataContext>
-        <ViewModels:KitchenScreenControlVM />
+        <ViewModels:KitchenScreenWindowVM />
     </Window.DataContext>
-    <Grid Cursor="Hand">
+    <Grid>
+        <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill"/>
+    <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
@@ -24,10 +29,17 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label Content="Score: " Grid.ColumnSpan="2"  Margin="5" FontSize="14" FontFamily="Arial Black" />
+            <Label Content="{Binding Path=Player.GameScore}" Margin="5" FontSize="14" FontFamily="Arial Black" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label Grid.Row="0" Grid.Column="3"  Content="Money: " Grid.ColumnSpan="2" Margin="5" FontSize="14" FontFamily="Arial Black" />
+            <Label Content="{Binding Path=Player.GameScore}" Margin="5" FontSize="14" FontFamily="Arial Black" />
+        </StackPanel>
 
-        <Label Grid.Row="0" Grid.Column="0"  Content="Score: ............................." Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" FontFamily="Arial Black" />
-        <Label Grid.Row="0" Grid.Column="3"  Content="Money: ............................." Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" FontFamily="Arial Black" />
-        <Label Grid.Row="0" Grid.Column="2"  Content="HP HP HP HP" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" FontSize="14" FontFamily="Arial Black" />
+        <ProgressBar Grid.Row="0" Grid.Column="2" Value="{Binding Path=Player.Vitality}" Minimum="0" Maximum="100" Margin="10" Foreground="#FFF53416"></ProgressBar>
+        <!--Label Grid.Row="0" Grid.Column="2"  Content="{Binding Path=Player.Vitality}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" FontSize="14" FontFamily="Arial Black" /-->
 
 
         <Label Grid.Column="0" Grid.Row="1" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
@@ -38,7 +50,7 @@
         <Label Grid.Column="5" Grid.Row="3" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
 
         <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -46,7 +58,7 @@
             </Button.Resources>
         </Button>
         <Button Grid.Column="1" Grid.Row="2" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\carrot.png" Margin="10"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -54,7 +66,7 @@
             </Button.Resources>
         </Button>
         <Button Grid.Column="1" Grid.Row="3" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\potato.png" Margin="15"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -62,7 +74,7 @@
             </Button.Resources>
         </Button>
         <Button Grid.Column="1" Grid.Row="4" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\uranium.png" Margin="5"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -71,7 +83,7 @@
         </Button>
 
         <Button Grid.Column="3" Grid.Row="2" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\meat.png" Margin="10"/>
+            <Image Source=".\Images\Kitchen\meat.png" Margin="15"/>
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="300"/>
@@ -134,5 +146,6 @@
 
 
 
+    </Grid>
     </Grid>
 </Window>

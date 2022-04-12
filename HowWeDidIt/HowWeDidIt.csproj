@@ -15,13 +15,17 @@
     <None Remove="Images\FoodItems\répa.png" />
     <None Remove="Images\FoodItems\tojás.png" />
     <None Remove="Images\FoodItems\uran.png" />
+    <None Remove="Images\Kitchen\carrot.png" />
     <None Remove="Images\Kitchen\CaveWall.png" />
     <None Remove="Images\Kitchen\egg.png" />
     <None Remove="Images\Kitchen\ExitSquare.png" />
+    <None Remove="Images\Kitchen\hand.png" />
     <None Remove="Images\Kitchen\hygiene_alert.jpg" />
     <None Remove="Images\Kitchen\meat.png" />
+    <None Remove="Images\Kitchen\onion.png" />
     <None Remove="Images\Kitchen\pot.png" />
     <None Remove="Images\Kitchen\potato.png" />
+    <None Remove="Images\Kitchen\uranium.png" />
     <None Remove="Images\mozgas\1L.png" />
     <None Remove="Images\mozgas\1R.png" />
     <None Remove="Images\mozgas\2L.png" />
@@ -56,6 +60,9 @@
     <Content Include="Images\FoodItems\uran.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Kitchen\carrot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Kitchen\CaveWall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -65,16 +72,25 @@
     <Content Include="Images\Kitchen\ExitSquare.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Kitchen\hand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Kitchen\hygiene_alert.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Kitchen\meat.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Kitchen\onion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Kitchen\pot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Kitchen\potato.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Kitchen\uranium.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\mozgas\1L.png">

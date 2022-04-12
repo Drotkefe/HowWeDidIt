@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HowWeDidIt.Core.Models
 {
-    public class KitchenEntrance : GameItem
+    public class KitchenEntrance : GameItemMovement
     {
         public KitchenEntrance(double x, double y) : base(x, y)
         {

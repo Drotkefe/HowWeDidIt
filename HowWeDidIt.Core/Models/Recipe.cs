@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowWeDidIt.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,10 @@ namespace HowWeDidIt.Models
     public class Recipe
     {
         public string Name { get; set; }
-        public string[,] FoodItems { get; set; }        // ezt hogy értitek? string mátrix? -> FoodItems Lista?
-        public string[,] Crate { get; set; }            // ez miért itt van a receptben? + string mátrix
-        public int CookingTime { get; set; }
-        private bool cooked;
+        public List<FoodItem> FoodItems { get; set; } 
+        public TimeSpan CookingTime { get; set; }
 
+        private bool cooked;
         public bool Cooked
         {
             get { return cooked; }
@@ -24,8 +24,15 @@ namespace HowWeDidIt.Models
         public int VitalityValue { get; set; }
         public int MoneyValue { get; set; }
 
-
-
-
+        public Recipe(string name, List<FoodItem> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
+        {
+            Name = name;
+            FoodItems = foodItems;
+            CookingTime = cookingTime;
+            this.cooked = cooked;
+            RecipeScore = recipeScore;
+            VitalityValue = vitalityValue;
+            MoneyValue = moneyValue;
+        }
     }
 }
