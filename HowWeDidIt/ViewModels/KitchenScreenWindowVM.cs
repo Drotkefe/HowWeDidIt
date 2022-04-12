@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Core.Models;
 using HowWeDidIt.Models;
 using System;
@@ -35,7 +36,7 @@ namespace HowWeDidIt.ViewModels
             {
                 Recipe = new Recipe(
                     "Pizza",                    //name
-                    new List<FoodItem>(),       //foodItems
+                    new List<Foods>(),       //foodItems
                     TimeSpan.FromSeconds(180),  //cooingTime
                     false,                      //Iscooced
                     50,                         //recipeScoere
@@ -51,20 +52,20 @@ namespace HowWeDidIt.ViewModels
                 Vitality = 70
             };
 
-            FoodItem onion = new FoodItem(Core.Enums.Foods.Onion, 1, 2);
-            FoodItem carrot = new FoodItem(Core.Enums.Foods.Carrot, 1, 2);
-            FoodItem potato = new FoodItem(Core.Enums.Foods.Potato, 1, 3);
-            FoodItem meat = new FoodItem(Core.Enums.Foods.Meat, 3, 5);
-            FoodItem egg = new FoodItem(Core.Enums.Foods.Egg, 1, 2);
-            FoodItem uranium = new FoodItem(Core.Enums.Foods.Uranium, 0, 0);
+            //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
+            //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
+            //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
+            //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
+            //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
+            //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
 
-            vm.Recipe.FoodItems.Add(onion);
-            vm.Recipe.FoodItems.Add(meat);
-            vm.Recipe.FoodItems.Add(carrot);
-            vm.Recipe.FoodItems.Add(egg);
-            vm.Recipe.FoodItems.Add(potato);
-            vm.Recipe.FoodItems.Add(uranium);
-            vm.Recipe.FoodItems.Add(uranium);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
 
             //ingredients = new IngredientsVM()
             //{

@@ -14,7 +14,7 @@ namespace HowWeDidIt.Models
         double GameAreaWidth { get; set; }
 
 
-        CaveManMovement CaveMan { get; }
+        MovingCaveMan CaveMan { get; }
 
 
         Recipe Recipe { get; }

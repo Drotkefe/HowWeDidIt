@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Core.Models;
+﻿using HowWeDidIt.Core.Enums;
+using HowWeDidIt.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace HowWeDidIt.Models
     public class Recipe
     {
         public string Name { get; set; }
-        public List<FoodItem> FoodItems { get; set; } 
+        public List<Foods> FoodItems { get; set; } 
         public TimeSpan CookingTime { get; set; }
 
         private bool cooked;
@@ -24,7 +25,7 @@ namespace HowWeDidIt.Models
         public int VitalityValue { get; set; }
         public int MoneyValue { get; set; }
 
-        public Recipe(string name, List<FoodItem> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
+        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
         {
             Name = name;
             FoodItems = foodItems;

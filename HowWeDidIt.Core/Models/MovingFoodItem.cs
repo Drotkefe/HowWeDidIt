@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace HowWeDidIt.Models
 {
-    public class CaveManMovement : GameItemMovement
+    public class MovingFoodItem : MovingGameItem
     {
+        public Foods Name { get; set; }
+
         /// <summary>
         /// Represents x axis of speed.
         /// </summary>
@@ -26,24 +28,10 @@ namespace HowWeDidIt.Models
         /// <param name="y"></param>
         /// <param name="dX"></param>
         /// <param name="dY"></param>
-        /// 
-
-        public int MovementState { get; set; }
-        public Orientations Orientation { get; set; }
-
-
-        public CaveManMovement(double x, double y, double dX, double dY) : base(x, y)
+        public MovingFoodItem(double x, double y, double dX, double dY) : base(x, y)
         {
             DX = dX;
             DY = dY; // in our case DY = 0;
-        }
-
-        public CaveManMovement(double x,double y,double dX, double dY, int movementState, Orientations orientation= Orientations.None) : base(x, y)
-        {
-            DX = dX;
-            DY = dY;
-            MovementState = movementState;
-            Orientation = orientation;
         }
     }
 }

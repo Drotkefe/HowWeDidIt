@@ -14,7 +14,7 @@ namespace HowWeDidIt.Models
         public double GameAreaWidth { get; set; }
 
 
-        public CaveManMovement CaveMan { get; private set; }
+        public MovingCaveMan CaveMan { get; private set; }
         public Recipe Recipe { get; private set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
@@ -34,13 +34,11 @@ namespace HowWeDidIt.Models
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
-            FoodCapacities = new Dictionary<Foods, int>();
-            CollectedFoods = new Dictionary<Foods, int>();
         }
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)
         {
-            CaveMan = new CaveManMovement(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
+            CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             // Recipe = select one Recipe random            
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HowWeDidIt.Models
 {
-    public abstract class GameItemMovement
+    public abstract class MovingGameItem
     {
         /// <summary>
         /// Defines object x position.
@@ -26,7 +26,7 @@ namespace HowWeDidIt.Models
             set { Angle = value * 180 / Math.PI; }
         }
 
-        protected GameItemMovement(double x, double y)
+        protected MovingGameItem(double x, double y)
         {
             X = x;
             Y = y;
