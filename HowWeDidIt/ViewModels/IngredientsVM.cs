@@ -23,7 +23,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref onionCount, value);
-                collectedFoods[Foods.Onion] = value;
+                //collectedFoods[Foods.Onion] = value;
             }
         }
 
@@ -34,7 +34,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref carrotCount, value);
-                collectedFoods[Foods.Carrot] = value;
+                //collectedFoods[Foods.Carrot] = value;
             }
         }
 
@@ -45,7 +45,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref potatoCount, value);
-                collectedFoods[Foods.Potato] = value;
+                //collectedFoods[Foods.Potato] = value;
             }
         }
 
@@ -56,7 +56,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref eggCount, value);
-                collectedFoods[Foods.Egg] = value;
+                //collectedFoods[Foods.Egg] = value;
             }
         }
 
@@ -67,7 +67,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref meatCount, value);
-                collectedFoods[Foods.Meat] = value;
+                //collectedFoods[Foods.Meat] = value;
             }
         }
 
@@ -78,7 +78,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref uraniumCount, value);
-                collectedFoods[Foods.Uranium] = value;
+                //collectedFoods[Foods.Uranium] = value;
             }
         }
 
@@ -92,7 +92,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref onionCapacity, value);
-                foodCapacities[Foods.Onion] = value;
+                //foodCapacities[Foods.Onion] = value;
             }
         }
 
@@ -103,7 +103,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref carrotCapacity, value);
-                foodCapacities[Foods.Carrot] = value;
+                //foodCapacities[Foods.Carrot] = value;
             }
         }
 
@@ -114,7 +114,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref potatoCapacity, value);
-                foodCapacities[Foods.Potato] = value;
+                //foodCapacities[Foods.Potato] = value;
             }
         }
 
@@ -125,7 +125,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref eggCapacity, value);
-                foodCapacities[Foods.Egg] = value;
+                //foodCapacities[Foods.Egg] = value;
             }
         }
 
@@ -136,7 +136,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref meatCapacity, value);
-                foodCapacities[Foods.Meat] = value;
+                //foodCapacities[Foods.Meat] = value;
             }
         }
 
@@ -147,7 +147,7 @@ namespace HowWeDidIt.ViewModels
             set
             {
                 Set(ref uraniumCapacity, value);
-                foodCapacities[Foods.Uranium] = value;
+                //foodCapacities[Foods.Uranium] = value;
             }
         }
 

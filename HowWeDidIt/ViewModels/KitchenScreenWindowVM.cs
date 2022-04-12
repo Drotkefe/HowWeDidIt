@@ -14,8 +14,8 @@ namespace HowWeDidIt.ViewModels
 {
     public class KitchenScreenWindowVM : ViewModelBase
     {
-        private IKitchenModel vm;
-        public IKitchenModel VM
+        private IGameModel vm;
+        public IGameModel VM
         {
             get { return vm; }
             set { Set(ref vm, value); }
@@ -32,25 +32,25 @@ namespace HowWeDidIt.ViewModels
         public KitchenScreenWindowVM()
         {
             //teszthez majd használható:
-            this.vm = new KitchenModel()
-            {
-                Recipe = new Recipe(
-                    "Pizza",                    //name
-                    new List<Foods>(),       //foodItems
-                    TimeSpan.FromSeconds(180),  //cooingTime
-                    false,                      //Iscooced
-                    50,                         //recipeScoere
-                    1,                          //vitalityValue
-                    100),                       //moneyValue
+            //this.vm = new KitchenModel()
+            //{
+            //    Recipe = new Recipe(
+            //        "Pizza",                    //name
+            //        new List<Foods>(),       //foodItems
+            //        TimeSpan.FromSeconds(180),  //cooingTime
+            //        false,                      //Iscooced
+            //        50,                         //recipeScoere
+            //        1,                          //vitalityValue
+            //        100),                       //moneyValue
 
-                CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
-                FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
-                GameScore = 1234567890,
-                GarbageCapacity = 10,
-                GarbageCount = 0,
-                Money = 30,
-                Vitality = 70
-            };
+            //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
+            //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
+            //    GameScore = 1234567890,
+            //    GarbageCapacity = 10,
+            //    GarbageCount = 0,
+            //    Money = 30,
+            //    Vitality = 70
+            //};
 
             //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
             //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
@@ -59,13 +59,13 @@ namespace HowWeDidIt.ViewModels
             //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
             //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
 
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
-            vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            //vm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
 
             //ingredients = new IngredientsVM()
             //{
@@ -87,23 +87,23 @@ namespace HowWeDidIt.ViewModels
         public KitchenScreenWindowVM(IGameModel model)
         {
 
-            //this.vm = model;
-            //ingredients = new IngredientsVM()
-            //{
-            //    CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],
-            //    OnionCapacity = model.FoodCapacities[Core.Enums.Foods.Onion],
-            //    PotatoCapacity = model.FoodCapacities[Core.Enums.Foods.Potato],
-            //    EggCapacity = model.FoodCapacities[Core.Enums.Foods.Egg],
-            //    MeatCapacity = model.FoodCapacities[Core.Enums.Foods.Meat],
-            //    UraniumCapacity = model.FoodCapacities[Core.Enums.Foods.Uranium],
+            this.vm = model;
+            ingredients = new IngredientsVM()
+            {
+                CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],
+                OnionCapacity = model.FoodCapacities[Core.Enums.Foods.Onion],
+                PotatoCapacity = model.FoodCapacities[Core.Enums.Foods.Potato],
+                EggCapacity = model.FoodCapacities[Core.Enums.Foods.Egg],
+                MeatCapacity = model.FoodCapacities[Core.Enums.Foods.Meat],
+                UraniumCapacity = model.FoodCapacities[Core.Enums.Foods.Uranium],
 
-            //    CarrotCount = model.CollectedFoods[Core.Enums.Foods.Carrot],
-            //    OnionCount = model.CollectedFoods[Core.Enums.Foods.Onion],
-            //    PotatoCount = model.CollectedFoods[Core.Enums.Foods.Potato],
-            //    EggCount = model.CollectedFoods[Core.Enums.Foods.Egg],
-            //    MeatCount = model.CollectedFoods[Core.Enums.Foods.Meat],
-            //    UraniumCount = model.CollectedFoods[Core.Enums.Foods.Uranium]
-            //};
+                CarrotCount = model.CollectedFoods[Core.Enums.Foods.Carrot],
+                OnionCount = model.CollectedFoods[Core.Enums.Foods.Onion],
+                PotatoCount = model.CollectedFoods[Core.Enums.Foods.Potato],
+                EggCount = model.CollectedFoods[Core.Enums.Foods.Egg],
+                MeatCount = model.CollectedFoods[Core.Enums.Foods.Meat],
+                UraniumCount = model.CollectedFoods[Core.Enums.Foods.Uranium]
+            };
         }
 
     }

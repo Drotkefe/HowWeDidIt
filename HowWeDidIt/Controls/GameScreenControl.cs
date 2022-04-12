@@ -65,10 +65,10 @@ namespace HowWeDidIt.Controls
                     break;
                 case Key.Down:
                     //new KitchenScreenWindow(gameModel).Show();
-                    new KitchenScreenWindow().Show();
+                    new KitchenScreenWindow(gameModel).Show();
                     entrance = gameLogic.Move(0, 0);
                     if (entrance)
-                        new KitchenScreenWindow().Show();
+                        new KitchenScreenWindow(gameModel).Show();
                     break;
 
             }

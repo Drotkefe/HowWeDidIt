@@ -40,7 +40,46 @@ namespace HowWeDidIt.Models
         {
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
-            // Recipe = select one Recipe random            
+            FoodCapacities = new Dictionary<Foods, int>();
+            FoodCapacities.Add(Foods.Carrot, 2);
+            FoodCapacities.Add(Foods.Egg, 2);
+            FoodCapacities.Add(Foods.Meat, 2);
+            FoodCapacities.Add(Foods.Onion, 2);
+            FoodCapacities.Add(Foods.Potato, 2);
+            FoodCapacities.Add(Foods.Uranium, 2);
+
+            CollectedFoods = new Dictionary<Foods, int>();
+            CollectedFoods.Add(Foods.Carrot, 1);
+            CollectedFoods.Add(Foods.Egg, 1);
+            CollectedFoods.Add(Foods.Meat, 1);
+            CollectedFoods.Add(Foods.Onion, 1);
+            CollectedFoods.Add(Foods.Potato, 1);
+            CollectedFoods.Add(Foods.Uranium, 1);
+
+            GarbageCount = 0;
+            GarbageCapacity = 10;
+            Vitality = 90;
+            Money = 20;
+            GameScore = 0;
+
+            Recipe = new Recipe();
+            Recipe.Name = "Pizza";
+            Recipe.FoodItems = new List<Foods>();
+            Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            Recipe.Cooked = false;
+            Recipe.CookingTime = TimeSpan.FromSeconds(180);
+            Recipe.MoneyValue = 50;
+            Recipe.RecipeScore = 100;
+            Recipe.VitalityValue = 1;
+
+            
+
         }
 
         // TODO: create other ctor for load data from saved game

@@ -23,13 +23,13 @@ namespace HowWeDidIt
     /// </summary>
     public partial class KitchenScreenWindow : Window
     {
-        //public KitchenScreenWindowVM vm { get; set; }
+        public KitchenScreenWindowVM VM { get; set; }
 
-        public KitchenScreenWindow()
+        public KitchenScreenWindow(IGameModel gameModel)
         {
             InitializeComponent();
-            //vm = new KitchenScreenWindowVM();
-            //DataContext = vm;
+            VM = new KitchenScreenWindowVM(gameModel);
+            DataContext = VM;
         }
 
     }
