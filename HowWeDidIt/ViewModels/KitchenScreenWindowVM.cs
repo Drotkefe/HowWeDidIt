@@ -84,7 +84,7 @@ namespace HowWeDidIt.ViewModels
             //    UraniumCount = 2
             //};
         }
-        public KitchenScreenWindowVM(IKitchenModel model)
+        public KitchenScreenWindowVM(IGameModel model)
         {
 
             //this.vm = model;
