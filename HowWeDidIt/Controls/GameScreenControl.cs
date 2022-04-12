@@ -64,9 +64,11 @@ namespace HowWeDidIt.Controls
                     entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Down:
+                    //new KitchenScreenWindow(gameModel).Show();
+                    new KitchenScreenWindow().Show();
                     entrance = gameLogic.Move(0, 0);
                     if (entrance)
-                        new KitchenScreenWindow(gameModel).Show();
+                        new KitchenScreenWindow().Show();
                     break;
 
             }

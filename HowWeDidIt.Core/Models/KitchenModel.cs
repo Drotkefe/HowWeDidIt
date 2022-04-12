@@ -10,6 +10,10 @@ namespace HowWeDidIt.Core.Models
 {
     public class KitchenModel : IKitchenModel
     {
+
+        public double GameAreaHeight { get; set; }
+        public double GameAreaWidth { get; set; } 
+
         public Recipe Recipe { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
@@ -19,14 +23,15 @@ namespace HowWeDidIt.Core.Models
         public int Money { get; set; }
         public int GameScore { get; set; }
 
-
         public KitchenModel()
         {
 
         }
 
-        public KitchenModel(Recipe recipe, Dictionary<Foods, int> collectedFoods, Dictionary<Foods, int> foodCapacities, int garbageCount, int garbageCapacity, int vitality, int money, int gameScore)
+        public KitchenModel(double gameAreaHeight, double gameAreaWidth, Recipe recipe, Dictionary<Foods, int> collectedFoods, Dictionary<Foods, int> foodCapacities, int garbageCount, int garbageCapacity, int vitality, int money, int gameScore)
         {
+            GameAreaHeight = gameAreaHeight;
+            GameAreaWidth = gameAreaWidth;
             Recipe = recipe;
             CollectedFoods = collectedFoods;
             FoodCapacities = foodCapacities;
