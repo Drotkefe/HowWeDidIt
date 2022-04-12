@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:HowWeDidIt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -13,7 +15,18 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Margin="170 20 170 20" Content="Új játék" FontSize="35" Click="New_Game_Click" />
+        
+        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/running.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 50 0"/>
+        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="1"/>
+        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/stat.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="2"/>
+        
+
+        <Button x:Name="new_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="0" Margin="170,20,0,20" Content="New Game" FontSize="35" Click="New_Game_Click" Background="#12c712" FontFamily="Arial" HorizontalAlignment="Left" Width="460"/>
+        <Button x:Name="load_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="1" Margin="170 20 0 20" Content="Load Game" FontSize="35" Click="Load_Game_Click" Background="#12c712" FontFamily="Arial" HorizontalAlignment="Left" Visibility="Visible" Width="460"/>
+        <Button x:Name="leaderboard_button" Style="{DynamicResource RoundedButton}" Grid.Row="2" Margin="170 20 0 20" Content="Leaderboard" FontSize="35" Click="leaderboard_button_Click" Background="#12c712" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
+        <Button x:Name="exit_button" Style="{DynamicResource RoundedButton}" Grid.Row="3" Margin="170 20 0 20" Content="Exit" FontSize="35" Click="exit_button_Click" Background="#12c712" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
+
+
     </Grid>
-    
+
 </Window>

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fire.gif" />
     <None Remove="Images\background.jpg" />
     <None Remove="Images\background.png" />
     <None Remove="Images\FoodItems\burgonya.png" />
@@ -15,6 +16,7 @@
     <None Remove="Images\FoodItems\répa.png" />
     <None Remove="Images\FoodItems\tojás.png" />
     <None Remove="Images\FoodItems\uran.png" />
+    <None Remove="Images\GIF\stat.gif" />
     <None Remove="Images\Kitchen\carrot.png" />
     <None Remove="Images\Kitchen\CaveWall.png" />
     <None Remove="Images\Kitchen\egg.png" />
@@ -39,9 +41,14 @@
     <None Remove="Images\mozgas\6L.png" />
     <None Remove="Images\mozgas\6R.png" />
     <None Remove="Images\StandR.png" />
+    <None Remove="menu_music.wav" />
+    <None Remove="running.gif" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\GIF\fire.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -58,6 +65,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\FoodItems\uran.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GIF\stat.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Kitchen\carrot.png">
@@ -129,6 +139,12 @@
     <Content Include="Images\StandR.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="menu_music.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\GIF\running.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -151,6 +167,7 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
 </Project>
