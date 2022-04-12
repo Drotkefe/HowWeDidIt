@@ -13,11 +13,11 @@ namespace HowWeDidIt.ViewModels
 {
     public class KitchenScreenWindowVM : ViewModelBase
     {
-        private IKitchenModel player;
-        public IKitchenModel Player
+        private IKitchenModel vm;
+        public IKitchenModel VM
         {
-            get { return player; }
-            set { Set(ref player, value); }
+            get { return vm; }
+            set { Set(ref vm, value); }
         }
 
         private IngredientsVM ingredients;
@@ -31,7 +31,7 @@ namespace HowWeDidIt.ViewModels
         public KitchenScreenWindowVM()
         {
             //teszthez majd használható:
-            this.player = new KitchenModel()
+            this.vm = new KitchenModel()
             {
                 Recipe = new Recipe(
                     "Pizza",                    //name
@@ -41,12 +41,13 @@ namespace HowWeDidIt.ViewModels
                     50,                         //recipeScoere
                     1,                          //vitalityValue
                     100),                       //moneyValue
+
                 CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
                 FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
-                GameScore = 5000,
+                GameScore = 1234567890,
                 GarbageCapacity = 10,
                 GarbageCount = 0,
-                Money = 0,
+                Money = 30,
                 Vitality = 70
             };
 
@@ -57,13 +58,13 @@ namespace HowWeDidIt.ViewModels
             FoodItem egg = new FoodItem(Core.Enums.Foods.Egg, 1, 2);
             FoodItem uranium = new FoodItem(Core.Enums.Foods.Uranium, 0, 0);
 
-            player.Recipe.FoodItems.Add(onion);
-            player.Recipe.FoodItems.Add(meat);
-            player.Recipe.FoodItems.Add(carrot);
-            player.Recipe.FoodItems.Add(egg);
-            player.Recipe.FoodItems.Add(potato);
-            player.Recipe.FoodItems.Add(uranium);
-            player.Recipe.FoodItems.Add(uranium);
+            vm.Recipe.FoodItems.Add(onion);
+            vm.Recipe.FoodItems.Add(meat);
+            vm.Recipe.FoodItems.Add(carrot);
+            vm.Recipe.FoodItems.Add(egg);
+            vm.Recipe.FoodItems.Add(potato);
+            vm.Recipe.FoodItems.Add(uranium);
+            vm.Recipe.FoodItems.Add(uranium);
 
             //ingredients = new IngredientsVM()
             //{
@@ -85,11 +86,7 @@ namespace HowWeDidIt.ViewModels
         public KitchenScreenWindowVM(IKitchenModel model)
         {
 
-
-        
-
-
-            //this.player = model;
+            //this.vm = model;
             //ingredients = new IngredientsVM()
             //{
             //    CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],

@@ -9,19 +9,23 @@ namespace HowWeDidIt.Models
 {
     public interface IGameModel
     {
+
+        double GameAreaHeight { get; set; }
+        double GameAreaWidth { get; set; }
+
+
         CaveManMovement CaveMan { get; }
+
+
         Recipe Recipe { get; }
-
-
-        //List<FoodItemMovement> FoodItems { get; }
         Dictionary<Foods, int> CollectedFoods { get; }
         Dictionary<Foods, int> FoodCapacities { get; }
-
-
+        int GarbageCount { get; set; }
+        int GarbageCapacity { get; set; }
         int Vitality { get; set; }
         int Money { get; set; }
         int GameScore { get; set; }
-        double GameAreaHeight { get; set; }
-        double GameAreaWidth { get; set; }      
+
+
     }
 }

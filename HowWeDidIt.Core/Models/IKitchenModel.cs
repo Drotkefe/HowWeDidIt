@@ -10,6 +10,10 @@ namespace HowWeDidIt.Core.Models
 {
     public interface IKitchenModel
     {
+        double GameAreaHeight { get; set; }
+        double GameAreaWidth { get; set; }
+
+
         Recipe Recipe { get; set; }
 
         Dictionary<Foods, int> CollectedFoods { get; set; }

@@ -23,13 +23,13 @@ namespace HowWeDidIt
     /// </summary>
     public partial class KitchenScreenWindow : Window
     {
-        public IKitchenModel vm { get; set; } // NOT GOOD
+        //public KitchenScreenWindowVM vm { get; set; }
 
         public KitchenScreenWindow()
         {
             InitializeComponent();
-            vm = new KitchenModel();
-            DataContext = vm;
+            //vm = new KitchenScreenWindowVM();
+            //DataContext = vm;
         }
 
     }
