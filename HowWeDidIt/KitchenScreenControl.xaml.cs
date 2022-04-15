@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Core.Models;
+﻿using HowWeDidIt.Core.Enums;
+using HowWeDidIt.Core.Models;
 using HowWeDidIt.Models;
 using HowWeDidIt.ViewModels;
 using System;
@@ -35,6 +36,34 @@ namespace HowWeDidIt
 
 
         }
+
+        private void OnionButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (sender is Button OnionButton)// && e.LeftButton == MouseButtonState.Pressed)
+            {               
+                //DragDrop.DoDragDrop(OnionButton, OnionButton, DragDropEffects.Copy);
+                DragDrop.DoDragDrop(OnionButton, Foods.Onion.ToString() , DragDropEffects.None);
+                ;
+            }
+        }
+
+        private void Button_Drop(object sender, DragEventArgs e)
+        {
+            if (sender is Button pot)
+            {
+                if (e.Data.GetDataPresent(DataFormats.StringFormat))
+                {
+                    Foods stringFrimDrop = (Foods)Enum.Parse(typeof(Foods), (string)e.Data.GetData(DataFormats.StringFormat));
+
+                }
+            }
+        }
+
+        private void Style_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
 
         //private void Button_Drop(object sender, DragEventArgs e)

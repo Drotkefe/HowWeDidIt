@@ -76,11 +76,12 @@
             </DockPanel>
 
 
-            <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464" x:Name="OnionButton">
+            <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464" x:Name="OnionButton" MouseMove="OnionButton_MouseMove">
                 <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
                 <Button.Resources>
                     <Style TargetType="Border" >
                         <Setter Property="CornerRadius" Value="300"/>
+                        
                     </Style>
                 </Button.Resources>
                 <Button.InputBindings>
@@ -130,7 +131,7 @@
                 </Button.Resources>
             </Button>
 
-            <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  DataContext="{Binding Recipe}" HorizontalAlignment="Center">
+            <StackPanel Grid.Column="2" Grid.Row="1" DataContext="{Binding Recipe}" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
@@ -165,17 +166,24 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <TextBlock Text="Order of ingredients:" Margin="5" FontSize="30" FontFamily="Algerian" HorizontalAlignment="Center"/>
-                    <ListBox ItemsSource="{Binding FoodItems}" SelectedItem="{Binding CurrentFood}">
+                    <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding CurrentFood}" FontSize="60" FontFamily="Algerian" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" IsEnabled="False"/>
+
+                    
+                    <!--TextBlock Resources="{Binding FoodItems}" Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian"></TextBlock>
+                    
+                    <ListView ItemsSource="{Binding FoodItems}" SelectedItem="{Binding CurrentFood}" HorizontalAlignment="Center" >
                         <ListBox.Background>
                             <SolidColorBrush Opacity="0"/>
                         </ListBox.Background>
-                        <!--ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock  FontSize="50" FontFamily="Algerian"/>
+                        <ListView.ItemTemplate>
+                            <DataTemplate DataType="ViewModels:RecipeVM">
+                                <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian" />
                             </DataTemplate>
-                        </ListBox.ItemTemplate-->
-                    </ListBox>
+                        </ListView.ItemTemplate>
+
+
+
+                    </ListView-->
                     
                     
                     
@@ -184,13 +192,18 @@
 
             </StackPanel>
 
-            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606" >
+
+
+            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606"  AllowDrop="True" Drop="Button_Drop" >
                 <Button.Resources>
                     <Style TargetType="Border" >
                         <Setter Property="CornerRadius" Value="300"/>
                     </Style>
                 </Button.Resources>
             </Button>
+            
+            
+            
             <Button Grid.Column="2" Grid.Row="4" Content="FIREtest">
             </Button>
 
@@ -222,7 +235,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10">
+            <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10" AllowDrop="True">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>

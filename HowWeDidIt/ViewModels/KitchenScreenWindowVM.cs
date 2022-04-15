@@ -78,7 +78,6 @@ namespace HowWeDidIt.ViewModels
 
 
 
-
         //public KitchenScreenWindowVM()
         //{
         //    //teszthez majd használható:
@@ -93,47 +92,47 @@ namespace HowWeDidIt.ViewModels
         //    //        1,                          //vitalityValue
         //    //        100),                       //moneyValue
 
-        //    //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
-        //    //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
-        //    //    GameScore = 1234567890,
-        //    //    GarbageCapacity = 10,
-        //    //    GarbageCount = 0,
-        //    //    Money = 30,
-        //    //    Vitality = 70
-        //    //};
+            //    //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
+            //    //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
+            //    //    GameScore = 1234567890,
+            //    //    GarbageCapacity = 10,
+            //    //    GarbageCount = 0,
+            //    //    Money = 30,
+            //    //    Vitality = 70
+            //    //};
 
-        //    //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
-        //    //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
-        //    //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
-        //    //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
-        //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
-        //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
+            //    //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
+            //    //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
+            //    //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
+            //    //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
+            //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
+            //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
 
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
-        //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
 
-        //    //ingredients = new IngredientsVM()
-        //    //{
-        //    //    CarrotCapacity = 6,
-        //    //    OnionCapacity = 6,
-        //    //    PotatoCapacity = 6,
-        //    //    EggCapacity = 8,
-        //    //    MeatCapacity = 8,
-        //    //    UraniumCapacity = 8,
+            //    //ingredients = new IngredientsVM()
+            //    //{
+            //    //    CarrotCapacity = 6,
+            //    //    OnionCapacity = 6,
+            //    //    PotatoCapacity = 6,
+            //    //    EggCapacity = 8,
+            //    //    MeatCapacity = 8,
+            //    //    UraniumCapacity = 8,
 
-        //    //    CarrotCount = 2,
-        //    //    OnionCount = 2,
-        //    //    PotatoCount = 2,
-        //    //    EggCount = 2,
-        //    //    MeatCount = 2,
-        //    //    UraniumCount = 2
-        //    //};
-        //}
+            //    //    CarrotCount = 2,
+            //    //    OnionCount = 2,
+            //    //    PotatoCount = 2,
+            //    //    EggCount = 2,
+            //    //    MeatCount = 2,
+            //    //    UraniumCount = 2
+            //    //};
+            //}
 
         public KitchenScreenWindowVM()
         {
