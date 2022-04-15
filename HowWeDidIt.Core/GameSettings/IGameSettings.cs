@@ -44,6 +44,13 @@ namespace HowWeDidIt.Core.GameSettings
         public string CaveMan5R { get;  }
         public string CaveMan6L { get;  }
         public string CaveMan6R { get; }
+
+        public string FIPotatoPatternPath { get; }
+        public string FIDrumStickPatternPath { get; }
+        public string FIOnionPatternPath { get; }
+        public string FICarrotPatternPath { get; }
+        public string FIEggPatternPath { get; }
+        public string FIUraniumPatternPath { get; }
         #endregion
 
         int MaximalAllowedMovementState { get; set; }

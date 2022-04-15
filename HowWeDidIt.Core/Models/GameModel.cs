@@ -46,8 +46,8 @@ namespace HowWeDidIt.Models
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
-            {
-                FoodItems.Add(new MovingFoodItem(rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
+            {                               
+                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
             FoodCapacities = new Dictionary<Foods, int>();

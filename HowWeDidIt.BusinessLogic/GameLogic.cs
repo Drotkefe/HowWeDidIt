@@ -65,6 +65,7 @@ namespace HowWeDidIt.BusinessLogic
                     //Thread.Sleep(rnd.Next(0, 2500));
                     foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
                     foodItem.Y = 0;
+                    foodItem.Name = (Core.Enums.Foods)rnd.Next(0,6);
                 }
             }
         }

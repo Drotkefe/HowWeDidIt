@@ -36,6 +36,13 @@ namespace HowWeDidIt.GameRenderer
 
         readonly Dictionary<Orientations, Dictionary<int, Lazy<ImageBrush>>> playerBrushStorage;
 
+        readonly Lazy<ImageBrush> PotatoBrush;
+        readonly Lazy<ImageBrush> DrumStickBrush;
+        readonly Lazy<ImageBrush> OnionBrush;
+        readonly Lazy<ImageBrush> CarrotBrush;
+        readonly Lazy<ImageBrush> EggBrush; 
+        readonly Lazy<ImageBrush> UraniumBrush;
+
         public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
         {
             this.gameModel = gameModel;
@@ -89,6 +96,12 @@ namespace HowWeDidIt.GameRenderer
                     //    }
                     //},
                 };
+            PotatoBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIPotatoPatternPath));
+            DrumStickBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIDrumStickPatternPath));
+            OnionBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIOnionPatternPath));
+            CarrotBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FICarrotPatternPath));
+            EggBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIEggPatternPath));
+            UraniumBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIUraniumPatternPath));
 
         }
 
@@ -102,7 +115,7 @@ namespace HowWeDidIt.GameRenderer
         {
             DrawBackground(ctx);
             DrawCaveMan(ctx);
-            
+            DrawFoodItems(ctx);
         }
 
         //private void DrawCaveEntrance(DrawingContext ctx)
@@ -140,9 +153,41 @@ namespace HowWeDidIt.GameRenderer
             ctx.DrawRectangle(backgroundPattern,null,new Rect(0, 0, gameModel.GameAreaWidth, gameModel.GameAreaHeight));
         }
 
-
-
         //    //foods
+        private void DrawFoodItems(DrawingContext ctx)
+        {
+            foreach (var foodItem in gameModel.FoodItems)
+            {
+                ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 10, 10));
+            }
+        }
+        private Brush GetProperFoodItemBrush(MovingFoodItem item)
+        {
+            Brush brush = PotatoBrush.Value;
+            switch (item.Name)
+            {
+                case Foods.Potato:
+                    brush = PotatoBrush.Value;
+                    break;
+                case Foods.Meat:
+                    brush = DrumStickBrush.Value;
+                    break;
+                case Foods.Onion:
+                    brush = OnionBrush.Value;
+                    break;
+                case Foods.Carrot:
+                    brush = CarrotBrush.Value;
+                    break;
+                case Foods.Egg:
+                    brush = EggBrush.Value;
+                    break;
+                case Foods.Uranium:
+                    brush = UraniumBrush.Value;
+                    break;
+            }
+            return brush;
+        }
+
 
       
 

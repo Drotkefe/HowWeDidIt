@@ -39,7 +39,12 @@ namespace HowWeDidIt.Core.GameSettings
         public string CaveMan6L => @"Images\mozgas\6L.png";
         public string CaveMan6R => @"Images\mozgas\6R.png";
 
-
+        public string FIPotatoPatternPath => @"Images\FoodItems\burgonya.png";
+        public string FIDrumStickPatternPath => @"Images\FoodItems\comb.png";
+        public string FIOnionPatternPath => @"Images\FoodItems\lilahagyma.png";
+        public string FICarrotPatternPath => @"Images\FoodItems\répa.png";
+        public string FIEggPatternPath => @"Images\FoodItems\tojás.png";
+        public string FIUraniumPatternPath => @"Images\FoodItems\uran.png";
 
         #endregion
 
