@@ -158,7 +158,7 @@ namespace HowWeDidIt.GameRenderer
         {
             foreach (var foodItem in gameModel.FoodItems)
             {
-                ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 10, 10));
+                ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 24, 24));
             }
         }
         private Brush GetProperFoodItemBrush(MovingFoodItem item)

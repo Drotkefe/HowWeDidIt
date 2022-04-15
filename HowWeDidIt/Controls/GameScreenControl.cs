@@ -21,6 +21,7 @@ namespace HowWeDidIt.Controls
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
+        DispatcherTimer timer;
 
         public GameScreenControl()
         {
@@ -41,10 +42,23 @@ namespace HowWeDidIt.Controls
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
-                
+
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromMilliseconds(130);
+                timer.Tick += Timer_Tick;
+                timer.Start();
             }
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            gameModel.GameAreaWidth = ActualWidth;
+            gameModel.GameAreaHeight = ActualHeight;
+
+            gameLogic.FoodItemsFalling();
+
+            InvalidateVisual();
+        }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {

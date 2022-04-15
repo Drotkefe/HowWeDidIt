@@ -48,7 +48,7 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
             GameModel.CaveMan.MovementState = (GameModel.CaveMan.MovementState + 1) % gameSettings.MaximalAllowedMovementState;
-            Thread.Sleep(70);
+            //Thread.Sleep(70);
             CallRefresh?.Invoke(this, EventArgs.Empty);
             return entrance;
 
@@ -58,9 +58,9 @@ namespace HowWeDidIt.BusinessLogic
         {
             foreach (var foodItem in GameModel.FoodItems)
             {
-                foodItem.Y -= gameSettings.FoodItemYVelocity;
+                foodItem.Y += gameSettings.FoodItemYVelocity * rnd.Next(10, 31) / 10;
 
-                if (foodItem.Y > 321 )
+                if (foodItem.Y >= 340 )
                 {
                     //Thread.Sleep(rnd.Next(0, 2500));
                     foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
