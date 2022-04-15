@@ -38,17 +38,23 @@ namespace HowWeDidIt.Core.GameSettings
         public string CaveMan5R => @"Images\mozgas\5R.png";
         public string CaveMan6L => @"Images\mozgas\6L.png";
         public string CaveMan6R => @"Images\mozgas\6R.png";
-       
-        
+
+
 
         #endregion
 
+        #region MovingFoodItem
 
+        public int FoodItemCount => 3;
+
+        public double FoodItemYVelocity => 14;        
+
+        #endregion
 
         public double GameAreaDefaultWidth => 800; // To be set right once it is known
 
         public double GameAreaDefaultHeight => 450; // // To be set right once it is known
 
-        public int MaximalAllowedMovementState { get; set; } = 6;
+        public int MaximalAllowedMovementState { get; set; } = 6;        
     }
 }

@@ -11,6 +11,7 @@ namespace HowWeDidIt.BusinessLogic
 {
     public class GameLogic : IGameLogic
     {
+        Random rnd = new Random();
         //readonly IGameRepository gameRepository;
         readonly IGameSettings gameSettings;
         public IGameModel GameModel { get; private set; }
@@ -51,6 +52,26 @@ namespace HowWeDidIt.BusinessLogic
             CallRefresh?.Invoke(this, EventArgs.Empty);
             return entrance;
 
+        }
+
+        public void FoodItemsFalling()
+        {
+            foreach (var foodItem in GameModel.FoodItems)
+            {
+                foodItem.Y -= gameSettings.FoodItemYVelocity;
+
+                if (foodItem.Y > 321 )
+                {
+                    //Thread.Sleep(rnd.Next(0, 2500));
+                    foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
+                    foodItem.Y = 0;
+                }
+            }
+        }
+
+        public void FoodItemCaught()
+        {
+            throw new NotImplementedException();
         }
     }
 }

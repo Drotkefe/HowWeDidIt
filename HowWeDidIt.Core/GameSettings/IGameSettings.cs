@@ -47,5 +47,13 @@ namespace HowWeDidIt.Core.GameSettings
         #endregion
 
         int MaximalAllowedMovementState { get; set; }
+
+        #region MovingFoodItem
+
+        public int FoodItemCount { get; }
+
+        public double FoodItemYVelocity { get; }
+       
+        #endregion
     }
 }

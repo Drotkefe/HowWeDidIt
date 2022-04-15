@@ -13,6 +13,9 @@ namespace HowWeDidIt.BusinessLogic
         event EventHandler CallRefresh;
 
         bool Move(double dx, double dy);
+
+        void FoodItemsFalling();
+        void FoodItemCaught();
         //void Save(); későbbre
     }
 }
