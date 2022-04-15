@@ -14,30 +14,40 @@ namespace HowWeDidIt.Models
         public List<Foods> FoodItems { get; set; } 
         public TimeSpan CookingTime { get; set; }
 
+
+        public int RecipeScore { get; set; }        
+        public int VitalityValue { get; set; }
+        public int MoneyValue { get; set; }
+
+
+        public Foods currentFood;
+        public Foods CurrentFood
+        {
+            get { return currentFood; }
+            set { currentFood = value; }
+        }
+
+
         private bool cooked;
         public bool Cooked
         {
             get { return cooked; }
             set { cooked = value; }
         }
-
-        public int RecipeScore { get; set; }        
-        public int VitalityValue { get; set; }
-        public int MoneyValue { get; set; }
-
         public Recipe()
         {
                 
         }
-        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
+        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, int recipeScore, int vitalityValue, int moneyValue, int currentFoodIndex = 0, bool cooked = false)
         {
             Name = name;
             FoodItems = foodItems;
             CookingTime = cookingTime;
-            this.cooked = cooked;
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
             MoneyValue = moneyValue;
+            this.currentFood = foodItems[0];
+            this.cooked = cooked;
         }
     }
 }

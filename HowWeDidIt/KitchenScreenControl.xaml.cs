@@ -28,9 +28,23 @@ namespace HowWeDidIt
         public KitchenScreenWindow(IGameModel gameModel)
         {
             InitializeComponent();
+
+
             VM = new KitchenScreenWindowVM(gameModel);
             DataContext = VM;
+
+
         }
 
+
+        //private void Button_Drop(object sender, DragEventArgs e)
+        //{
+        //    VM.Ingredients.OnionCount++;
+        //}
+
+        //private void Button_Click(object sender, RoutedEventArgs e) //TODO: delete
+        //{
+        //    VM.Ingredients.OnionCount++; 
+        //}
     }
 }

@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿//using GalaSoft.MvvmLight;
 using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Models;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,167 +17,133 @@ namespace HowWeDidIt.ViewModels
 
 
         #region Counts
-        private int onionCount;
         public int OnionCount
         {
-            get { return onionCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Onion) ?? 0; }
             set
             {
-                Set(ref onionCount, value);
-                //collectedFoods[Foods.Onion] = value;
+                SetProperty(collectedFoods[Foods.Onion], value, collectedFoods, (cf, val) => cf[Foods.Onion] = val);
             }
         }
 
-        private int carrotCount;
+
         public int CarrotCount
         {
-            get { return carrotCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Carrot) ?? 0; }
             set
             {
-                Set(ref carrotCount, value);
-                //collectedFoods[Foods.Carrot] = value;
+                SetProperty(collectedFoods[Foods.Carrot], value, collectedFoods, (cf, val) => cf[Foods.Carrot] = val);
             }
         }
 
-        private int potatoCount;
+
         public int PotatoCount
         {
-            get { return potatoCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Potato) ?? 0; }
             set
             {
-                Set(ref potatoCount, value);
-                //collectedFoods[Foods.Potato] = value;
+                SetProperty(collectedFoods[Foods.Potato], value, collectedFoods, (cf, val) => cf[Foods.Potato] = val);
             }
         }
 
-        private int eggCount;
+
         public int EggCount
         {
-            get { return eggCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Egg) ?? 0; }
             set
             {
-                Set(ref eggCount, value);
-                //collectedFoods[Foods.Egg] = value;
+                SetProperty(collectedFoods[Foods.Egg], value, collectedFoods, (cf, val) => cf[Foods.Egg] = val);
             }
         }
 
-        private int meatCount;
         public int MeatCount
         {
-            get { return meatCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Meat) ?? 0; }
             set
             {
-                Set(ref meatCount, value);
-                //collectedFoods[Foods.Meat] = value;
+                SetProperty(collectedFoods[Foods.Meat], value, collectedFoods, (cf, val) => cf[Foods.Meat] = val);
             }
         }
 
-        private int uraniumCount;
+
         public int UraniumCount
         {
-            get { return uraniumCount; }
+            get { return collectedFoods?.GetValueOrDefault(Foods.Uranium) ?? 0; }
             set
             {
-                Set(ref uraniumCount, value);
-                //collectedFoods[Foods.Uranium] = value;
+                SetProperty(collectedFoods[Foods.Uranium], value, collectedFoods, (cf, val) => cf[Foods.Uranium] = val);
             }
         }
 
         #endregion
 
-        #region Capacities       
-        private int onionCapacity;
+        #region Capacities
+
+
         public int OnionCapacity
         {
-            get { return onionCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Onion) ?? 0; }
             set
             {
-                Set(ref onionCapacity, value);
-                //foodCapacities[Foods.Onion] = value;
+                SetProperty(foodCapacities[Foods.Onion], value, foodCapacities, (cf, val) => cf[Foods.Onion] = val);
             }
         }
 
-        private int carrotCapacity;
         public int CarrotCapacity
         {
-            get { return carrotCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Carrot) ?? 0; }
             set
             {
-                Set(ref carrotCapacity, value);
-                //foodCapacities[Foods.Carrot] = value;
+                SetProperty(foodCapacities[Foods.Carrot], value, foodCapacities, (cf, val) => cf[Foods.Carrot] = val);
             }
         }
 
-        private int potatoCapacity;
         public int PotatoCapacity
         {
-            get { return potatoCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Potato) ?? 0; }
             set
             {
-                Set(ref potatoCapacity, value);
-                //foodCapacities[Foods.Potato] = value;
+                SetProperty(foodCapacities[Foods.Potato], value, foodCapacities, (cf, val) => cf[Foods.Potato] = val);
             }
         }
 
-        private int eggCapacity;
         public int EggCapacity
         {
-            get { return eggCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Egg) ?? 0; }
             set
             {
-                Set(ref eggCapacity, value);
-                //foodCapacities[Foods.Egg] = value;
+                SetProperty(foodCapacities[Foods.Egg], value, foodCapacities, (cf, val) => cf[Foods.Egg] = val);
             }
         }
 
-        private int meatCapacity;
+
         public int MeatCapacity
         {
-            get { return meatCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Meat) ?? 0; }
             set
             {
-                Set(ref meatCapacity, value);
-                //foodCapacities[Foods.Meat] = value;
+                SetProperty(foodCapacities[Foods.Meat], value, foodCapacities, (cf, val) => cf[Foods.Meat] = val);
             }
         }
 
-        private int uraniumCapacity;
         public int UraniumCapacity
         {
-            get { return uraniumCapacity; }
+            get { return foodCapacities?.GetValueOrDefault(Foods.Uranium) ?? 0; }
             set
             {
-                Set(ref uraniumCapacity, value);
-                //foodCapacities[Foods.Uranium] = value;
+                SetProperty(foodCapacities[Foods.Uranium], value, foodCapacities, (cf, val) => cf[Foods.Uranium] = val);
             }
         }
 
         #endregion
 
 
-        public IngredientsVM()
-        {
-
-        }
 
         public IngredientsVM(Dictionary<Foods, int> collectedFoods, Dictionary<Foods, int> foodCapacities)
         {
-            this.collectedFoods = collectedFoods;
-            this.foodCapacities = collectedFoods;
+            this.collectedFoods = collectedFoods;   //ref
+            this.foodCapacities = foodCapacities;   //ref
 
-            this.onionCount = collectedFoods[Foods.Onion];
-            this.carrotCount = collectedFoods[Foods.Carrot];
-            this.potatoCount = collectedFoods[Foods.Potato];
-            this.eggCount = collectedFoods[Foods.Egg];
-            this.meatCount = collectedFoods[Foods.Meat];
-            this.uraniumCount = collectedFoods[Foods.Uranium];
-
-            this.onionCapacity = foodCapacities[Foods.Onion];
-            this.carrotCapacity = foodCapacities[Foods.Carrot];
-            this.potatoCapacity = foodCapacities[Foods.Potato];
-            this.eggCapacity = foodCapacities[Foods.Egg];
-            this.meatCapacity = foodCapacities[Foods.Meat];
-            this.uraniumCapacity = foodCapacities[Foods.Uranium];
         }
     }
 

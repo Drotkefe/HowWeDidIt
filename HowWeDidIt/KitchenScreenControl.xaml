@@ -5,147 +5,233 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ViewModels="clr-namespace:HowWeDidIt.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Cursor="Hand"          
+             d:DesignHeight="450" d:DesignWidth="800" 
+             Cursor="Hand" Icon="/Images/Kitchen/meat.png" ShowInTaskbar="False" ResizeMode="NoResize"
              >
     <Window.DataContext>
         <ViewModels:KitchenScreenWindowVM />
+        
     </Window.DataContext>
     <Grid>
-        <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill"/>
-    <Grid>
         
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center">
-            <Label Content="Score: " Grid.ColumnSpan="2"  Margin="5" FontSize="20" FontFamily="Arial Black" />
-            <Label Content="{Binding Path=VM.GameScore}" Margin="5" FontSize="20" FontFamily="Arial Black" HorizontalAlignment="Right"/>
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Label Grid.Row="0" Grid.Column="3"  Content="Money: " Grid.ColumnSpan="2" Margin="5" FontSize="20" FontFamily="Arial Black" />
-            <Label Content="{Binding Path=VM.Money}" Margin="5" FontSize="20" FontFamily="Arial Black" />
-        </StackPanel>
-
-        <ProgressBar Grid.Row="0" Grid.Column="2" Value="{Binding Path=VM.Vitality}" Minimum="0" Maximum="100" Margin="0, 10, 0, 10" Foreground="#FFF53416" BorderBrush="#FF232222" Background="White"></ProgressBar>
-        <!--Label Grid.Row="0" Grid.Column="2"  Content="{Binding Path=Player.Vitality}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" FontSize="14" FontFamily="Arial Black" /-->
-
-
-        <Label Grid.Column="0" Grid.Row="1" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-        <Label Grid.Column="0" Grid.Row="2" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-        <Label Grid.Column="0" Grid.Row="3" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-        <Label Grid.Column="0" Grid.Row="4" Margin="10" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-        <Label Grid.Column="5" Grid.Row="2" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-        <Label Grid.Column="5" Grid.Row="3" Margin="10" Content="3/4teszt" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Algerian"/>
-
-        <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="1" Grid.Row="2" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\carrot.png" Margin="10"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="1" Grid.Row="3" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\potato.png" Margin="15"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="1" Grid.Row="4" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\uranium.png" Margin="5"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button Grid.Column="3" Grid.Row="2" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\meat.png" Margin="15"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="3" Grid.Row="3" Margin="10" Background="#FF646464">
-            <Image Source=".\Images\Kitchen\egg.png" Margin="10"/>
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <ListBox Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderThickness="5" FontFamily="Algerian" FontSize="20">
-            <ListBox.Background>
-                <SolidColorBrush Opacity="0"/>
-            </ListBox.Background>
+        <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill" Opacity="0.80" />
+              
+        <Grid>
             
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  VerticalAlignment="Center">
+                <TextBlock Text="Score: " Margin="5" FontSize="40" FontFamily="Algerian" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding Path=GameScore, Mode=OneWay}" Margin="5" FontSize="40" FontFamily="Algerian" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Money: " Margin="5" FontSize="40" FontFamily="Algerian" HorizontalAlignment="Left" />
+                <TextBlock Text="{Binding Path=Money}" Margin="5" FontSize="40" FontFamily="Algerian" HorizontalAlignment="Right" />
+            </StackPanel>
+
+            <ProgressBar Grid.Row="0" Grid.Column="2" Value="{Binding Path=Vitality}" Minimum="0" Maximum="100" Margin="0, 10, 0, 10" Foreground="#FFF53416" BorderBrush="#FF232222" Background="White"></ProgressBar>
+
+
+            <DockPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.OnionCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.OnionCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+            <DockPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.CarrotCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.CarrotCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+            <DockPanel Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.PotatoCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.PotatoCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+            <DockPanel Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.UraniumCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.UraniumCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+            <DockPanel Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.MeatCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.MeatCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+            <DockPanel Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="{Binding Ingredients.EggCount}" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="/" FontSize="50" FontFamily="Algerian" />
+                <TextBlock Text="{Binding Ingredients.EggCapacity}" FontSize="50" FontFamily="Algerian" />
+            </DockPanel>
+
+
+            <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464" x:Name="OnionButton">
+                <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+                <Button.InputBindings>
+                    <MouseBinding Gesture="RightClick" Command="{Binding UpgradeStrotageCommand.Ingredients.OnionCapacity}"/>
+                </Button.InputBindings>
+            </Button>
+
+            <Button Grid.Column="1" Grid.Row="2" Margin="10" Background="#FF646464">
+                <Image Source=".\Images\Kitchen\carrot.png" Margin="10"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="3" Margin="10" Background="#FF646464" >
+                <Image Source=".\Images\Kitchen\potato.png" Margin="15"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="4" Margin="10" Background="#FF646464">
+                <Image Source=".\Images\Kitchen\uranium.png" Margin="5"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Grid.Column="3" Grid.Row="2" Margin="10" Background="#FF646464">
+                <Image Source=".\Images\Kitchen\meat.png" Margin="15"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="3" Grid.Row="3" Margin="10" Background="#FF646464">
+                <Image Source=".\Images\Kitchen\egg.png" Margin="10"/>
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  DataContext="{Binding Recipe}" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Name:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Score:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                    <TextBlock Text="{Binding RecipeScore}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Vitality:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                    <TextBlock Text="{Binding VitalityValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Money:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                    <TextBlock Text="{Binding MoneyValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="Time:" Margin="5"  FontSize="20" FontFamily="Algerian"/>
+                            <TextBlock Text="{Binding CookingTime.TotalSeconds}" Margin="5" FontSize="50" FontFamily="Algerian"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock Text="Order of ingredients:" Margin="5" FontSize="30" FontFamily="Algerian" HorizontalAlignment="Center"/>
+                    <ListBox ItemsSource="{Binding FoodItems}" SelectedItem="{Binding CurrentFood}">
+                        <ListBox.Background>
+                            <SolidColorBrush Opacity="0"/>
+                        </ListBox.Background>
+                        <!--ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock  FontSize="50" FontFamily="Algerian"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate-->
+                    </ListBox>
                     
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606">
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="2" Grid.Row="4" Content="FIREtest">
-        </Button>
-
-        <Button Grid.Column="3" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FFF70909" Content="HEAL" FontFamily="Algerian" FontSize="20">
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="4" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FF227BE6" Content="SELL" FontFamily="Algerian" FontSize="20">
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="300"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Grid.Column="3" Grid.Row="4" Margin="10,10,10,10" BorderThickness="20,10,20,40" Background="#FF70F054" Content="3/4test" FontSize="20" >
-
-        </Button>
-
-        <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10" >
-            <Image Source=".\Images\Kitchen\ExitSquare.png" />
-        </Button>
+                    
+                    
+                </StackPanel>
 
 
+            </StackPanel>
+
+            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606" >
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="4" Content="FIREtest">
+            </Button>
+
+            <Button Grid.Column="3" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FFF70909" Content="HEAL" FontFamily="Algerian" FontSize="20" Command="{Binding RestoreHealingPointsCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="4" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FF227BE6" Content="SELL" FontFamily="Algerian" FontSize="20" Command="{Binding SellProductCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border" >
+                        <Setter Property="CornerRadius" Value="300"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="3" Grid.Row="4" Margin="10,10,10,10"  FontSize="20">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                </Button.Background>
+                <StackPanel>
+                    <DockPanel Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <TextBlock Text="{Binding GarbageCount}" FontSize="50" FontFamily="Algerian" />
+                        <Label Content="/" FontSize="50" FontFamily="Algerian" />
+                        <TextBlock Text="{Binding GarbageCapacity}" FontSize="50" FontFamily="Algerian" />
+                        <Image Source=".\Images\Kitchen\trashcan.png" />
+                    </DockPanel>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                </Button.Background>
+                <Image Source=".\Images\Kitchen\ExitSquare.png" />
+            </Button>
 
 
-    </Grid>
+
+
+        </Grid>
     </Grid>
 </Window>
