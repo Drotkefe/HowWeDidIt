@@ -61,8 +61,7 @@ namespace HowWeDidIt.BusinessLogic
                 foodItem.Y += gameSettings.FoodItemYVelocity * rnd.Next(10, 31) / 10;
 
                 if (foodItem.Y >= 340 )
-                {
-                    //Thread.Sleep(rnd.Next(0, 2500));
+                {                    
                     foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
                     foodItem.Y = 0;
                     foodItem.Name = (Core.Enums.Foods)rnd.Next(0,6);
@@ -70,9 +69,30 @@ namespace HowWeDidIt.BusinessLogic
             }
         }
 
-        public void FoodItemCaught()
+        public void FoodItemCaught(MovingFoodItem foodItem)
         {
-            throw new NotImplementedException();
-        }
+            if (!GameModel.Recipe.FoodItems.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
+            {
+                GameModel.GarbageCount++;
+            }
+            else // it contained in the recipe
+            {
+                if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
+                {
+                    GameModel.CollectedFoods.Add(foodItem.Name, 1);
+                }
+                else // if on the list
+                {
+                    if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
+                    {
+                        GameModel.CollectedFoods[foodItem.Name]++;
+                    }
+                    else // if no more is needed
+                    {
+                        GameModel.GarbageCount++;
+                    }
+                }
+            }            
+        }        
     }
 }

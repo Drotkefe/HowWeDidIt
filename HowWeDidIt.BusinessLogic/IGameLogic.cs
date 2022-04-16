@@ -15,7 +15,7 @@ namespace HowWeDidIt.BusinessLogic
         bool Move(double dx, double dy);
 
         void FoodItemsFalling();
-        void FoodItemCaught();
+        void FoodItemCaught(MovingFoodItem foodItem);
         //void Save(); későbbre
     }
 }

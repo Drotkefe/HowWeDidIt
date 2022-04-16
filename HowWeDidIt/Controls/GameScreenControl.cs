@@ -1,6 +1,7 @@
 ﻿using HowWeDidIt.BusinessLogic;
 using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.GameRenderer;
+using HowWeDidIt.GameRenderer.Helpers;
 using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,14 @@ namespace HowWeDidIt.Controls
             gameModel.GameAreaHeight = ActualHeight;
 
             gameLogic.FoodItemsFalling();
+
+            foreach (var foodItem in gameModel.FoodItems)
+            {
+                if (LogicHelper.HasBeenCaught(gameModel.CaveMan, foodItem))
+                {
+                    gameLogic.FoodItemCaught(foodItem);
+                }                
+            }
 
             InvalidateVisual();
         }

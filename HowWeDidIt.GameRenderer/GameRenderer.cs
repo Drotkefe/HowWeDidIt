@@ -1,6 +1,7 @@
 ﻿using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.Models;
+using HowWeDidIt.GameRenderer.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,13 @@ namespace HowWeDidIt.GameRenderer
         Brush backgroundPattern;
         ImageBrush caveManPattern;
 
-    
+        // For testing
+        Pen blackPen = new Pen(Brushes.Black, 2);
+        Typeface font = new Typeface("Comic Sans");
+        Point textStartPoint = new Point(13, 13);
+        // up to this point
+
+
         readonly Lazy<ImageBrush> StandR;
         readonly Lazy<ImageBrush> R1;
         readonly Lazy<ImageBrush> R2;
@@ -116,6 +123,18 @@ namespace HowWeDidIt.GameRenderer
             DrawBackground(ctx);
             DrawCaveMan(ctx);
             DrawFoodItems(ctx);
+            DrawErrors(ctx);
+        }
+        // this method is only added for testing
+        private void DrawErrors(DrawingContext ctx)
+        {
+            var text = new FormattedText(
+                gameModel.GarbageCount.ToString(),
+                System.Globalization.CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight,
+                font, 13, Brushes.Black, 1.25);
+
+            ctx.DrawText(text, textStartPoint);
         }
 
         //private void DrawCaveEntrance(DrawingContext ctx)
@@ -158,7 +177,8 @@ namespace HowWeDidIt.GameRenderer
         {
             foreach (var foodItem in gameModel.FoodItems)
             {
-                ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 24, 24));
+                //ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 24, 24));
+                ctx.DrawGeometry(GetProperFoodItemBrush(foodItem), null, foodItem.GetGeometry());
             }
         }
         private Brush GetProperFoodItemBrush(MovingFoodItem item)
