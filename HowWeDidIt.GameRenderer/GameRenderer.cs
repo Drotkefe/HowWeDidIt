@@ -19,6 +19,7 @@ namespace HowWeDidIt.GameRenderer
         readonly IGameSettings gameSettings;
         Brush backgroundPattern;
         ImageBrush caveManPattern;
+        private object lockObject = new object();
 
         // For testing
         Pen blackPen = new Pen(Brushes.Black, 2);
@@ -143,23 +144,25 @@ namespace HowWeDidIt.GameRenderer
 
             info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
 
-            foreach (var fc in gameModel.FoodCapacities)
+            lock (lockObject)
             {
-                int quantity = 0;
-                
-                if (gameModel.CollectedFoods.ContainsKey(fc.Key))
+                foreach (var fc in gameModel.FoodCapacities)
                 {
-                    quantity = gameModel.CollectedFoods[fc.Key];
-                }
-                info += fc.Key + ": " + fc.Value + "- " +  quantity.ToString() + "\n";
-            }
-            if (gameModel.CollectedFoods.ToList().All(x => x.Value == gameModel.FoodCapacities[x.Key]))
-            {
-                gameModel.Recipe.AllFoodItemsCollected = true;
+                    int quantity = 0;
 
-                info += "You are ready to cook.";
+                    if (gameModel.CollectedFoods.ContainsKey(fc.Key))
+                    {
+                        quantity = gameModel.CollectedFoods[fc.Key];
+                    }
+                    info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
+                }
+                if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
+                {
+                    //gameModel.Recipe.AllFoodItemsCollected = true;
+
+                    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
+                }
             }
-           
             return info;
         }
 
@@ -170,7 +173,6 @@ namespace HowWeDidIt.GameRenderer
 
         private void DrawCaveMan(DrawingContext ctx)
         {
-            // Az ősember téglalapjának a megrajzolását (pattern) jobb lenne áthelyezni a DisplayExtensionbe
             var halfWidth = 20;
             var halfHeight = 20;
             
@@ -191,9 +193,6 @@ namespace HowWeDidIt.GameRenderer
 
             }
             ctx.DrawRectangle(caveManPattern, null, pattern);
-            // akkor ezt a metódust kellene használni hozzá
-            // ctx.DrawGeometry(caveManPattern, null, gameModel.CaveMan.GetGeometry(gameSettings: gameSettings));
-
         }
 
         private void DrawBackground(DrawingContext ctx)

@@ -13,18 +13,7 @@ namespace HowWeDidIt.Models
         public string Name { get; set; }
         public List<Foods> FoodItems { get; set; } 
         public TimeSpan CookingTime { get; set; }
-
-        // Ezt a tulajdonságot a konstruktor beállítja false-ra. Amikor a Renderer nézi a CollectionInfo-ban, hogy megvan-e minden hozzávaló, amikor, igen, igazra változtatja, és az kiválathat egy eseményt a képernyőváltozáshoz
-
-        private bool allFoodItemsCollected;
-
-        public bool AllFoodItemsCollected
-        {
-            get { return allFoodItemsCollected; }
-            set { allFoodItemsCollected = value; }
-        }
-
-
+                
         private bool cooked;
         public bool Cooked
         {
@@ -48,8 +37,7 @@ namespace HowWeDidIt.Models
             this.cooked = cooked;
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
-            MoneyValue = moneyValue;
-            AllFoodItemsCollected = false;
+            MoneyValue = moneyValue;            
         }
     }
 }
