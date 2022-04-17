@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:HowWeDidIt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Background="Bisque">
-   
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -15,7 +16,15 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Image gif:ImageBehavior.AnimatedSource="Images/background.png"
+                   gif:ImageBehavior.AutoStart="True"
+                   gif:ImageBehavior.RepeatBehavior="1"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
         <Image gif:ImageBehavior.AnimatedSource="Images/GIF/running.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 50 0"/>
         <Image gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="1"/>
         <Image gif:ImageBehavior.AnimatedSource="Images/GIF/stat.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="2"/>
