@@ -48,7 +48,9 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
             GameModel.CaveMan.MovementState = (GameModel.CaveMan.MovementState + 1) % gameSettings.MaximalAllowedMovementState;
-            //Thread.Sleep(70);
+
+            //Thread.Sleep(70); ezt kitöröltem, mert úgy nézett ki, hogy amíg az ősember futott a hozzávalók megálltak esésükben 
+
             CallRefresh?.Invoke(this, EventArgs.Empty);
             return entrance;
 

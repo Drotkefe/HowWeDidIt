@@ -129,12 +129,38 @@ namespace HowWeDidIt.GameRenderer
         private void DrawErrors(DrawingContext ctx)
         {
             var text = new FormattedText(
-                gameModel.GarbageCount.ToString(),
+                CollectionInfo(),                
                 System.Globalization.CultureInfo.CurrentCulture,
                 FlowDirection.LeftToRight,
-                font, 13, Brushes.Black, 1.25);
+                font, 13, Brushes.DarkGreen, 1.25);
 
             ctx.DrawText(text, textStartPoint);
+        }
+
+        private string CollectionInfo()
+        {
+            string info = "";
+
+            info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
+
+            foreach (var fc in gameModel.FoodCapacities)
+            {
+                int quantity = 0;
+                
+                if (gameModel.CollectedFoods.ContainsKey(fc.Key))
+                {
+                    quantity = gameModel.CollectedFoods[fc.Key];
+                }
+                info += fc.Key + ": " + fc.Value + "- " +  quantity.ToString() + "\n";
+            }
+            if (gameModel.CollectedFoods.ToList().All(x => x.Value == gameModel.FoodCapacities[x.Key]))
+            {
+                gameModel.Recipe.AllFoodItemsCollected = true;
+
+                info += "You are ready to cook.";
+            }
+           
+            return info;
         }
 
         //private void DrawCaveEntrance(DrawingContext ctx)
@@ -144,6 +170,7 @@ namespace HowWeDidIt.GameRenderer
 
         private void DrawCaveMan(DrawingContext ctx)
         {
+            // Az ősember téglalapjának a megrajzolását (pattern) jobb lenne áthelyezni a DisplayExtensionbe
             var halfWidth = 20;
             var halfHeight = 20;
             
@@ -164,6 +191,8 @@ namespace HowWeDidIt.GameRenderer
 
             }
             ctx.DrawRectangle(caveManPattern, null, pattern);
+            // akkor ezt a metódust kellene használni hozzá
+            // ctx.DrawGeometry(caveManPattern, null, CaveMan.GetGeometry(gameSettings));
 
         }
 

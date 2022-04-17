@@ -21,7 +21,7 @@ namespace HowWeDidIt.GameRenderer.Helpers
 
             if (item is MovingCaveMan)
             {
-               geometry = CaveManGeometry(); 
+               geometry = CaveManGeometry(gameSettings); 
             }
             else
             {
@@ -31,7 +31,7 @@ namespace HowWeDidIt.GameRenderer.Helpers
             geometry.Transform = tg;
             return geometry.GetFlattenedPathGeometry();
         }
-        static Geometry CaveManGeometry()
+        static Geometry CaveManGeometry(IGameSettings gameSettings)
         { 
             return new RectangleGeometry(new System.Windows.Rect(0, 0, 55, 55));
         }
