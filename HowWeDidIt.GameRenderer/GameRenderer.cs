@@ -192,7 +192,7 @@ namespace HowWeDidIt.GameRenderer
             }
             ctx.DrawRectangle(caveManPattern, null, pattern);
             // akkor ezt a metódust kellene használni hozzá
-            // ctx.DrawGeometry(caveManPattern, null, CaveMan.GetGeometry(gameSettings));
+            // ctx.DrawGeometry(caveManPattern, null, gameModel.CaveMan.GetGeometry(gameSettings: gameSettings));
 
         }
 
