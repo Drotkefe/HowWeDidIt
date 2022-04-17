@@ -20,11 +20,13 @@ namespace HowWeDidIt.Models
         public int MoneyValue { get; set; }
 
 
-        public Foods currentFood;
-        public Foods CurrentFood
+
+
+        public int currentFoodIndex;
+        public int CurrentFoodIndex
         {
-            get { return currentFood; }
-            set { currentFood = value; }
+            get { return currentFoodIndex; }
+            set { currentFoodIndex = value; }
         }
 
 
@@ -46,7 +48,6 @@ namespace HowWeDidIt.Models
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
             MoneyValue = moneyValue;
-            this.currentFood = foodItems[0];
             this.cooked = cooked;
         }
     }
