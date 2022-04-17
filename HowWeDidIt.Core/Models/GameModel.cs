@@ -10,9 +10,10 @@ namespace HowWeDidIt.Models
 {
     public class GameModel : IGameModel
     {
+        static Random rnd = new Random();
+
         public double GameAreaHeight { get; set; }
         public double GameAreaWidth { get; set; }
-
 
         public MovingCaveMan CaveMan { get; private set; }
         public Recipe Recipe { get; private set; }
@@ -24,21 +25,30 @@ namespace HowWeDidIt.Models
         public int Money { get; set; }
         public int GameScore { get; set; }
 
-
-
-
-
+        public List<MovingFoodItem> FoodItems { get; private set; }        
+        public int CollectionAreaBeginning { get; set; }
+        public int CollectionAreaEnd { get; set; }
 
         public GameModel(double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
         {
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
+            FoodItems = new List<MovingFoodItem>();
+
+            CollectionAreaBeginning = (int)gameAreaWidth / 4;
+            CollectionAreaEnd = (int)gameAreaWidth - 50;
+
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
         }
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)
         {
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
+
+            for (int i = 0; i < gameSettings.FoodItemCount; i++)
+            {                               
+                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
+            }
 
             FoodCapacities = new Dictionary<Foods, int>();
             FoodCapacities.Add(Foods.Carrot, 2);
@@ -49,12 +59,12 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
-            CollectedFoods.Add(Foods.Carrot, 1);
-            CollectedFoods.Add(Foods.Egg, 1);
-            CollectedFoods.Add(Foods.Meat, 1);
-            CollectedFoods.Add(Foods.Onion, 1);
-            CollectedFoods.Add(Foods.Potato, 1);
-            CollectedFoods.Add(Foods.Uranium, 1);
+            //CollectedFoods.Add(Foods.Carrot, 1);
+            //CollectedFoods.Add(Foods.Egg, 1);
+            //CollectedFoods.Add(Foods.Meat, 1);
+            //CollectedFoods.Add(Foods.Onion, 1);
+            //CollectedFoods.Add(Foods.Potato, 1);
+            //CollectedFoods.Add(Foods.Uranium, 1);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
@@ -77,9 +87,6 @@ namespace HowWeDidIt.Models
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
             Recipe.VitalityValue = 1;
-
-            
-
         }
 
         // TODO: create other ctor for load data from saved game

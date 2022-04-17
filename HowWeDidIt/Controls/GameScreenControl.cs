@@ -1,6 +1,7 @@
 ﻿using HowWeDidIt.BusinessLogic;
 using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.GameRenderer;
+using HowWeDidIt.GameRenderer.Helpers;
 using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace HowWeDidIt.Controls
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
+        DispatcherTimer timer;
 
         public GameScreenControl()
         {
@@ -41,10 +43,31 @@ namespace HowWeDidIt.Controls
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
-                
+
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromMilliseconds(130);
+                timer.Tick += Timer_Tick;
+                timer.Start();
             }
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            gameModel.GameAreaWidth = ActualWidth;
+            gameModel.GameAreaHeight = ActualHeight;
+
+            gameLogic.FoodItemsFalling();
+
+            foreach (var foodItem in gameModel.FoodItems)
+            {
+                if (LogicHelper.HasBeenCaught(gameModel.CaveMan, foodItem))
+                {
+                    gameLogic.FoodItemCaught(foodItem);
+                }                
+            }
+
+            InvalidateVisual();
+        }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
