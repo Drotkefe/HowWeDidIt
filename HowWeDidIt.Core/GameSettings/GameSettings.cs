@@ -8,6 +8,11 @@ namespace HowWeDidIt.Core.GameSettings
 {
     public class GameSettings : IGameSettings
     {
+        public string CaveManName { get; set; } = "CaveMan";
+        public string CaveManFileName { get; set; } = "CaveMan.txt";
+        public string CaveManFileNameExtension { get; set; } = "txt";
+        public string CaveManFileDelimiter { get; set; } = ";";
+
         #region CaveMan
 
         public double CaveManInitXPosition => 400;
@@ -60,6 +65,7 @@ namespace HowWeDidIt.Core.GameSettings
 
         public double GameAreaDefaultHeight => 450; // // To be set right once it is known
 
-        public int MaximalAllowedMovementState { get; set; } = 6;        
+        public int MaximalAllowedMovementState { get; set; } = 6;       
+             
     }
 }

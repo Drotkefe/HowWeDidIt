@@ -14,7 +14,7 @@ namespace HowWeDidIt.Models
         double GameAreaWidth { get; set; }
 
 
-        MovingCaveMan CaveMan { get; }
+        MovingCaveMan CaveMan { get; set; }
 
         List<MovingFoodItem> FoodItems { get; }        
         public int CollectionAreaBeginning { get; }

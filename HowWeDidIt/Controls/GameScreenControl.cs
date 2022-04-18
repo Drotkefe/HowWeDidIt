@@ -3,6 +3,7 @@ using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.GameRenderer;
 using HowWeDidIt.GameRenderer.Helpers;
 using HowWeDidIt.Models;
+using HowWeDidIt.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace HowWeDidIt.Controls
     public class GameScreenControl : FrameworkElement
     {
         IGameSettings gameSettings;
-        //IGameRepository gameRepository;
+        IGameRepository gameRepository;
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
@@ -38,8 +39,9 @@ namespace HowWeDidIt.Controls
             if (window != null) // Window loaded
             {
                 gameSettings = new GameSettings();
-                gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
-                gameLogic = new GameLogic(gameModel, gameSettings);
+                gameRepository = new GameRepository(gameSettings);
+                gameModel = new GameModel(null, ActualWidth, ActualHeight, gameSettings);
+                gameLogic = new GameLogic(null, gameRepository, gameModel, gameSettings);
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
@@ -60,6 +62,7 @@ namespace HowWeDidIt.Controls
 
             foreach (var foodItem in gameModel.FoodItems)
             {
+
                 if (LogicHelper.HasBeenCaught(gameModel.CaveMan, foodItem))
                 {
                     gameLogic.FoodItemCaught(foodItem);

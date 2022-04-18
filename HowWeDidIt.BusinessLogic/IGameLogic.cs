@@ -9,13 +9,13 @@ namespace HowWeDidIt.BusinessLogic
 {
     public interface IGameLogic
     {
-        IGameModel GameModel { get; }
+        IGameModel GameModel { get; set; }
         event EventHandler CallRefresh;
 
         bool Move(double dx, double dy);
 
         void FoodItemsFalling();
         void FoodItemCaught(MovingFoodItem foodItem);
-        //void Save(); későbbre
+        void Save(); 
     }
 }

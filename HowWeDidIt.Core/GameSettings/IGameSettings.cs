@@ -60,7 +60,17 @@ namespace HowWeDidIt.Core.GameSettings
         public int FoodItemCount { get; }
 
         public double FoodItemYVelocity { get; }
-       
+
         #endregion
+
+        #region SettingsForSaving
+
+        public string CaveManName { get; set; }
+        public string CaveManFileName { get; set; }
+        public string CaveManFileNameExtension { get; set; }
+        public string CaveManFileDelimiter { get; set; }        
+
+        #endregion
+
     }
 }

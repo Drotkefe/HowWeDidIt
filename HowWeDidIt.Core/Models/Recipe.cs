@@ -37,7 +37,7 @@ namespace HowWeDidIt.Models
             this.cooked = cooked;
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
-            MoneyValue = moneyValue;            
+            MoneyValue = moneyValue;             
         }
     }
 }

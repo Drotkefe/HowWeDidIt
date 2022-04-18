@@ -15,7 +15,7 @@ namespace HowWeDidIt.Models
         public double GameAreaHeight { get; set; }
         public double GameAreaWidth { get; set; }
 
-        public MovingCaveMan CaveMan { get; private set; }
+        public MovingCaveMan CaveMan { get; set; }
         public Recipe Recipe { get; private set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
@@ -29,8 +29,9 @@ namespace HowWeDidIt.Models
         public int CollectionAreaBeginning { get; set; }
         public int CollectionAreaEnd { get; set; }
 
-        public GameModel(double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
+        public GameModel(MovingCaveMan caveMan, double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
         {
+            CaveMan = caveMan;
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
             FoodItems = new List<MovingFoodItem>();
@@ -38,7 +39,7 @@ namespace HowWeDidIt.Models
             CollectionAreaBeginning = (int)gameAreaWidth / 4;
             CollectionAreaEnd = (int)gameAreaWidth - 50;
 
-            InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
+            InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);            
         }
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)
@@ -47,7 +48,7 @@ namespace HowWeDidIt.Models
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
             {                               
-                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
+                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, gameSettings.FoodItemCount), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
             FoodCapacities = new Dictionary<Foods, int>();
@@ -87,7 +88,7 @@ namespace HowWeDidIt.Models
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
             Recipe.VitalityValue = 1;
-        }
+        }       
 
         // TODO: create other ctor for load data from saved game
 

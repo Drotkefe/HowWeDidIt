@@ -1,5 +1,6 @@
 ﻿using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.Models;
+using HowWeDidIt.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,19 @@ namespace HowWeDidIt.BusinessLogic
     public class GameLogic : IGameLogic
     {
         Random rnd = new Random();
-        //readonly IGameRepository gameRepository;
+        readonly IGameRepository gameRepository;
         readonly IGameSettings gameSettings;
-        public IGameModel GameModel { get; private set; }
+        public IGameModel GameModel { get; set; }
 
-        public event EventHandler CallRefresh;
+        public event EventHandler CallRefresh;        
 
-        public GameLogic(IGameModel gameModel,IGameSettings gameSettings)
+        public GameLogic(string caveManName, IGameRepository gameRepository, IGameModel gameModel, IGameSettings gameSettings)
         {
-           
             this.gameSettings = gameSettings;
-            this.GameModel = gameModel;
-            
-
+            this.gameRepository = gameRepository;
+            this.GameModel = gameModel;            
+            var currentCaveMan = gameRepository.GetCaveManByName(caveManName);
+            GameModel.CaveMan = currentCaveMan;
         }
 
         public bool Move(double dx, double dy)
@@ -66,7 +67,7 @@ namespace HowWeDidIt.BusinessLogic
                 {                    
                     foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
                     foodItem.Y = 0;
-                    foodItem.Name = (Core.Enums.Foods)rnd.Next(0,6);
+                    foodItem.Name = (Core.Enums.Foods)rnd.Next(0, GameModel.Recipe.FoodItems.Count);
                 }
             }
         }
@@ -94,7 +95,11 @@ namespace HowWeDidIt.BusinessLogic
                         GameModel.GarbageCount++;
                     }
                 }
-            }            
-        }        
+            }
+        }
+        public void Save()
+        {
+            gameRepository.StoreCaveMan(GameModel.CaveMan);
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace HowWeDidIt.Models
 
         public int MovementState { get; set; }
         public Orientations Orientation { get; set; }
+        public string Name { get; set; }
 
 
         public MovingCaveMan(double x, double y, double dX, double dY) : base(x, y)
@@ -38,12 +39,14 @@ namespace HowWeDidIt.Models
             DY = dY; // in our case DY = 0;
         }
 
-        public MovingCaveMan(double x,double y,double dX, double dY, int movementState, Orientations orientation= Orientations.None) : base(x, y)
+        public MovingCaveMan(double x,double y,double dX, double dY, string name, int movementState, Orientations orientation= Orientations.None) : base(x, y)
         {
             DX = dX;
             DY = dY;
+            Name = name;
             MovementState = movementState;
             Orientation = orientation;
+            
         }
     }
 }

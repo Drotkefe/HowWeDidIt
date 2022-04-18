@@ -156,12 +156,14 @@ namespace HowWeDidIt.GameRenderer
                     }
                     info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
                 }
-                if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
-                {
-                    //gameModel.Recipe.AllFoodItemsCollected = true;
 
-                    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
-                }
+                info += "To cook, go to the entrance and press DOWN.";
+                //if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
+                //{
+                //    //gameModel.Recipe.AllFoodItemsCollected = true;
+
+                //    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
+                //}
             }
             return info;
         }
