@@ -66,29 +66,29 @@ namespace HowWeDidIt.Models
 
             Recipe = new Recipe();
             Recipe.Name = "Pizza";
-            Recipe.FoodItems = new List<Foods>();
-            Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList = new List<Foods>();
+            Recipe.FoodList.Add(Core.Enums.Foods.Onion);
+            Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
             Recipe.Cooked = false;
             Recipe.CookingTime = TimeSpan.FromSeconds(180);
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
             Recipe.VitalityValue = 10;
-            Recipe.CurrentFood = Recipe.FoodItems[1];
-            
 
+
+            Recipe.CurrentFoodIndex = 4;                //FOR TESZT -> 4
         }
 
         // TODO: create other ctor for load data from saved game

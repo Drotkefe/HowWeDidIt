@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,28 @@ namespace HowWeDidIt.BusinessLogic
             this.messenger = messenger;
         }
 
+        public void FoodToPot(string typeOfFood, IGameModel gameModel)
+        {
+            ; //TODO: write game logic
+
+            Foods caughtFood = (Foods)Enum.Parse(typeof(Foods), typeOfFood);
+
+
+            if (gameModel.CollectedFoods[caughtFood] > 0)
+            {
+                if (gameModel.Recipe.FoodList[gameModel.Recipe.CurrentFoodIndex] == caughtFood)
+                {
+                    gameModel.CollectedFoods[caughtFood]--;
+                    gameModel.Recipe.CurrentFoodIndex++;
+                }
+
+            }
+
+        }
+
         public void RestoreHeathPoits(IGameModel gameModel)
         {
-            if (true) //  <-------------------gameModel.Recipe.Cooked
+            if (gameModel.Recipe.Cooked) //  <-------------------gameModel.Recipe.Cooked
             {
                 int health = gameModel.Vitality;
                 health += gameModel.Recipe.VitalityValue;
@@ -30,7 +50,7 @@ namespace HowWeDidIt.BusinessLogic
                 gameModel.Vitality = health;
 
                 //TODO: új recept kiválasztása a repositoriból
-                //TODO: Pot kinullázása
+
 
                 messenger.Send("Player healing was successful", "KitchenBlOperationResult");
             }
@@ -42,18 +62,44 @@ namespace HowWeDidIt.BusinessLogic
 
         public void SellProduct(IGameModel gameModel)
         {
-            if (true) //  <-------------------gameModel.Recipe.Cooked
+            if (gameModel.Recipe.Cooked) //  <-------------------gameModel.Recipe.Cooked
             {
                 gameModel.Money += gameModel.Recipe.MoneyValue;
 
                 //TODO: új recept kiválasztása a repositoriból
-                //TODO: Pot kinullázása
+
 
                 messenger.Send("Product sell was successful", "KitchenBlOperationResult");
             }
             else
             {
                 messenger.Send("Product sell was not successful", "KitchenBlOperationResult");
+            }
+        }
+
+
+        public void UpgradeStorage(string typeOfCapacity, IGameModel gameModel) //DONE
+        {
+            if (gameModel.Money >= 200)
+            {
+                if (typeOfCapacity.Equals("Garbage"))
+                {
+                    gameModel.GarbageCapacity += 2;
+                    gameModel.Money -= 200;
+                }
+                else
+                {
+                    Foods foodStorage = (Foods)Enum.Parse(typeof(Foods), typeOfCapacity);
+
+                    gameModel.FoodCapacities[foodStorage] += 2;
+                    gameModel.Money -= 200;
+                }
+
+                messenger.Send("Upgrade was successful", "KitchenBlOperationResult");
+            }
+            else
+            {
+                messenger.Send("Upgrade was not successful", "KitchenBlOperationResult");
             }
         }
     }
