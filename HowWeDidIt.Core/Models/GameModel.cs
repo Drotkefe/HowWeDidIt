@@ -11,9 +11,9 @@ namespace HowWeDidIt.Models
     public class GameModel : IGameModel
     {
         static Random rnd = new Random();
+
         public double GameAreaHeight { get; set; }
         public double GameAreaWidth { get; set; }
-
 
         public MovingCaveMan CaveMan { get; private set; }
         public Recipe Recipe { get; private set; }
@@ -30,10 +30,9 @@ namespace HowWeDidIt.Models
         public int Money { get; set; }
         public int GameScore { get; set; }
 
-
-
-
-
+        public List<MovingFoodItem> FoodItems { get; private set; }        
+        public int CollectionAreaBeginning { get; set; }
+        public int CollectionAreaEnd { get; set; }
 
         public GameModel(double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
         {
@@ -52,12 +51,14 @@ namespace HowWeDidIt.Models
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
-            {
+
+            {                               
+
                 FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
 
-            // TUTORIAL:
+
             FoodCapacities = new Dictionary<Foods, int>();
             FoodCapacities.Add(Foods.Carrot, 2);
             FoodCapacities.Add(Foods.Egg, 2);
@@ -67,6 +68,8 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
+
+
             CollectedFoods.Add(Foods.Carrot, 1);
             CollectedFoods.Add(Foods.Egg, 1);
             CollectedFoods.Add(Foods.Meat, 1);
@@ -80,7 +83,6 @@ namespace HowWeDidIt.Models
             Money = 200;
             GameScore = 0;
 
-            Recipe = new Recipe();
             Recipe.Name = "Pizza";
             Recipe.FoodList = new List<Foods>();
             Recipe.FoodList.Add(Core.Enums.Foods.Onion);
@@ -101,10 +103,9 @@ namespace HowWeDidIt.Models
             Recipe.CookingTime = TimeSpan.FromSeconds(180);
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
-            Recipe.VitalityValue = 10;
 
-
-            Recipe.CurrentFoodIndex = 4;                //FOR TESZT -> 4
+            Recipe.VitalityValue = 1;
+            Recipe.CurrentFoodIndex = 4;
         }
 
         // TODO: create other ctor for load data from saved game

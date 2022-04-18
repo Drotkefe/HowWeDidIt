@@ -20,6 +20,7 @@ namespace HowWeDidIt.Models
         /// Represents y axis based signed displacement.
         /// </summary>
         public double DY { get; set; }
+        
 
         /// <summary>
         /// Gets the coordinates of its position and its speed vector
@@ -28,7 +29,8 @@ namespace HowWeDidIt.Models
         /// <param name="y"></param>
         /// <param name="dX"></param>
         /// <param name="dY"></param>
-        public MovingFoodItem(Foods name,double x, double y, double dX, double dY) : base(x, y)
+
+        public MovingFoodItem(Foods name, double x, double y, double dX, double dY) : base(x, y)
         {
             Name = name;
             DX = dX;

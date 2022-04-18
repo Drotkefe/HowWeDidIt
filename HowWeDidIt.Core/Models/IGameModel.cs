@@ -19,6 +19,9 @@ namespace HowWeDidIt.Models
 
         MovingCaveMan CaveMan { get; }
 
+        List<MovingFoodItem> FoodItems { get; }        
+        public int CollectionAreaBeginning { get; }
+        public int CollectionAreaEnd { get; }
 
         Recipe Recipe { get; }
         Dictionary<Foods, int> CollectedFoods { get; }
