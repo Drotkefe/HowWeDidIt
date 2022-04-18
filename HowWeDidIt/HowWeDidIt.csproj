@@ -16,7 +16,7 @@
     <None Remove="Images\FoodItems\répa.png" />
     <None Remove="Images\FoodItems\tojás.png" />
     <None Remove="Images\FoodItems\uran.png" />
-    <None Remove="Images\GIF\stat.gif" />
+    <None Remove="Images\GIF\menu.gif" />
     <None Remove="Images\Kitchen\carrot.png" />
     <None Remove="Images\Kitchen\CaveWall.png" />
     <None Remove="Images\Kitchen\egg.png" />
@@ -47,7 +47,7 @@
 
   <ItemGroup>
     <Content Include="Images\GIF\fire.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -67,7 +67,7 @@
     <Content Include="Images\FoodItems\uran.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\GIF\stat.gif">
+    <Content Include="Images\GIF\menu.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Kitchen\carrot.png">
@@ -143,7 +143,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\GIF\running.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

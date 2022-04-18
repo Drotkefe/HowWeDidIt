@@ -19,23 +19,26 @@
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
-                    <Image gif:ImageBehavior.AnimatedSource="Images/background.png"
+                    <Image gif:ImageBehavior.AnimatedSource="Images/GIF/menu.gif"
                    gif:ImageBehavior.AutoStart="True"
                    gif:ImageBehavior.RepeatBehavior="1"/>
                 </VisualBrush.Visual>
             </VisualBrush>
         </Grid.Background>
-        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/running.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 50 0"/>
-        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="1"/>
-        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/stat.gif" Height="100" Width="100" HorizontalAlignment="Right" Margin="0 0 40 5" Grid.Row="2"/>
-        
+        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/running.gif" Width="101" HorizontalAlignment="Left" Margin="702,64,0,54" Grid.Row="2" Stretch="Uniform" RenderTransformOrigin="0.455,0.785" Grid.RowSpan="2"/>
+        <Image gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Margin="73,68,646,40" Grid.RowSpan="2" Grid.Row="2" RenderTransformOrigin="0.395,0.532"/>
 
-        <Button x:Name="new_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="0" Margin="170,20,0,20" Content="New Game" FontSize="35" Click="New_Game_Click" Background="#12c712" FontFamily="Arial" HorizontalAlignment="Left" Width="460"/>
-        <Button x:Name="load_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="1" Margin="170 20 0 20" Content="Load Game" FontSize="35" Click="Load_Game_Click" Background="#12c712" FontFamily="Arial" HorizontalAlignment="Left" Visibility="Visible" Width="460"/>
-        <Button x:Name="leaderboard_button" Style="{DynamicResource RoundedButton}" Grid.Row="2" Margin="170 20 0 20" Content="Leaderboard" FontSize="35" Click="leaderboard_button_Click" Background="#12c712" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
-        <Button x:Name="exit_button" Style="{DynamicResource RoundedButton}" Grid.Row="3" Margin="170 20 0 20" Content="Exit" FontSize="35" Click="exit_button_Click" Background="#12c712" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
+
+
+        <Button x:Name="new_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="0" Margin="170,20,0,20" Content="New Game" FontSize="35" Click="New_Game_Click" Background="Yellow" FontFamily="Arial" HorizontalAlignment="Left" Width="460"/>
+        <Button x:Name="load_game_button" Style="{DynamicResource RoundedButton}" Grid.Row="1" Margin="170 20 0 20" Content="Load Game" FontSize="35" Click="Load_Game_Click" Background="Yellow" FontFamily="Arial" HorizontalAlignment="Left" Visibility="Visible" Width="460"/>
+        <Button x:Name="leaderboard_button" Style="{DynamicResource RoundedButton}" Grid.Row="2" Margin="170 20 0 20" Content="Leaderboard" FontSize="35" Click="leaderboard_button_Click" Background="Yellow" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
+        <Button x:Name="exit_button" Style="{DynamicResource RoundedButton}" Grid.Row="3" Margin="170 20 0 20" Content="Exit" FontSize="35" Click="exit_button_Click" Background="Yellow" FontFamily="Arial"  HorizontalAlignment="Left" Width="460"/>
+
+       
 
 
     </Grid>
+
 
 </Window>
