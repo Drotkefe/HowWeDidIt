@@ -25,10 +25,16 @@ namespace HowWeDidIt.Models
         public int VitalityValue { get; set; }
         public int MoneyValue { get; set; }
 
-        public Recipe()
+
+        private int currentFoodIndex;
+        public int CurrentFoodIndex
         {
-                
+            get { return currentFoodIndex; }
+            set { currentFoodIndex = value; }
         }
+
+
+
         public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
         {
             Name = name;
@@ -37,7 +43,10 @@ namespace HowWeDidIt.Models
             this.cooked = cooked;
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
-            MoneyValue = moneyValue;            
+            MoneyValue = moneyValue;
+
+
+            this.currentFoodIndex = currentFoodIndex;
         }
     }
 }
