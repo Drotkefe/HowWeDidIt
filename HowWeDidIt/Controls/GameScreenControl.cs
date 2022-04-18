@@ -60,7 +60,7 @@ namespace HowWeDidIt.Controls
 
             gameLogic.FoodItemsFalling();
 
-            foreach (var foodItem in gameModel.FoodItems)
+            foreach (var foodItem in gameModel.FallingFoods)
             {
 
                 if (LogicHelper.HasBeenCaught(gameModel.CaveMan, foodItem))

@@ -205,7 +205,7 @@ namespace HowWeDidIt.GameRenderer
         //    //foods
         private void DrawFoodItems(DrawingContext ctx)
         {
-            foreach (var foodItem in gameModel.FoodItems)
+            foreach (var foodItem in gameModel.FallingFoods)
             {
                 //ctx.DrawRectangle(GetProperFoodItemBrush(foodItem), null, new Rect(foodItem.X, foodItem.Y, 24, 24));
                 ctx.DrawGeometry(GetProperFoodItemBrush(foodItem), null, foodItem.GetGeometry());

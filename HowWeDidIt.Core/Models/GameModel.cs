@@ -25,7 +25,7 @@ namespace HowWeDidIt.Models
         public int Money { get; set; }
         public int GameScore { get; set; }
 
-        public List<MovingFoodItem> FoodItems { get; private set; }        
+        public List<MovingFoodItem> FallingFoods { get; private set; }        
         public int CollectionAreaBeginning { get; set; }
         public int CollectionAreaEnd { get; set; }
 
@@ -34,7 +34,7 @@ namespace HowWeDidIt.Models
             CaveMan = caveMan;
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
-            FoodItems = new List<MovingFoodItem>();
+            FallingFoods = new List<MovingFoodItem>();
 
             CollectionAreaBeginning = (int)gameAreaWidth / 4;
             CollectionAreaEnd = (int)gameAreaWidth - 50;
@@ -48,7 +48,7 @@ namespace HowWeDidIt.Models
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
             {                               
-                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, gameSettings.FoodItemCount), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
+                FallingFoods.Add(new MovingFoodItem((Foods)rnd.Next(0, gameSettings.FoodItemCount), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
             FoodCapacities = new Dictionary<Foods, int>();

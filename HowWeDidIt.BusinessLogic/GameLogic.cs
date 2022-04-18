@@ -59,7 +59,7 @@ namespace HowWeDidIt.BusinessLogic
 
         public void FoodItemsFalling()
         {
-            foreach (var foodItem in GameModel.FoodItems)
+            foreach (var foodItem in GameModel.FallingFoods)
             {
                 foodItem.Y += gameSettings.FoodItemYVelocity * rnd.Next(10, 31) / 10;
 

@@ -16,7 +16,7 @@ namespace HowWeDidIt.Models
 
         MovingCaveMan CaveMan { get; set; }
 
-        List<MovingFoodItem> FoodItems { get; }        
+        List<MovingFoodItem> FallingFoods { get; }        
         public int CollectionAreaBeginning { get; }
         public int CollectionAreaEnd { get; }
 
