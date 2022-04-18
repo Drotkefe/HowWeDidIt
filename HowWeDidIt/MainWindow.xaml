@@ -6,7 +6,7 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:HowWeDidIt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Background="Bisque">
+        Title="HowWeDidIt" Height="450" Width="800" Loaded="Window_Loaded" Icon="Images/StandR.png" ResizeMode="CanMinimize">
 
 
     <Grid>
