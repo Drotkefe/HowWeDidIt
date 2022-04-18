@@ -90,6 +90,7 @@ namespace HowWeDidIt.Models
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
             Recipe.VitalityValue = 1;
+            Recipe.CurrentFoodIndex = 4;
         }
 
         // TODO: create other ctor for load data from saved game
