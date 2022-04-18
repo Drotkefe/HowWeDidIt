@@ -50,6 +50,8 @@ namespace HowWeDidIt.Models
                 FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
+
+
             FoodCapacities = new Dictionary<Foods, int>();
             FoodCapacities.Add(Foods.Carrot, 2);
             FoodCapacities.Add(Foods.Egg, 2);
@@ -59,12 +61,14 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
-            //CollectedFoods.Add(Foods.Carrot, 1);
-            //CollectedFoods.Add(Foods.Egg, 1);
-            //CollectedFoods.Add(Foods.Meat, 1);
-            //CollectedFoods.Add(Foods.Onion, 1);
-            //CollectedFoods.Add(Foods.Potato, 1);
-            //CollectedFoods.Add(Foods.Uranium, 1);
+
+
+            CollectedFoods.Add(Foods.Carrot, 1);
+            CollectedFoods.Add(Foods.Egg, 1);
+            CollectedFoods.Add(Foods.Meat, 1);
+            CollectedFoods.Add(Foods.Onion, 1);
+            CollectedFoods.Add(Foods.Potato, 1);
+            CollectedFoods.Add(Foods.Uranium, 1);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
