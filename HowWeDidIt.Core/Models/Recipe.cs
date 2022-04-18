@@ -35,7 +35,7 @@ namespace HowWeDidIt.Models
 
 
 
-        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, bool cooked, int recipeScore, int vitalityValue, int moneyValue)
+        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime,int recipeScore, int vitalityValue,int moneyValue, int currentFoodIndex = 0, bool cooked=false)
         {
             Name = name;
             FoodItems = foodItems;

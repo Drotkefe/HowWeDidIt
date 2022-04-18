@@ -76,7 +76,6 @@ namespace HowWeDidIt.Models
             Money = 20;
             GameScore = 0;
 
-            Recipe = new Recipe();
             Recipe.Name = "Pizza";
             Recipe.FoodItems = new List<Foods>();
             Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
