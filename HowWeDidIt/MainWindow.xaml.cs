@@ -9,10 +9,12 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Threading;
+using System.Windows.Threading;
 
 namespace HowWeDidIt
 {
@@ -39,6 +41,35 @@ namespace HowWeDidIt
             Close();
         }
 
-       
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(0.2) };
+            timer.Start();
+            timer.Tick += (sender, args) =>
+            {
+                timer.Stop();
+                new_game_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(1200)));
+                load_game_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(1800)));
+                leaderboard_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(2250)));
+                exit_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(3375)));
+
+            };
+            
+        }
+
+        private void exit_button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void leaderboard_button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Still in progress");
+        }
+
+        private void Load_Game_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Still in progress");
+        }
     }
 }
