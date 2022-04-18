@@ -11,9 +11,17 @@ namespace HowWeDidIt.Models
     public class Recipe
     {
         public string Name { get; set; }
-        public List<Foods> FoodItems { get; set; } 
+        public List<Foods> FoodList { get; set; } 
         public TimeSpan CookingTime { get; set; }
-                
+
+
+
+        public int RecipeScore { get; set; }        
+        public int VitalityValue { get; set; }
+        public int MoneyValue { get; set; }
+
+
+
         private bool cooked;
         public bool Cooked
         {
@@ -21,9 +29,13 @@ namespace HowWeDidIt.Models
             set { cooked = value; }
         }
 
-        public int RecipeScore { get; set; }        
-        public int VitalityValue { get; set; }
-        public int MoneyValue { get; set; }
+
+        private int currentFoodIndex;
+        public int CurrentFoodIndex
+        {
+            get { return currentFoodIndex; }
+            set { currentFoodIndex = value; }
+        }
 
 
         private int currentFoodIndex;
@@ -35,17 +47,16 @@ namespace HowWeDidIt.Models
 
 
 
+
         public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime,int recipeScore, int vitalityValue,int moneyValue, int currentFoodIndex = 0, bool cooked=false)
         {
             Name = name;
-            FoodItems = foodItems;
+            FoodList = foodItems;
             CookingTime = cookingTime;
-            this.cooked = cooked;
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
             MoneyValue = moneyValue;
-
-
+            this.cooked=cooked;
             this.currentFoodIndex = currentFoodIndex;
         }
     }

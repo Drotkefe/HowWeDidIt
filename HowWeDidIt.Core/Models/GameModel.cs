@@ -19,6 +19,11 @@ namespace HowWeDidIt.Models
         public Recipe Recipe { get; private set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
+
+        public List<MovingFoodItem> FoodItems { get; private set; }
+        public int CollectionAreaBeginning { get; set; }
+        public int CollectionAreaEnd { get; set; }
+
         public int GarbageCount { get; set; }
         public int GarbageCapacity { get; set; }
         public int Vitality { get; set; }
@@ -46,7 +51,9 @@ namespace HowWeDidIt.Models
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
+
             {                               
+
                 FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
 
@@ -68,27 +75,35 @@ namespace HowWeDidIt.Models
             CollectedFoods.Add(Foods.Meat, 1);
             CollectedFoods.Add(Foods.Onion, 1);
             CollectedFoods.Add(Foods.Potato, 1);
-            CollectedFoods.Add(Foods.Uranium, 1);
+            CollectedFoods.Add(Foods.Uranium, 2);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
             Vitality = 90;
-            Money = 20;
+            Money = 200;
             GameScore = 0;
 
             Recipe.Name = "Pizza";
-            Recipe.FoodItems = new List<Foods>();
-            Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList = new List<Foods>();
+            Recipe.FoodList.Add(Core.Enums.Foods.Onion);
+            Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
             Recipe.Cooked = false;
             Recipe.CookingTime = TimeSpan.FromSeconds(180);
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
+
             Recipe.VitalityValue = 1;
             Recipe.CurrentFoodIndex = 4;
         }

@@ -13,6 +13,9 @@ namespace HowWeDidIt.Models
         double GameAreaHeight { get; set; }
         double GameAreaWidth { get; set; }
 
+        public int CollectionAreaBeginning { get; }
+        public int CollectionAreaEnd { get; }
+
 
         MovingCaveMan CaveMan { get; }
 
@@ -28,6 +31,7 @@ namespace HowWeDidIt.Models
         int Vitality { get; set; }
         int Money { get; set; }
         int GameScore { get; set; }
+
 
 
     }

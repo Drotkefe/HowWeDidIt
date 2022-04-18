@@ -29,6 +29,7 @@ namespace HowWeDidIt.Models
         /// <param name="y"></param>
         /// <param name="dX"></param>
         /// <param name="dY"></param>
+
         public MovingFoodItem(Foods name, double x, double y, double dX, double dY) : base(x, y)
         {
             Name = name;
