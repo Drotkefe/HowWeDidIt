@@ -29,6 +29,8 @@ namespace HowWeDidIt.Core.GameSettings
 
         double GameAreaDefaultHeight { get; }
 
+        int FoodItemCount { get; }
+
         #endregion
 
         #region Rendering
@@ -45,6 +47,8 @@ namespace HowWeDidIt.Core.GameSettings
         public string CaveMan6L { get;  }
         public string CaveMan6R { get; }
         #endregion
+
+        public double FoodItemYVelocity { get; }
 
         int MaximalAllowedMovementState { get; set; }
     }

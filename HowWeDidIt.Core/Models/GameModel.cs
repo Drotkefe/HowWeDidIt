@@ -10,6 +10,7 @@ namespace HowWeDidIt.Models
 {
     public class GameModel : IGameModel
     {
+        static Random rnd = new Random();
         public double GameAreaHeight { get; set; }
         public double GameAreaWidth { get; set; }
 
@@ -18,6 +19,11 @@ namespace HowWeDidIt.Models
         public Recipe Recipe { get; private set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
+
+        public List<MovingFoodItem> FoodItems { get; private set; }
+        public int CollectionAreaBeginning { get; set; }
+        public int CollectionAreaEnd { get; set; }
+
         public int GarbageCount { get; set; }
         public int GarbageCapacity { get; set; }
         public int Vitality { get; set; }
@@ -33,12 +39,22 @@ namespace HowWeDidIt.Models
         {
             GameAreaWidth = gameAreaWidth;
             GameAreaHeight = gameAreaHeight;
+            FoodItems = new List<MovingFoodItem>();
+
+            CollectionAreaBeginning = (int)gameAreaWidth / 4;
+            CollectionAreaEnd = (int)gameAreaWidth - 50;
+
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
         }
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)
         {
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
+
+            for (int i = 0; i < gameSettings.FoodItemCount; i++)
+            {
+                FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
+            }
 
 
             // TUTORIAL:
