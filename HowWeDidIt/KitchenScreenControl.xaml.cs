@@ -39,10 +39,9 @@ namespace HowWeDidIt
 
         private void OnionButton_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button OnionButton)// && e.LeftButton == MouseButtonState.Pressed)
+            if (sender is Button OnionButton/* && e.LeftButton == MouseButtonState.Pressed*/)
             {               
-                //DragDrop.DoDragDrop(OnionButton, OnionButton, DragDropEffects.Copy);
-                DragDrop.DoDragDrop(OnionButton, Foods.Onion.ToString() , DragDropEffects.None);
+                DragDrop.DoDragDrop(OnionButton, Foods.Onion.ToString() , DragDropEffects.Copy);
                 ;
             }
         }
@@ -59,10 +58,8 @@ namespace HowWeDidIt
             }
         }
 
-        private void Style_Selected(object sender, RoutedEventArgs e)
-        {
 
-        }
+
 
 
 

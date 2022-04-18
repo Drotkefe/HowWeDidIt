@@ -10,14 +10,14 @@
              >
     <Window.DataContext>
         <ViewModels:KitchenScreenWindowVM />
-        
+
     </Window.DataContext>
     <Grid>
-        
+
         <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill" Opacity="0.80" />
-              
+
         <Grid>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
@@ -81,7 +81,7 @@
                 <Button.Resources>
                     <Style TargetType="Border" >
                         <Setter Property="CornerRadius" Value="300"/>
-                        
+
                     </Style>
                 </Button.Resources>
                 <Button.InputBindings>
@@ -131,79 +131,76 @@
                 </Button.Resources>
             </Button>
 
-            <StackPanel Grid.Column="2" Grid.Row="1" DataContext="{Binding Recipe}" HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+            <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" DataContext="{Binding Recipe}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
+                
+                <StackPanel Orientation="Horizontal">
+                    
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Name:" Margin="5" FontSize="20" FontFamily="Algerian"/>
-                                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Score:" Margin="5" FontSize="20" FontFamily="Algerian"/>
-                                    <TextBlock Text="{Binding RecipeScore}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
-                                </StackPanel>
+                                <TextBlock Text="Name:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
                             </StackPanel>
-
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Vitality:" Margin="5" FontSize="20" FontFamily="Algerian"/>
-                                    <TextBlock Text="{Binding VitalityValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Money:" Margin="5" FontSize="20" FontFamily="Algerian"/>
-                                    <TextBlock Text="{Binding MoneyValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
-                                </StackPanel>
+                                <TextBlock Text="Score:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                <TextBlock Text="{Binding RecipeScore}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
                             </StackPanel>
-                            
                         </StackPanel>
 
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Text="Time:" Margin="5"  FontSize="20" FontFamily="Algerian"/>
-                            <TextBlock Text="{Binding CookingTime.TotalSeconds}" Margin="5" FontSize="50" FontFamily="Algerian"/>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Vitality:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                <TextBlock Text="{Binding VitalityValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Money:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                                <TextBlock Text="{Binding MoneyValue}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                            </StackPanel>
                         </StackPanel>
+
                     </StackPanel>
 
-                    <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding CurrentFood}" FontSize="60" FontFamily="Algerian" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" IsEnabled="False"/>
-
-                    
-                    <!--TextBlock Resources="{Binding FoodItems}" Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian"></TextBlock>
-                    
-                    <ListView ItemsSource="{Binding FoodItems}" SelectedItem="{Binding CurrentFood}" HorizontalAlignment="Center" >
-                        <ListBox.Background>
-                            <SolidColorBrush Opacity="0"/>
-                        </ListBox.Background>
-                        <ListView.ItemTemplate>
-                            <DataTemplate DataType="ViewModels:RecipeVM">
-                                <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-
-
-                    </ListView-->
-                    
-                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Time:" Margin="5"  FontSize="20" FontFamily="Algerian"/>
+                        <TextBlock Text="{Binding CookingTime.TotalSeconds}" Margin="5" FontSize="50" FontFamily="Algerian"/>
+                    </StackPanel>
                     
                 </StackPanel>
+
+                <!--TextBlock Text="{Binding CurrentFood}" FontSize="60" FontFamily="Algerian" HorizontalAlignment="Center"  VerticalAlignment="Center" IsEnabled="False"/-->
+
+
+
+                <ListView ItemsSource="{Binding FoodItems}" SelectedItem="{Binding CurrentFood, Mode=OneWay}" HorizontalAlignment="Center" BorderThickness="0" IsHitTestVisible="False" Focusable="False">
+                    <ListView.Background>
+                        <SolidColorBrush Color="White" Opacity="0"/>
+                    </ListView.Background>
+                    <ListView.ItemTemplate>
+                            <DataTemplate DataType="ViewModels:RecipeVM">
+                                <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian" HorizontalAlignment="Stretch"/>
+                            </DataTemplate>
+                     </ListView.ItemTemplate>
+                </ListView>
+
+
+
+
 
 
             </StackPanel>
 
 
 
-            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606"  AllowDrop="True" Drop="Button_Drop" >
+            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606" AllowDrop="True" Drop="Button_Drop" >
                 <Button.Resources>
                     <Style TargetType="Border" >
                         <Setter Property="CornerRadius" Value="300"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            
-            
-            
+
+
+
             <Button Grid.Column="2" Grid.Row="4" Content="FIREtest">
             </Button>
 

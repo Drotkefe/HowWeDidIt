@@ -69,8 +69,15 @@ namespace HowWeDidIt.Models
             Recipe.FoodItems = new List<Foods>();
             Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
             Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
             Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
             Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
+            Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
             Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
             Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
             Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
