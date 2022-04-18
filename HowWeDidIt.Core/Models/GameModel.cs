@@ -30,9 +30,6 @@ namespace HowWeDidIt.Models
         public int Money { get; set; }
         public int GameScore { get; set; }
 
-        public List<MovingFoodItem> FoodItems { get; private set; }        
-        public int CollectionAreaBeginning { get; set; }
-        public int CollectionAreaEnd { get; set; }
 
         public GameModel(double gameAreaWidth, double gameAreaHeight, IGameSettings gameSettings)
         {
@@ -51,13 +48,9 @@ namespace HowWeDidIt.Models
             CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
 
             for (int i = 0; i < gameSettings.FoodItemCount; i++)
-
-            {                               
-
+            {
                 FoodItems.Add(new MovingFoodItem((Foods)rnd.Next(0, 6), rnd.Next(CollectionAreaBeginning, CollectionAreaEnd), 0, 0, gameSettings.FoodItemYVelocity));
             }
-
-
 
             FoodCapacities = new Dictionary<Foods, int>();
             FoodCapacities.Add(Foods.Carrot, 2);
@@ -68,14 +61,12 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
-
-
-            CollectedFoods.Add(Foods.Carrot, 1);
-            CollectedFoods.Add(Foods.Egg, 1);
-            CollectedFoods.Add(Foods.Meat, 1);
-            CollectedFoods.Add(Foods.Onion, 1);
-            CollectedFoods.Add(Foods.Potato, 1);
-            CollectedFoods.Add(Foods.Uranium, 2);
+            CollectedFoods.Add(Foods.Carrot, 0);
+            CollectedFoods.Add(Foods.Egg, 0);
+            CollectedFoods.Add(Foods.Meat, 0);
+            CollectedFoods.Add(Foods.Onion, 0);
+            CollectedFoods.Add(Foods.Potato, 0);
+            CollectedFoods.Add(Foods.Uranium, 0);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
@@ -83,6 +74,7 @@ namespace HowWeDidIt.Models
             Money = 200;
             GameScore = 0;
 
+            Recipe = new Recipe();
             Recipe.Name = "Pizza";
             Recipe.FoodList = new List<Foods>();
             Recipe.FoodList.Add(Core.Enums.Foods.Onion);

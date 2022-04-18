@@ -73,7 +73,7 @@ namespace HowWeDidIt.BusinessLogic
 
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
-            if (!GameModel.Recipe.FoodItems.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
+            if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
             {
                 GameModel.GarbageCount++;
             }

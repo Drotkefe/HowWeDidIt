@@ -1,22 +1,18 @@
 ﻿using HowWeDidIt.Core.Enums;
-using HowWeDidIt.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HowWeDidIt.Models
 {
     public class Recipe
     {
         public string Name { get; set; }
-        public List<Foods> FoodList { get; set; } 
+        public List<Foods> FoodList { get; set; }
         public TimeSpan CookingTime { get; set; }
 
 
 
-        public int RecipeScore { get; set; }        
+        public int RecipeScore { get; set; }
         public int VitalityValue { get; set; }
         public int MoneyValue { get; set; }
 
@@ -37,18 +33,11 @@ namespace HowWeDidIt.Models
             set { currentFoodIndex = value; }
         }
 
-
-        private int currentFoodIndex;
-        public int CurrentFoodIndex
+        public Recipe()
         {
-            get { return currentFoodIndex; }
-            set { currentFoodIndex = value; }
         }
 
-
-
-
-        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime,int recipeScore, int vitalityValue,int moneyValue, int currentFoodIndex = 0, bool cooked=false)
+        public Recipe(string name, List<Foods> foodItems, TimeSpan cookingTime, int recipeScore, int vitalityValue, int moneyValue, int currentFoodIndex = 0, bool cooked = false)
         {
             Name = name;
             FoodList = foodItems;
@@ -56,7 +45,7 @@ namespace HowWeDidIt.Models
             RecipeScore = recipeScore;
             VitalityValue = vitalityValue;
             MoneyValue = moneyValue;
-            this.cooked=cooked;
+            this.cooked = cooked;
             this.currentFoodIndex = currentFoodIndex;
         }
     }
