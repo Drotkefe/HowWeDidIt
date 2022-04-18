@@ -57,7 +57,7 @@ namespace HowWeDidIt.Core.GameSettings
 
         #region MovingFoodItem
 
-        public int FoodItemCount { get; }
+        public int FallingFoodCount { get; }
 
         public double FoodItemYVelocity { get; }
 

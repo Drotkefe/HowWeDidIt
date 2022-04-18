@@ -55,7 +55,7 @@ namespace HowWeDidIt.Core.GameSettings
 
         #region MovingFoodItem
 
-        public int FoodItemCount => 3;
+        public int FallingFoodCount => 3;
 
         public double FoodItemYVelocity => 14;     // this is the falling speed of fooditems multiplied by a random decimal number between 1 and 3   
 
