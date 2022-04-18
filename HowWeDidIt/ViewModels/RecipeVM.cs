@@ -24,12 +24,12 @@ namespace HowWeDidIt.ViewModels
         }
 
 
-        public List<Foods> FoodItems
+        public List<Foods> FoodList
         {
-            get { return recipe?.FoodItems ?? null; }
+            get { return recipe?.FoodList ?? null; }
             //set
             //{
-            //    SetProperty(recipe.FoodItems, value, recipe, (gm, val) => gm.FoodItems = val);
+            //    SetProperty(recipe.FoodList, value, recipe, (gm, val) => gm.FoodList = val);
             //}
         }
 
@@ -72,20 +72,20 @@ namespace HowWeDidIt.ViewModels
 
         public Foods CurrentFood
         {
-            get { return recipe?.CurrentFood ?? default; }
-            set
-            {
-                SetProperty(recipe.CurrentFood, value, recipe, (gm, val) => gm.CurrentFood = val);
-            }
+            get { return recipe?.FoodList[recipe.CurrentFoodIndex] ?? default; }
+            //set
+            //{
+            //    SetProperty(recipe.CurrentFood, value, recipe, (gm, val) => gm.CurrentFood = val);
+            //}
         }
 
-        public bool Cooked
+        public bool Cooked  // NECESSARY HERE?
         {
             get { return recipe?.Cooked ?? false; }
-            set
-            {
-                SetProperty(recipe.Cooked, value, recipe, (gm, val) => gm.Cooked = val);
-            }
+            //set
+            //{
+            //    SetProperty(recipe.Cooked, value, recipe, (gm, val) => gm.Cooked = val);
+            //}
         }
 
 

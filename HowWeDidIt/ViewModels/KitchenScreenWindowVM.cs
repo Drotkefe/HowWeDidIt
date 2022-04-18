@@ -13,6 +13,8 @@ namespace HowWeDidIt.ViewModels
     {
 
         private  IGameModel GM { get; }
+
+        // ingredients to IngredientsVM for better readability:
         public IngredientsVM Ingredients { get; }
         public RecipeVM Recipe { get; }
 
@@ -62,20 +64,14 @@ namespace HowWeDidIt.ViewModels
             }
         }
 
-        //public int Pot
-        //{
-        //    get { return GM?.Pot ?? 0; }
-        //    set
-        //    {
-        //        SetProperty(GM.Pot, value, GM, (gm, val) => gm.Pot = val);
-        //    }
-        //}
 
 
         readonly IKitchenService kitchenService;
-        public ICommand RestoreHealingPointsCommand { get; private set; }
+        public ICommand RestoreHealthPointsCommand { get; private set; }
         public ICommand SellProductCommand { get; set; }
+        public ICommand FoodToPotCommand { get; set; }
 
+        public ICommand UpgradeStorageCommand { get; set; }
 
 
         //public KitchenScreenWindowVM()
@@ -108,13 +104,13 @@ namespace HowWeDidIt.ViewModels
             //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
             //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
 
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Onion);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Meat);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Carrot);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Egg);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Potato);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
-            //    //gm.Recipe.FoodItems.Add(Core.Enums.Foods.Uranium);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Onion);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
 
             //    //ingredients = new IngredientsVM()
             //    //{
@@ -143,8 +139,6 @@ namespace HowWeDidIt.ViewModels
         {
 
             this.GM = model;
-
-            // ingredients to IngredientsVM for better readability:
             Ingredients = new IngredientsVM(model.CollectedFoods, model.FoodCapacities)
             {
                 CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],
@@ -164,29 +158,51 @@ namespace HowWeDidIt.ViewModels
             Recipe = new RecipeVM(model.Recipe);
 
 
-
-
-
-
-
             this.kitchenService = ServiceLocator.Current.GetInstance<IKitchenService>();
 
 
-            RestoreHealingPointsCommand = new RelayCommand(() =>
+            RestoreHealthPointsCommand = new RelayCommand(() =>
             {
                 kitchenService.RestoreHeathPoits(GM);
                 OnPropertyChanged(nameof(Vitality));
-                //OnPropertyChanged(nameof(Recipe));
+                OnPropertyChanged(nameof(Recipe));
                 //OnPropertyChanged(nameof(Pot));
-                
+
             }, true);
 
             SellProductCommand = new RelayCommand(() =>
             {
                 kitchenService.SellProduct(GM);
                 OnPropertyChanged(nameof(Money));
-                //OnPropertyChanged(nameof(Recipe));
+                OnPropertyChanged(nameof(Recipe));
                 //OnPropertyChanged(nameof(Pot));
+            }, true);
+
+
+            FoodToPotCommand = new RelayCommand<string>((string typeOfFood) =>
+            {
+                kitchenService.FoodToPot(typeOfFood, GM);
+                OnPropertyChanged(nameof(Ingredients));
+                OnPropertyChanged(nameof(GM.GarbageCapacity));
+                OnPropertyChanged(nameof(GM.Recipe.CurrentFoodIndex));
+                OnPropertyChanged(nameof(Recipe.CurrentFood));
+                OnPropertyChanged(nameof(Recipe.FoodList));
+                OnPropertyChanged(nameof(Recipe));
+
+
+
+            }, true);
+
+
+            UpgradeStorageCommand = new RelayCommand<string> ((string typeOfCapacity) =>
+            {
+                kitchenService.UpgradeStorage(typeOfCapacity, GM);
+                //OnPropertyChanged(nameof(Vitality));
+                OnPropertyChanged(nameof(Ingredients));
+                OnPropertyChanged(nameof(GM.GarbageCapacity));
+                OnPropertyChanged(nameof(GM.Money));
+                //OnPropertyChanged(nameof(Pot));
+                
             }, true);
         }
 
