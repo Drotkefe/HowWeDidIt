@@ -76,7 +76,51 @@
             </DockPanel>
 
 
-            <Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464" x:Name="OnionButton" MouseMove="OnionButton_MouseMove">
+
+
+            <Border Grid.Column="1" Grid.Row="1" >
+                <Ellipse x:Name="OnionEllipse"  MouseMove="OnionEllipse_MouseMove" Grid.Column="1" Grid.Row="1" Stroke="Purple" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\onion.png" Stretch="Fill"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            </Border>
+
+
+            <Ellipse x:Name="CarrotEllipse"  MouseMove="CarrotEllipse_MouseMove" Grid.Column="1" Grid.Row="2" Stroke="Orange" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\carrot.png" Stretch="Fill"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+
+            <Ellipse x:Name="PotatoEllipse"  MouseMove="PotatoEllipse_MouseMove" Grid.Column="1" Grid.Row="3" Stroke="Chocolate" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\potato.png" Stretch="Fill"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse x:Name="UraniumEllipse"  MouseMove="UraniumEllipse_MouseMove" Grid.Column="1" Grid.Row="4" Stroke="LawnGreen" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\uranium.png" Stretch="Fill"></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+
+            <Ellipse x:Name="MeatEllipse"  MouseMove="MeatEllipse_MouseMove" Grid.Column="3" Grid.Row="2" Stroke="white" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\meat.png" ></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse x:Name="EggEllipse"  MouseMove="EggEllipse_MouseMove" Grid.Column="3" Grid.Row="3" Stroke="Gold" StrokeThickness="2" Margin="5">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource=".\Images\Kitchen\egg.png" ></ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <!--Button Grid.Column="1" Grid.Row="1" Margin="10" Background="#FF646464" x:Name="OnionButton" MouseMove="OnionButton_MouseMove">
                 <Image Source=".\Images\Kitchen\onion.png" Margin="10"/>
                 <Button.Resources>
                     <Style TargetType="Border" >
@@ -97,7 +141,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
             <Button Grid.Column="1" Grid.Row="3" Margin="10" Background="#FF646464" x:Name="PotatoButton" MouseMove="PotatoButton_MouseMove" >
                 <Image Source=".\Images\Kitchen\potato.png" Margin="15"/>
                 <Button.Resources>
@@ -106,7 +150,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
             <Button Grid.Column="1" Grid.Row="4" Margin="10" Background="#FF646464" x:Name="UraniumButton" MouseMove="UraniumButton_MouseMove" >
                 <Image Source=".\Images\Kitchen\uranium.png" Margin="5"/>
                 <Button.Resources>
@@ -124,7 +168,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
             <Button Grid.Column="3" Grid.Row="3" Margin="10" Background="#FF646464" x:Name="EggButton" MouseMove="EggButton_MouseMove" >
                 <Image Source=".\Images\Kitchen\egg.png" Margin="10"/>
                 <Button.Resources>
@@ -132,13 +176,41 @@
                         <Setter Property="CornerRadius" Value="300"/>
                     </Style>
                 </Button.Resources>
-            </Button>
+            </Button-->
 
-            <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" DataContext="{Binding Recipe}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
 
-                <StackPanel Orientation="Horizontal">
 
-                    <StackPanel Orientation="Vertical">
+
+
+
+
+            <!--Grid Grid.Column="2" Grid.Row="1"  Grid.RowSpan="2" DataContext="{Binding Recipe}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Name:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Score:" Margin="5" FontSize="20" FontFamily="Algerian"/>
+                <TextBlock Text="{Binding RecipeScore}" Margin="5" FontSize="30" FontFamily="Algerian" FontWeight="Bold"/>
+            </Grid-->
+
+
+
+
+
+
+            <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal" DataContext="{Binding Recipe}">
+
+                    <StackPanel Orientation="Vertical" >
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Name:" Margin="5" FontSize="20" FontFamily="Algerian"/>
@@ -172,9 +244,18 @@
 
                 <!--TextBlock Text="{Binding CurrentFood}" FontSize="60" FontFamily="Algerian" HorizontalAlignment="Center"  VerticalAlignment="Center" IsEnabled="False"/-->
 
+                <ListBox ItemsSource="{Binding Recipe.FoodList}" SelectedItem="{Binding Recipe.CurrentFood, Mode=OneWay}"  BorderThickness="0" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" FontFamily="Algerian" VerticalAlignment="Center">
+                    <ListBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0"/>
+                    </ListBox.Background>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
 
-
-                <ListView ItemsSource="{Binding FoodList}" SelectedItem="{Binding CurrentFood, Mode=OneWay}" HorizontalAlignment="Center" BorderThickness="0" IsHitTestVisible="False" Focusable="False">
+                <!--ListView ItemsSource="{Binding FoodList}" SelectedItem="{Binding CurrentFood, Mode=OneWay}" HorizontalAlignment="Center" BorderThickness="0" IsHitTestVisible="False" Focusable="False">
                     <ListView.Background>
                         <SolidColorBrush Color="White" Opacity="0"/>
                     </ListView.Background>
@@ -183,7 +264,7 @@
                             <TextBlock Text="{Binding BindsDirectlyToSource=True}" FontSize="20" FontFamily="Algerian" HorizontalAlignment="Stretch"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+                </ListView-->
 
 
 
@@ -214,7 +295,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
             <Button Grid.Column="4" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FF227BE6" Content="SELL" FontFamily="Algerian" FontSize="20" Command="{Binding SellProductCommand}">
                 <Button.Resources>
                     <Style TargetType="Border" >
@@ -222,7 +303,8 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Column="3" Grid.Row="4" Margin="10,10,10,10"  FontSize="20" x:Name="GarbageButton" MouseMove="GarbageButton_MouseMove" >
+            
+            <Button Grid.Column="3" Grid.Row="4" Margin="10,10,10,10"  FontSize="20" x:Name="GarbageButton" MouseRightButtonDown="GarbageButton_MouseRightButtonDown">
 
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
@@ -236,10 +318,10 @@
                     </DockPanel>
                 </StackPanel>
 
-                <Button.InputBindings>
+                <!--Button.InputBindings>
                     <MouseBinding Gesture="RightClick" Command="{Binding UpgradeStorageCommand}" />
-                </Button.InputBindings>
-                
+                </Button.InputBindings-->
+
             </Button>
 
             <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10" AllowDrop="True">

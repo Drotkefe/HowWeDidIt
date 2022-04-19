@@ -31,6 +31,11 @@ namespace HowWeDidIt.BusinessLogic
                 {
                     gameModel.CollectedFoods[caughtFood]--;
                     gameModel.Recipe.CurrentFoodIndex++;
+
+                }
+                else
+                {
+
                 }
 
             }

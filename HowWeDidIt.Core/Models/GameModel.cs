@@ -61,12 +61,12 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
-            CollectedFoods.Add(Foods.Carrot, 0);
-            CollectedFoods.Add(Foods.Egg, 0);
-            CollectedFoods.Add(Foods.Meat, 0);
-            CollectedFoods.Add(Foods.Onion, 0);
-            CollectedFoods.Add(Foods.Potato, 0);
-            CollectedFoods.Add(Foods.Uranium, 0);
+            CollectedFoods.Add(Foods.Carrot, 1);
+            CollectedFoods.Add(Foods.Egg, 1);
+            CollectedFoods.Add(Foods.Meat, 1);
+            CollectedFoods.Add(Foods.Onion, 1);
+            CollectedFoods.Add(Foods.Potato, 1);
+            CollectedFoods.Add(Foods.Uranium, 1);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
@@ -81,23 +81,33 @@ namespace HowWeDidIt.Models
             Recipe.FoodList.Add(Core.Enums.Foods.Meat);
             Recipe.FoodList.Add(Core.Enums.Foods.Egg);
             Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
-            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
             Recipe.FoodList.Add(Core.Enums.Foods.Potato);
             Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
             Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+
+
+
+
             Recipe.Cooked = false;
             Recipe.CookingTime = TimeSpan.FromSeconds(180);
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
 
-            Recipe.VitalityValue = 1;
-            Recipe.CurrentFoodIndex = 4;
+            Recipe.VitalityValue = 10;
+            Recipe.CurrentFoodIndex = 2;
         }
 
         // TODO: create other ctor for load data from saved game

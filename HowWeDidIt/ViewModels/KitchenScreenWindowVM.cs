@@ -166,8 +166,6 @@ namespace HowWeDidIt.ViewModels
                 kitchenService.RestoreHeathPoits(GM);
                 OnPropertyChanged(nameof(Vitality));
                 OnPropertyChanged(nameof(Recipe));
-                //OnPropertyChanged(nameof(Pot));
-
             }, true);
 
             SellProductCommand = new RelayCommand(() =>
@@ -175,7 +173,6 @@ namespace HowWeDidIt.ViewModels
                 kitchenService.SellProduct(GM);
                 OnPropertyChanged(nameof(Money));
                 OnPropertyChanged(nameof(Recipe));
-                //OnPropertyChanged(nameof(Pot));
             }, true);
 
 
@@ -184,10 +181,13 @@ namespace HowWeDidIt.ViewModels
                 kitchenService.FoodToPot(typeOfFood, GM);
                 OnPropertyChanged(nameof(Ingredients));
                 OnPropertyChanged(nameof(GM.GarbageCapacity));
-                OnPropertyChanged(nameof(GM.Recipe.CurrentFoodIndex));
-                OnPropertyChanged(nameof(Recipe.CurrentFood));
-                OnPropertyChanged(nameof(Recipe.FoodList));
                 OnPropertyChanged(nameof(Recipe));
+
+
+                //OnPropertyChanged(nameof(GM.Recipe.CurrentFoodIndex));
+                //OnPropertyChanged(nameof(Recipe.CurrentFood));
+                //OnPropertyChanged(nameof(Recipe.FoodList));
+                //OnPropertyChanged(nameof(GM.Recipe));
 
 
 
@@ -197,11 +197,10 @@ namespace HowWeDidIt.ViewModels
             UpgradeStorageCommand = new RelayCommand<string> ((string typeOfCapacity) =>
             {
                 kitchenService.UpgradeStorage(typeOfCapacity, GM);
-                //OnPropertyChanged(nameof(Vitality));
                 OnPropertyChanged(nameof(Ingredients));
                 OnPropertyChanged(nameof(GM.GarbageCapacity));
                 OnPropertyChanged(nameof(GM.Money));
-                //OnPropertyChanged(nameof(Pot));
+
                 
             }, true);
         }
