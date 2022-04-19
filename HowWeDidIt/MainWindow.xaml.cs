@@ -60,6 +60,7 @@ namespace HowWeDidIt
         private void exit_button_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            
         }
 
         private void leaderboard_button_Click(object sender, RoutedEventArgs e)

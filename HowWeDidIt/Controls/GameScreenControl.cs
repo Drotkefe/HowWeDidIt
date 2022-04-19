@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -63,7 +64,7 @@ namespace HowWeDidIt.Controls
                 if (LogicHelper.HasBeenCaught(gameModel.CaveMan, foodItem))
                 {
                     gameLogic.FoodItemCaught(foodItem);
-                }                
+                }
             }
 
             InvalidateVisual();
@@ -87,8 +88,6 @@ namespace HowWeDidIt.Controls
                     entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Down:
-                    //new KitchenScreenWindow(gameModel).Show();
-                    new KitchenScreenWindow(gameModel).Show();
                     entrance = gameLogic.Move(0, 0);
                     if (entrance)
                         new KitchenScreenWindow(gameModel).Show();
