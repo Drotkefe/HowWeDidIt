@@ -91,7 +91,7 @@ namespace HowWeDidIt.BusinessLogic
                     }
                     else // if no more is needed
                     {
-                        GameModel.GarbageCount++;
+                        //GameModel.GarbageCount++;
                     }
                 }
             }            

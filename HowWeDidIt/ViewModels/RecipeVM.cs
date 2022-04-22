@@ -17,20 +17,19 @@ namespace HowWeDidIt.ViewModels
         public string Name
         {
             get { return recipe?.Name ?? null; }
-            //set
-            //{
-            //    SetProperty(recipe.Name, value, recipe, (gm, val) => gm.Name = val);
-            //}
+            set
+            {
+                SetProperty(recipe.Name, value, recipe, (rec, val) => rec.Name = val);
+            }
         }
-
 
         public List<Foods> FoodList
         {
             get { return recipe?.FoodList ?? null; }
-            //set
-            //{
-            //    SetProperty(recipe.FoodList, value, recipe, (gm, val) => gm.FoodList = val);
-            //}
+            set
+            {
+                SetProperty(recipe.FoodList, value, recipe, (rec, val) => rec.FoodList = val);
+            }
         }
 
         public TimeSpan CookingTime
@@ -38,35 +37,35 @@ namespace HowWeDidIt.ViewModels
             get { return recipe?.CookingTime ?? default; }
             set
             {
-                SetProperty(recipe.CookingTime, value, recipe, (gm, val) => gm.CookingTime = val);
+                SetProperty(recipe.CookingTime, value, recipe, (rec, val) => rec.CookingTime = val);
             }
         }
 
         public int RecipeScore
         {
             get { return recipe?.RecipeScore ?? 0; }
-            //set
-            //{
-            //    SetProperty(recipe.RecipeScore, value, recipe, (gm, val) => gm.RecipeScore = val);
-            //}
+            set
+            {
+                SetProperty(recipe.RecipeScore, value, recipe, (rec, val) => rec.RecipeScore = val);
+            }
         }
 
         public int VitalityValue
         {
             get { return recipe?.VitalityValue ?? 0; }
-            //set
-            //{
-            //    SetProperty(recipe.VitalityValue, value, recipe, (gm, val) => gm.VitalityValue = val);
-            //}
+            set
+            {
+                SetProperty(recipe.VitalityValue, value, recipe, (rec, val) => rec.VitalityValue = val);
+            }
         }
 
         public int MoneyValue
         {
             get { return recipe?.MoneyValue ?? 0; }
-            //set
-            //{
-            //    SetProperty(recipe.MoneyValue, value, recipe, (gm, val) => gm.MoneyValue = val);
-            //}
+            set
+            {
+                SetProperty(recipe.MoneyValue, value, recipe, (rec, val) => rec.MoneyValue = val);
+            }
         }
 
 
@@ -75,17 +74,17 @@ namespace HowWeDidIt.ViewModels
             get { return recipe?.FoodList[recipe.CurrentFoodIndex] ?? default; }
             //set
             //{
-            //    SetProperty(recipe.CurrentFood, value, recipe, (gm, val) => gm.CurrentFood = val);
+            //    SetProperty(recipe.CurrentFood, value, recipe, (rec, val) => rec.CurrentFood = val);
             //}
         }
 
         public bool Cooked  // NECESSARY HERE?
         {
             get { return recipe?.Cooked ?? false; }
-            //set
-            //{
-            //    SetProperty(recipe.Cooked, value, recipe, (gm, val) => gm.Cooked = val);
-            //}
+            set
+            {
+                SetProperty(recipe.Cooked, value, recipe, (rec, val) => rec.Cooked = val);
+            }
         }
 
 

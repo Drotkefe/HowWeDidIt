@@ -12,6 +12,7 @@ namespace HowWeDidIt.BusinessLogic
     public class KitchenService : IKitchenService
     {
         readonly IMessenger messenger;
+        Random random = new Random();
 
         public KitchenService(IMessenger messenger)
         {
@@ -24,22 +25,91 @@ namespace HowWeDidIt.BusinessLogic
 
             Foods caughtFood = (Foods)Enum.Parse(typeof(Foods), typeOfFood);
 
-
-            if (gameModel.CollectedFoods[caughtFood] > 0)
+            if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
+            else if (gameModel.CollectedFoods[caughtFood] > 0)
             {
-                if (gameModel.Recipe.FoodList[gameModel.Recipe.CurrentFoodIndex] == caughtFood)
+                if (!gameModel.Recipe.Cooked)
                 {
+                    if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 3;
+                    else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 2;
+                    else if (!caughtFood.Equals(Foods.Uranium)) gameModel.GarbageCount += 1; // if NOT uranium
+
                     gameModel.CollectedFoods[caughtFood]--;
-                    gameModel.Recipe.CurrentFoodIndex++;
 
+                    if (gameModel.Recipe.FoodList[gameModel.Recipe.CurrentFoodIndex] == caughtFood)  // if right food
+                    {
+                        if (gameModel.Recipe.CurrentFoodIndex < gameModel.Recipe.FoodList.Count - 1)
+                        {
+                            gameModel.Recipe.CurrentFoodIndex++;
+                            messenger.Send("Food added to pot!", "KitchenBlOperationResult");
+                        }
+                        else
+                        {
+                            gameModel.Recipe.Cooked = true;
+                            gameModel.GameScore += gameModel.Recipe.RecipeScore;
+                            messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
+                        }                        
+                    }
+                    else
+                    {
+                        if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 4;
+                        else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 3;
+                        else gameModel.GarbageCount += 2;
+
+                        if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
+                    }
                 }
-                else
-                {
-
-                }
-
+                else messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
             }
+            else messenger.Send("There is not enough food like this.", "KitchenBlOperationResult");
 
+
+
+
+        }
+
+        private Recipe NewRecipe()
+        {
+            
+            Recipe recipe = new Recipe();
+            string[] names = new string[] { "Pizza", "HotDog", "Hamburger", "Gyros", "Something" };
+            recipe.Name = names[random.Next(names.Length)];
+
+            List<Foods> foods = new List<Foods>();
+            int cathegory = random.Next(10);
+            if (cathegory < 5)
+            {
+                recipe.VitalityValue = 10;
+                recipe.MoneyValue = 100;
+                for (int i = 0; i < random.Next(5, 12); i++)
+                {
+                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                }
+            }
+            else if (cathegory < 8)
+            {
+                recipe.VitalityValue = 20;
+                recipe.MoneyValue = 150;
+                for (int i = 0; i < random.Next(10, 15); i++)
+                {
+                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                }
+            }
+            else
+            {
+                recipe.VitalityValue = 30;
+                recipe.MoneyValue = 200;
+                for (int i = 0; i < random.Next(13, 17); i++)
+                {
+                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                }
+            }
+            recipe.FoodList = foods;
+            recipe.RecipeScore = foods.Count * 5;
+            recipe.CurrentFoodIndex = 0;
+            recipe.Cooked = false;
+
+            return recipe;
         }
 
         public void RestoreHeathPoits(IGameModel gameModel)
@@ -54,7 +124,9 @@ namespace HowWeDidIt.BusinessLogic
                 }
                 gameModel.Vitality = health;
 
-                //TODO: új recept kiválasztása a repositoriból
+                //TODO: új recept TESZT
+                gameModel.Recipe = NewRecipe();
+
 
 
                 messenger.Send("Player healing was successful", "KitchenBlOperationResult");
@@ -71,8 +143,8 @@ namespace HowWeDidIt.BusinessLogic
             {
                 gameModel.Money += gameModel.Recipe.MoneyValue;
 
-                //TODO: új recept kiválasztása a repositoriból
-
+                //TODO: új recept teszt
+                gameModel.Recipe = NewRecipe();
 
                 messenger.Send("Product sell was successful", "KitchenBlOperationResult");
             }

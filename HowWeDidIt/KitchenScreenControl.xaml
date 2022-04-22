@@ -10,7 +10,6 @@
              >
     <Window.DataContext>
         <ViewModels:KitchenScreenWindowVM />
-
     </Window.DataContext>
     <Grid>
 

@@ -19,10 +19,10 @@ namespace HowWeDidIt.Models
 
         MovingCaveMan CaveMan { get; }
 
-        List<MovingFoodItem> FoodItems { get; }        
-       
+        List<MovingFoodItem> FoodItems { get; }
 
-        Recipe Recipe { get; }
+
+        Recipe Recipe { get; set; }
         Dictionary<Foods, int> CollectedFoods { get; }
         Dictionary<Foods, int> FoodCapacities { get; }
         int GarbageCount { get; set; }

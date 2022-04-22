@@ -16,7 +16,7 @@ namespace HowWeDidIt.Models
         public double GameAreaWidth { get; set; }
 
         public MovingCaveMan CaveMan { get; private set; }
-        public Recipe Recipe { get; private set; }
+        public Recipe Recipe { get; set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
 
@@ -78,25 +78,25 @@ namespace HowWeDidIt.Models
             Recipe.Name = "Pizza";
             Recipe.FoodList = new List<Foods>();
             Recipe.FoodList.Add(Core.Enums.Foods.Onion);
-            Recipe.FoodList.Add(Core.Enums.Foods.Meat);
-            Recipe.FoodList.Add(Core.Enums.Foods.Egg);
-            Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
-            Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
 
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
 
 
 
@@ -107,7 +107,8 @@ namespace HowWeDidIt.Models
             Recipe.RecipeScore = 100;
 
             Recipe.VitalityValue = 10;
-            Recipe.CurrentFoodIndex = 2;
+            //Recipe.CurrentFoodIndex = 2;
+            Recipe.CurrentFoodIndex = 0;
         }
 
         // TODO: create other ctor for load data from saved game

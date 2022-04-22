@@ -12,7 +12,7 @@ namespace HowWeDidIt.ViewModels
     public class KitchenScreenWindowVM : ObservableObject
     {
 
-        private  IGameModel GM { get; }
+        private IGameModel GM { get; }
 
         // ingredients to IngredientsVM for better readability:
         public IngredientsVM Ingredients { get; }
@@ -173,6 +173,13 @@ namespace HowWeDidIt.ViewModels
                 kitchenService.SellProduct(GM);
                 OnPropertyChanged(nameof(Money));
                 OnPropertyChanged(nameof(Recipe));
+
+
+                OnPropertyChanged(nameof(Recipe.FoodList));
+                OnPropertyChanged(nameof(Recipe.Name));
+                OnPropertyChanged(nameof(Recipe.MoneyValue));
+                OnPropertyChanged(nameof(Recipe.VitalityValue));
+
             }, true);
 
 
@@ -181,8 +188,9 @@ namespace HowWeDidIt.ViewModels
                 kitchenService.FoodToPot(typeOfFood, GM);
                 OnPropertyChanged(nameof(Ingredients));
                 OnPropertyChanged(nameof(GM.GarbageCapacity));
-                OnPropertyChanged(nameof(Recipe));
+                OnPropertyChanged(nameof(GM.GameScore));
 
+                OnPropertyChanged(nameof(Recipe));
 
                 //OnPropertyChanged(nameof(GM.Recipe.CurrentFoodIndex));
                 //OnPropertyChanged(nameof(Recipe.CurrentFood));
