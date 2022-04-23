@@ -25,7 +25,7 @@ namespace HowWeDidIt.BusinessLogic
 
             Foods caughtFood = (Foods)Enum.Parse(typeof(Foods), typeOfFood);
 
-            if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
+            if (/*gameModel.GarbageCount >= gameModel.GarbageCapacity*/ false) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
             else if (gameModel.CollectedFoods[caughtFood] > 0)
             {
                 if (!gameModel.Recipe.Cooked)
@@ -63,9 +63,6 @@ namespace HowWeDidIt.BusinessLogic
             }
             else messenger.Send("There is not enough food like this.", "KitchenBlOperationResult");
 
-
-
-
         }
 
         private Recipe NewRecipe()
@@ -77,6 +74,17 @@ namespace HowWeDidIt.BusinessLogic
 
             List<Foods> foods = new List<Foods>();
             int cathegory = random.Next(10);
+
+            //recipe.VitalityValue = 100000;
+            //recipe.MoneyValue = 999999;
+            //foods.Add(Foods.Carrot);
+            //foods.Add(Foods.Carrot);
+            //foods.Add(Foods.Carrot);
+            //foods.Add(Foods.Carrot);
+            //foods.Add(Foods.Potato);
+            //foods.Add(Foods.Carrot);
+            //foods.Add(Foods.Potato);
+
             if (cathegory < 5)
             {
                 recipe.VitalityValue = 10;
@@ -104,6 +112,8 @@ namespace HowWeDidIt.BusinessLogic
                     foods.Add((Foods)random.Next(sizeof(Foods)));
                 }
             }
+
+
             recipe.FoodList = foods;
             recipe.RecipeScore = foods.Count * 5;
             recipe.CurrentFoodIndex = 0;
@@ -145,7 +155,7 @@ namespace HowWeDidIt.BusinessLogic
 
                 //TODO: új recept teszt
                 gameModel.Recipe = NewRecipe();
-
+                
                 messenger.Send("Product sell was successful", "KitchenBlOperationResult");
             }
             else

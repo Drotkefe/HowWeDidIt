@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ViewModels="clr-namespace:HowWeDidIt.ViewModels"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" 
              Cursor="Hand" Icon="/Images/Kitchen/meat.png" ShowInTaskbar="False" ResizeMode="NoResize"
@@ -78,11 +79,11 @@
 
 
             <Border Grid.Column="1" Grid.Row="1" >
-                <Ellipse x:Name="OnionEllipse"  MouseMove="OnionEllipse_MouseMove" Grid.Column="1" Grid.Row="1" Stroke="Purple" StrokeThickness="2" Margin="5">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource=".\Images\Kitchen\onion.png" Stretch="Fill"></ImageBrush>
-                </Ellipse.Fill>
-            </Ellipse>
+                <Ellipse x:Name="OnionEllipse"  MouseMove="OnionEllipse_MouseMove" Grid.Column="1" Grid.Row="1" Stroke="Purple" StrokeThickness="2" Margin="5" MouseRightButtonDown="OnionEllipse_MouseRightButtonDown" >
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource=".\Images\Kitchen\onion.png" Stretch="Fill"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
             </Border>
 
 
@@ -243,7 +244,7 @@
 
                 <!--TextBlock Text="{Binding CurrentFood}" FontSize="60" FontFamily="Algerian" HorizontalAlignment="Center"  VerticalAlignment="Center" IsEnabled="False"/-->
 
-                <ListBox ItemsSource="{Binding Recipe.FoodList}" SelectedItem="{Binding Recipe.CurrentFood, Mode=OneWay}"  BorderThickness="0" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" FontFamily="Algerian" VerticalAlignment="Center">
+                <ListBox ItemsSource="{Binding Recipe.FoodList}" SelectedIndex="{Binding Recipe.CurrentFood, Mode=OneWay}"  BorderThickness="0" IsHitTestVisible="False" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" FontFamily="Algerian" VerticalAlignment="Center" x:Name="RecipeList">
                     <ListBox.Background>
                         <SolidColorBrush Color="White" Opacity="0"/>
                     </ListBox.Background>
@@ -284,8 +285,7 @@
 
 
 
-            <Button Grid.Column="2" Grid.Row="4" Content="FIREtest">
-            </Button>
+            <Image Grid.Column="2" Grid.Row="4" gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Stretch="Fill"> </Image>
 
             <Button Grid.Column="3" Grid.Row="1" Margin="10"  BorderThickness="7" Background="#FFF70909" Content="HEAL" FontFamily="Algerian" FontSize="20" Command="{Binding RestoreHealthPointsCommand}">
                 <Button.Resources>
@@ -302,7 +302,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            
+
             <Button Grid.Column="3" Grid.Row="4" Margin="10,10,10,10"  FontSize="20" x:Name="GarbageButton" MouseRightButtonDown="GarbageButton_MouseRightButtonDown">
 
                 <Button.Background>
@@ -323,11 +323,11 @@
 
             </Button>
 
-            <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10" AllowDrop="True">
+            <Button Grid.Column="4" Grid.Row="4" Margin="10,10,10,10" AllowDrop="True" Click="Button_Click" >
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
-                <Image Source=".\Images\Kitchen\ExitSquare.png" />
+                <Image Source=".\Images\Kitchen\ExitSquare.png"/>
             </Button>
 
 

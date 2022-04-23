@@ -78,7 +78,7 @@ namespace HowWeDidIt.Models
             Recipe.Name = "Pizza";
             Recipe.FoodList = new List<Foods>();
             Recipe.FoodList.Add(Core.Enums.Foods.Onion);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+            Recipe.FoodList.Add(Core.Enums.Foods.Meat);
             //Recipe.FoodList.Add(Core.Enums.Foods.Egg);
             //Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
             //Recipe.FoodList.Add(Core.Enums.Foods.Potato);

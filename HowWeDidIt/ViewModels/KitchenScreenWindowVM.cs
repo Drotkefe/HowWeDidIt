@@ -16,7 +16,14 @@ namespace HowWeDidIt.ViewModels
 
         // ingredients to IngredientsVM for better readability:
         public IngredientsVM Ingredients { get; }
-        public RecipeVM Recipe { get; }
+          
+        public RecipeVM Recipe
+        {
+            get; private set;
+        }
+
+
+
 
 
         public int GameScore
@@ -164,21 +171,24 @@ namespace HowWeDidIt.ViewModels
             RestoreHealthPointsCommand = new RelayCommand(() =>
             {
                 kitchenService.RestoreHeathPoits(GM);
+                Recipe = new RecipeVM(model.Recipe);
                 OnPropertyChanged(nameof(Vitality));
                 OnPropertyChanged(nameof(Recipe));
             }, true);
 
+
             SellProductCommand = new RelayCommand(() =>
             {
                 kitchenService.SellProduct(GM);
+                Recipe = new RecipeVM(model.Recipe);
                 OnPropertyChanged(nameof(Money));
                 OnPropertyChanged(nameof(Recipe));
 
 
-                OnPropertyChanged(nameof(Recipe.FoodList));
-                OnPropertyChanged(nameof(Recipe.Name));
-                OnPropertyChanged(nameof(Recipe.MoneyValue));
-                OnPropertyChanged(nameof(Recipe.VitalityValue));
+                //OnPropertyChanged(nameof(Recipe.FoodList));
+                //OnPropertyChanged(nameof(Recipe.Name));
+                //OnPropertyChanged(nameof(Recipe.MoneyValue));
+                //OnPropertyChanged(nameof(Recipe.VitalityValue));
 
             }, true);
 
@@ -190,10 +200,11 @@ namespace HowWeDidIt.ViewModels
                 OnPropertyChanged(nameof(GM.GarbageCapacity));
                 OnPropertyChanged(nameof(GM.GameScore));
 
+
                 OnPropertyChanged(nameof(Recipe));
 
-                //OnPropertyChanged(nameof(GM.Recipe.CurrentFoodIndex));
-                //OnPropertyChanged(nameof(Recipe.CurrentFood));
+     
+                OnPropertyChanged(nameof(Recipe.CurrentFood));
                 //OnPropertyChanged(nameof(Recipe.FoodList));
                 //OnPropertyChanged(nameof(GM.Recipe));
 

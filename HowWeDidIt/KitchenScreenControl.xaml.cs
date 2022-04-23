@@ -158,6 +158,16 @@ namespace HowWeDidIt
             }
         }
 
+        private void OnionEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Onion.ToString());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
 
 
 
