@@ -12,7 +12,8 @@ namespace HowWeDidIt.BusinessLogic
     public class KitchenService : IKitchenService
     {
         readonly IMessenger messenger;
-        Random random = new Random();
+        //Random random = new Random();
+        RandomGenerator generator = new RandomGenerator();
 
         public KitchenService(IMessenger messenger)
         {
@@ -72,10 +73,10 @@ namespace HowWeDidIt.BusinessLogic
             
             Recipe recipe = new Recipe();
             string[] names = new string[] { "Pizza", "HotDog", "Hamburger", "Gyros", "Something" };
-            recipe.Name = names[random.Next(names.Length)];
+            recipe.Name = names[generator.Random.Next(names.Length)];
 
             List<Foods> foods = new List<Foods>();
-            int cathegory = random.Next(10);
+            int cathegory = generator.Random.Next(10);
 
             //recipe.VitalityValue = 100000;
             //recipe.MoneyValue = 999999;
@@ -91,27 +92,29 @@ namespace HowWeDidIt.BusinessLogic
             {
                 recipe.VitalityValue = 10;
                 recipe.MoneyValue = 100;
-                for (int i = 0; i < random.Next(5, 12); i++)
+              
+                for (int i = 0; i < generator.Random.Next(5, 12); i++)
                 {
-                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                    foods.Add((Foods)generator.Random.Next(6));
                 }
+                ;
             }
             else if (cathegory < 8)
             {
                 recipe.VitalityValue = 20;
                 recipe.MoneyValue = 150;
-                for (int i = 0; i < random.Next(10, 15); i++)
+                for (int i = 0; i < generator.Random.Next(10, 15); i++)
                 {
-                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                    foods.Add((Foods)generator.Random.Next(6));   // not working: sizeof(Foods)) it give 4 instead of 6
                 }
             }
             else
             {
                 recipe.VitalityValue = 30;
                 recipe.MoneyValue = 200;
-                for (int i = 0; i < random.Next(13, 17); i++)
+                for (int i = 0; i < generator.Random.Next(13, 17); i++)
                 {
-                    foods.Add((Foods)random.Next(sizeof(Foods)));
+                    foods.Add((Foods)generator.Random.Next(sizeof(Foods)));
                 }
             }
 

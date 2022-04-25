@@ -9,9 +9,69 @@
              d:DesignHeight="450" d:DesignWidth="800" 
              Cursor="Hand" Icon="/Images/Kitchen/meat.png" ShowInTaskbar="False" ResizeMode="NoResize"
              >
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="Black"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF9F3343"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Black"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF9F3343"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="Black"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF9F3343"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="Black"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FF9F3343"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Black"/>
+        <Style x:Key="RoundedButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="7"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="100" Background="{TemplateBinding Background}" BorderThickness="15,10,15,20" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Window.DataContext>
         <ViewModels:KitchenScreenWindowVM />
     </Window.DataContext>
+    
+    
     <Grid>
 
         <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill" Opacity="0.80" />
@@ -221,12 +281,15 @@
 
 
 
-            <Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606" AllowDrop="True" Drop="Button_Drop" >
+            <!--Button Grid.Column="2" Grid.Row="3" Margin="10,10,10,2" BorderThickness="15,10,15,20" Background="#FF1F0606" AllowDrop="True" Drop="Button_Drop" >
                 <Button.Resources>
                     <Style TargetType="Border" >
                         <Setter Property="CornerRadius" Value="300"/>
                     </Style>
                 </Button.Resources>
+            </Button-->
+
+            <Button Style="{DynamicResource RoundedButtonStyle1}"  Margin="10,10,10,2" Grid.Column="2" Grid.Row="3" AllowDrop="True" Drop="Button_Drop" >
             </Button>
 
             <Image Grid.Column="2" Grid.Row="4" gif:ImageBehavior.AnimatedSource="Images/GIF/fire.gif" Stretch="Fill"></Image>
