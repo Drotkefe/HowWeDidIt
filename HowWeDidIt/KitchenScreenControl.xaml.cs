@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace HowWeDidIt
 {
@@ -24,77 +25,93 @@ namespace HowWeDidIt
     /// </summary>
     public partial class KitchenScreenWindow : Window
     {
+
+        
+
         public KitchenScreenWindowVM VM { get; set; }
+
+
+        DispatcherTimer timer;
 
         public KitchenScreenWindow(IGameModel gameModel)
         {
             InitializeComponent();
 
 
+      
+
             VM = new KitchenScreenWindowVM(gameModel);
             DataContext = VM;
 
-
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
 
-        private void OnionButton_MouseMove(object sender, MouseEventArgs e) // TESTER BUTTON
+        private void OnionEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button OnionButton)
+            if (sender is Ellipse onionEllipse)
             {
-                if (true)   // <----------------------------  e.LeftButton == MouseButtonState.Pressed  // MIÉRT NEM LÉP BELE?????
+                if (e.LeftButton == MouseButtonState.Pressed)
                 {
-                DragDrop.DoDragDrop(OnionButton, Foods.Onion.ToString() , DragDropEffects.Copy);
-                }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {                 
-                VM.UpgradeStorageCommand.Execute(Foods.Onion.ToString());
+                    //MessageBox.Show("The Left Mouse Button is pressed"); //TESZT
+
+                    DragDrop.DoDragDrop(onionEllipse, Foods.Onion.ToString(), DragDropEffects.Copy);
                 }
             }
 
         }
-
-
-        private void CarrotButton_MouseMove(object sender, MouseEventArgs e)
+        private void CarrotEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button CarrotButton/* && e.LeftButton == MouseButtonState.Pressed*/)
+            if (sender is Ellipse carrotEllipse)
             {
-                DragDrop.DoDragDrop(CarrotButton, Foods.Carrot.ToString(), DragDropEffects.Copy);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    DragDrop.DoDragDrop(carrotEllipse, Foods.Carrot.ToString(), DragDropEffects.Copy);
+                }
             }
         }
-
-
-
-        private void PotatoButton_MouseMove(object sender, MouseEventArgs e)
+        private void PotatoEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button PotatoButton/* && e.LeftButton == MouseButtonState.Pressed*/)
+            if (sender is Ellipse potatoEllipse)
             {
-                DragDrop.DoDragDrop(PotatoButton, Foods.Potato.ToString(), DragDropEffects.Copy);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    DragDrop.DoDragDrop(potatoEllipse, Foods.Potato.ToString(), DragDropEffects.Copy);
+                }
             }
         }
-
-        private void UraniumButton_MouseMove(object sender, MouseEventArgs e)
+        private void UraniumEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button UraniumButton/* && e.LeftButton == MouseButtonState.Pressed*/)
+            if (sender is Ellipse uraniumEllipse)
             {
-                DragDrop.DoDragDrop(UraniumButton, Foods.Uranium.ToString(), DragDropEffects.Copy);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    DragDrop.DoDragDrop(uraniumEllipse, Foods.Uranium.ToString(), DragDropEffects.Copy);
+                }
             }
         }
-
-        private void MeatButton_MouseMove(object sender, MouseEventArgs e)
+        private void MeatEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button MeatButton/* && e.LeftButton == MouseButtonState.Pressed*/)
+            if (sender is Ellipse meatEllipse)
             {
-                DragDrop.DoDragDrop(MeatButton, Foods.Meat.ToString(), DragDropEffects.Copy);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    DragDrop.DoDragDrop(meatEllipse, Foods.Meat.ToString(), DragDropEffects.Copy);
+                }
             }
         }
-        private void EggButton_MouseMove(object sender, MouseEventArgs e)
+        private void EggEllipse_MouseMove(object sender, MouseEventArgs e)
         {
-            if (sender is Button EggButton/* && e.LeftButton == MouseButtonState.Pressed*/)
+            if (sender is Ellipse eggEllipse)
             {
-                DragDrop.DoDragDrop(EggButton, Foods.Egg.ToString(), DragDropEffects.Copy);
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    DragDrop.DoDragDrop(eggEllipse, Foods.Egg.ToString(), DragDropEffects.Copy);
+                }
             }
         }
-
 
         private void Button_Drop(object sender, DragEventArgs e)
         {
@@ -102,63 +119,71 @@ namespace HowWeDidIt
             {
                 if (e.Data.GetDataPresent(DataFormats.StringFormat))
                 {
-                    //Foods stringFrimDrop = (Foods)Enum.Parse(typeof(Foods), (string)e.Data.GetData(DataFormats.StringFormat)); // if i would like to send enum instead of string
+                    //// if i would like to send enum instead of string:::
+                    //Foods stringFrimDrop = (Foods)Enum.Parse(typeof(Foods), (string)e.Data.GetData(DataFormats.StringFormat)); 
+
                     VM.FoodToPotCommand.Execute(e.Data.GetData(DataFormats.StringFormat));
                 }
             }
         }
 
-        private void GarbageButton_MouseMove(object sender, MouseEventArgs e)
+
+
+        private void OnionEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is Button EggButton/* && e.RightButton == MouseButtonState.Pressed*/)
-            {
-                VM.UpgradeStorageCommand.Execute("Garbage");
-            }
+            VM.UpgradeStorageCommand.Execute(Foods.Onion.ToString());
+        }
+        private void CarrotEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Carrot.ToString());
+        }
+        private void PotatoEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Potato.ToString());
+        }
+        private void UraniumEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Uranium.ToString());
+        }
+        private void MeatEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Meat.ToString());
+        }
+        private void EggEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Egg.ToString());
+        }
+        private void GarbageButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //if (sender is Button garbage)
+            //{
+            //    if (e.RightButton == MouseButtonState.Pressed)
+            //    {
+                    VM.UpgradeStorageCommand.Execute("Garbage"); // Send "Garbage" string to logic
+                //}
+            //}
         }
 
 
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //GameScreen screen = new GameScreen(gameModel);
+
+            GameScreen screen = new GameScreen();
+            screen.Show();
+            timer.Stop();
+            timer.Tick -= timer_Tick;
+            Close();
+
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            VM.Vitality--;
+        }
 
 
-
-
-        //private void RightClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
-        //    string typeOfCapacity = default;
-
-        //    if (sender is Button button && e.RightButton == MouseButtonState.Pressed)
-        //    {
-
-        //        if (button.ToString() == "Garbage" )
-        //        {
-        //            ;
-        //        }
-
-
-        //    }
-
-        //    if (sender is Button GarbageButton/* && e.LeftButton == MouseButtonState.Pressed*/)
-        //    {
-        //        typeOfCapacity = "Garbage";
-        //    }
-
-        //    VM.UpgradeStorageCommand.Execute(typeOfCapacity);
-
-        //    //vm.SelectEntryCommand.Execute(null);
-        //}
-
-
-
-
-
-        //private void Button_Drop(object sender, DragEventArgs e)
-        //{
-        //    VM.Ingredients.OnionCount++;
-        //}
-
-        //private void Button_Click(object sender, RoutedEventArgs e) //TODO: delete
-        //{
-        //    VM.Ingredients.OnionCount++; 
-        //}
     }
 }
