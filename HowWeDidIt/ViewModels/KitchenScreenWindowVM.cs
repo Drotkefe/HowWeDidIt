@@ -13,18 +13,8 @@ namespace HowWeDidIt.ViewModels
     {
 
         private IGameModel GM { get; }
-
-        // ingredients to IngredientsVM for better readability:
-        public IngredientsVM Ingredients { get; }
-          
-        public RecipeVM Recipe
-        {
-            get; private set;
-        }
-
-
-
-
+        public IngredientsVM Ingredients { get; } // ingredientsVM property to IngredientsVM for better readability
+        public RecipeVM Recipe { get; private set; }
 
         public int GameScore
         {
@@ -34,7 +24,6 @@ namespace HowWeDidIt.ViewModels
                 SetProperty(GM.GameScore, value, GM, (gm, val) => gm.GameScore = val);
             }
         }
-
         public int Vitality
         {
             get { return GM?.Vitality ?? 0; }
@@ -43,7 +32,6 @@ namespace HowWeDidIt.ViewModels
                 SetProperty(GM.Vitality, value, GM, (gm, val) => gm.Vitality = val);
             }
         }
-
         public int Money
         {
             get { return GM?.Money ?? 0; }
@@ -52,7 +40,6 @@ namespace HowWeDidIt.ViewModels
                 SetProperty(GM.Money, value, GM, (gm, val) => gm.Money = val);
             }
         }
-
         public int GarbageCount
         {
             get { return GM?.GarbageCount ?? 0; }
@@ -61,7 +48,6 @@ namespace HowWeDidIt.ViewModels
                 SetProperty(GM.GarbageCount, value, GM, (gm, val) => gm.GarbageCount = val);
             }
         }
-
         public int GarbageCapacity
         {
             get { return GM?.GarbageCapacity ?? 0; }
@@ -77,7 +63,6 @@ namespace HowWeDidIt.ViewModels
         public ICommand RestoreHealthPointsCommand { get; private set; }
         public ICommand SellProductCommand { get; set; }
         public ICommand FoodToPotCommand { get; set; }
-
         public ICommand UpgradeStorageCommand { get; set; }
 
 
@@ -95,56 +80,51 @@ namespace HowWeDidIt.ViewModels
         //    //        1,                          //vitalityValue
         //    //        100),                       //moneyValue
 
-            //    //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
-            //    //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
-            //    //    GameScore = 1234567890,
-            //    //    GarbageCapacity = 10,
-            //    //    GarbageCount = 0,
-            //    //    Money = 30,
-            //    //    Vitality = 70
-            //    //};
+        //    //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
+        //    //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
+        //    //    GameScore = 1234567890,
+        //    //    GarbageCapacity = 10,
+        //    //    GarbageCount = 0,
+        //    //    Money = 30,
+        //    //    Vitality = 70
+        //    //};
 
-            //    //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
-            //    //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
-            //    //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
-            //    //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
-            //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
-            //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
+        //    //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
+        //    //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
+        //    //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
+        //    //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
+        //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
+        //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
 
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Onion);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Meat);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Egg);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Onion);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Meat);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Egg);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Potato);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
+        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
 
-            //    //ingredients = new IngredientsVM()
-            //    //{
-            //    //    CarrotCapacity = 6,
-            //    //    OnionCapacity = 6,
-            //    //    PotatoCapacity = 6,
-            //    //    EggCapacity = 8,
-            //    //    MeatCapacity = 8,
-            //    //    UraniumCapacity = 8,
+        //    //ingredients = new IngredientsVM()
+        //    //{
+        //    //    CarrotCapacity = 6,
+        //    //    OnionCapacity = 6,
+        //    //    PotatoCapacity = 6,
+        //    //    EggCapacity = 8,
+        //    //    MeatCapacity = 8,
+        //    //    UraniumCapacity = 8,
 
-            //    //    CarrotCount = 2,
-            //    //    OnionCount = 2,
-            //    //    PotatoCount = 2,
-            //    //    EggCount = 2,
-            //    //    MeatCount = 2,
-            //    //    UraniumCount = 2
-            //    //};
-            //}
+        //    //    CarrotCount = 2,
+        //    //    OnionCount = 2,
+        //    //    PotatoCount = 2,
+        //    //    EggCount = 2,
+        //    //    MeatCount = 2,
+        //    //    UraniumCount = 2
+        //    //};
+        //}
 
-        public KitchenScreenWindowVM()
-        {
-
-        }
-
+        public KitchenScreenWindowVM() { }
         public KitchenScreenWindowVM(IGameModel model)
         {
-
             this.GM = model;
             Ingredients = new IngredientsVM(model.CollectedFoods, model.FoodCapacities)
             {
@@ -196,6 +176,9 @@ namespace HowWeDidIt.ViewModels
             FoodToPotCommand = new RelayCommand<string>((string typeOfFood) =>
             {
                 kitchenService.FoodToPot(typeOfFood, GM);
+                Recipe = new RecipeVM(model.Recipe);
+                //Recipe.Cooked = model.Recipe.Cooked;
+                ;
                 OnPropertyChanged(nameof(Ingredients));
                 OnPropertyChanged(nameof(GM.GarbageCount));
                 OnPropertyChanged(nameof(GM.GameScore));
@@ -212,7 +195,7 @@ namespace HowWeDidIt.ViewModels
 
 
 
-     
+
                 //OnPropertyChanged(nameof(Recipe.FoodList));
                 //OnPropertyChanged(nameof(GM.Recipe));
 
@@ -221,15 +204,15 @@ namespace HowWeDidIt.ViewModels
             }, true);
 
 
-            UpgradeStorageCommand = new RelayCommand<string> ((string typeOfCapacity) =>
-            {
-                kitchenService.UpgradeStorage(typeOfCapacity, GM);
-                OnPropertyChanged(nameof(Ingredients));
-                OnPropertyChanged(nameof(GM.GarbageCapacity));
-                OnPropertyChanged(nameof(GM.Money));
+            UpgradeStorageCommand = new RelayCommand<string>((string typeOfCapacity) =>
+           {
+               kitchenService.UpgradeStorage(typeOfCapacity, GM);
+               OnPropertyChanged(nameof(Ingredients));
+               OnPropertyChanged(nameof(GM.GarbageCapacity));
+               OnPropertyChanged(nameof(GM.Money));
 
-                
-            }, true);
+
+           }, true);
         }
 
     }

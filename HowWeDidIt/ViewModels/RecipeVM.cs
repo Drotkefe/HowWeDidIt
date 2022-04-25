@@ -90,10 +90,10 @@ namespace HowWeDidIt.ViewModels
         public bool Cooked  // NECESSARY HERE?
         {
             get { return recipe?.Cooked ?? false; }
-            //set
-            //{
-            //    SetProperty(recipe.Cooked, value, recipe, (rec, val) => rec.Cooked = val);
-            //}
+            set
+            {
+                SetProperty(recipe.Cooked, value, recipe, (rec, val) => rec.Cooked = val);
+            }
         }
 
 

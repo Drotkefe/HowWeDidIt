@@ -33,6 +33,7 @@ namespace HowWeDidIt.BusinessLogic
                     if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 3;
                     else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 2;
                     else if (!caughtFood.Equals(Foods.Uranium)) gameModel.GarbageCount += 1; // if NOT uranium
+                    if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
 
                     gameModel.CollectedFoods[caughtFood]--;
 
@@ -55,7 +56,8 @@ namespace HowWeDidIt.BusinessLogic
                         if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 4;
                         else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 3;
                         else gameModel.GarbageCount += 2;
-
+                        if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
+  
                         if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
                     }
                 }
