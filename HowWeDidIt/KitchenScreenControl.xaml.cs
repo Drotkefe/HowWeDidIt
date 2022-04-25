@@ -1,5 +1,4 @@
 ﻿using HowWeDidIt.Core.Enums;
-using HowWeDidIt.Core.Models;
 using HowWeDidIt.Models;
 using HowWeDidIt.ViewModels;
 using System;
