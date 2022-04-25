@@ -61,12 +61,12 @@ namespace HowWeDidIt.Models
             FoodCapacities.Add(Foods.Uranium, 2);
 
             CollectedFoods = new Dictionary<Foods, int>();
-            CollectedFoods.Add(Foods.Carrot, 1);
-            CollectedFoods.Add(Foods.Egg, 1);
-            CollectedFoods.Add(Foods.Meat, 1);
-            CollectedFoods.Add(Foods.Onion, 1);
-            CollectedFoods.Add(Foods.Potato, 1);
-            CollectedFoods.Add(Foods.Uranium, 1);
+            CollectedFoods.Add(Foods.Carrot, 0);
+            CollectedFoods.Add(Foods.Egg, 0);
+            CollectedFoods.Add(Foods.Meat, 0);
+            CollectedFoods.Add(Foods.Onion, 0);
+            CollectedFoods.Add(Foods.Potato, 0);
+            CollectedFoods.Add(Foods.Uranium, 0);
 
             GarbageCount = 0;
             GarbageCapacity = 10;

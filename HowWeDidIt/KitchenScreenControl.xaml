@@ -66,12 +66,12 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Window.DataContext>
         <ViewModels:KitchenScreenWindowVM />
     </Window.DataContext>
-    
-    
+
+
     <Grid>
 
         <Image Source=".\Images\Kitchen\CaveWall.png" Stretch="UniformToFill" Opacity="0.80" />
