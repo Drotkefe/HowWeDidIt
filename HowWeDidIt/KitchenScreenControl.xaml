@@ -145,31 +145,31 @@
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Ellipse x:Name="CarrotEllipse"  MouseMove="CarrotEllipse_MouseMove" Grid.Column="1" Grid.Row="2" Stroke="Orange" StrokeThickness="2" Margin="5">
+            <Ellipse x:Name="CarrotEllipse"  MouseMove="CarrotEllipse_MouseMove" Grid.Column="1" Grid.Row="2" Stroke="Orange" StrokeThickness="2" Margin="5" MouseRightButtonDown="CarrotEllipse_MouseRightButtonDown" >
                 <Ellipse.Fill>
                     <ImageBrush ImageSource=".\Images\Kitchen\carrot.png" Stretch="Fill"></ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Ellipse x:Name="PotatoEllipse"  MouseMove="PotatoEllipse_MouseMove" Grid.Column="1" Grid.Row="3" Stroke="Chocolate" StrokeThickness="2" Margin="5">
+            <Ellipse x:Name="PotatoEllipse"  MouseMove="PotatoEllipse_MouseMove" Grid.Column="1" Grid.Row="3" Stroke="Chocolate" StrokeThickness="2" Margin="5" MouseRightButtonDown="PotatoEllipse_MouseRightButtonDown" >
                 <Ellipse.Fill>
                     <ImageBrush ImageSource=".\Images\Kitchen\potato.png" Stretch="Fill"></ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Ellipse x:Name="UraniumEllipse"  MouseMove="UraniumEllipse_MouseMove" Grid.Column="1" Grid.Row="4" Stroke="LawnGreen" StrokeThickness="2" Margin="5">
+            <Ellipse x:Name="UraniumEllipse"  MouseMove="UraniumEllipse_MouseMove" Grid.Column="1" Grid.Row="4" Stroke="LawnGreen" StrokeThickness="2" Margin="5" MouseRightButtonDown="UraniumEllipse_MouseRightButtonDown">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource=".\Images\Kitchen\uranium.png" Stretch="Fill"></ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Ellipse x:Name="MeatEllipse"  MouseMove="MeatEllipse_MouseMove" Grid.Column="3" Grid.Row="2" Stroke="white" StrokeThickness="2" Margin="5">
+            <Ellipse x:Name="MeatEllipse"  MouseMove="MeatEllipse_MouseMove" Grid.Column="3" Grid.Row="2" Stroke="white" StrokeThickness="2" Margin="5" MouseRightButtonDown="MeatEllipse_MouseRightButtonDown" >
                 <Ellipse.Fill>
                     <ImageBrush ImageSource=".\Images\Kitchen\meat.png" ></ImageBrush>
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Ellipse x:Name="EggEllipse"  MouseMove="EggEllipse_MouseMove" Grid.Column="3" Grid.Row="3" Stroke="Gold" StrokeThickness="2" Margin="5">
+            <Ellipse x:Name="EggEllipse"  MouseMove="EggEllipse_MouseMove" Grid.Column="3" Grid.Row="3" Stroke="Gold" StrokeThickness="2" Margin="5" MouseRightButtonDown="EggEllipse_MouseRightButtonDown" >
                 <Ellipse.Fill>
                     <ImageBrush ImageSource=".\Images\Kitchen\egg.png" ></ImageBrush>
                 </Ellipse.Fill>
