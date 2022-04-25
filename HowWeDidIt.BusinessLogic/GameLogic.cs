@@ -18,28 +18,28 @@ namespace HowWeDidIt.BusinessLogic
 
         public event EventHandler CallRefresh;
 
-        public GameLogic(IGameModel gameModel,IGameSettings gameSettings)
+        public GameLogic(IGameModel gameModel, IGameSettings gameSettings)
         {
-           
+
             this.gameSettings = gameSettings;
             this.GameModel = gameModel;
-            
+
 
         }
 
         public bool Move(double dx, double dy)
         {
             bool entrance = false;
-            if(dx == -14)
+            if (dx == -14)
             {
                 GameModel.CaveMan.Orientation = Core.Enums.Orientations.Left;
             }
-            if(dx== 14)
+            if (dx == 14)
             {
-                GameModel.CaveMan.Orientation=Core.Enums.Orientations.Right;
+                GameModel.CaveMan.Orientation = Core.Enums.Orientations.Right;
             }
             var newX = GameModel.CaveMan.X + dx;
-            if (newX > 80 && newX < GameModel.GameAreaWidth-10)
+            if (newX > 80 && newX < GameModel.GameAreaWidth - 10)
             {
                 GameModel.CaveMan.X = newX;
                 if (newX <= 100)//entering cave
@@ -62,39 +62,39 @@ namespace HowWeDidIt.BusinessLogic
             {
                 foodItem.Y += gameSettings.FoodItemYVelocity * rnd.Next(10, 31) / 10;
 
-                if (foodItem.Y >= 340 )
-                {                    
+                if (foodItem.Y >= 340)
+                {
                     foodItem.X = rnd.Next(GameModel.CollectionAreaBeginning, GameModel.CollectionAreaEnd);
                     foodItem.Y = 0;
-                    foodItem.Name = (Core.Enums.Foods)rnd.Next(0,6);
+                    foodItem.Name = (Core.Enums.Foods)rnd.Next(0, 6);
                 }
             }
         }
 
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
-            if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
+            //if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
+            //{
+            //    GameModel.GarbageCount++;
+            //}
+            //else // it contained in the recipe
+            //{
+            if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
             {
-                GameModel.GarbageCount++;
+                GameModel.CollectedFoods.Add(foodItem.Name, 1);
             }
-            else // it contained in the recipe
+            else // if on the list
             {
-                if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
+                if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
                 {
-                    GameModel.CollectedFoods.Add(foodItem.Name, 1);
+                    GameModel.CollectedFoods[foodItem.Name]++;
                 }
-                else // if on the list
-                {
-                    if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
-                    {
-                        GameModel.CollectedFoods[foodItem.Name]++;
-                    }
-                    //else // if no more is needed
-                    //{
-                    //    GameModel.GarbageCount++;
-                    //}
-                }
-            }            
-        }        
+                //else // if no more is needed
+                //{
+                //    GameModel.GarbageCount++;
+                //}
+            }
+            //}            
+        }
     }
 }
