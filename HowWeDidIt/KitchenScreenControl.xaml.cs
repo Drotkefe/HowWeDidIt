@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace HowWeDidIt
 {
@@ -24,17 +25,28 @@ namespace HowWeDidIt
     /// </summary>
     public partial class KitchenScreenWindow : Window
     {
+
+        
+
         public KitchenScreenWindowVM VM { get; set; }
+
+
+        DispatcherTimer timer;
 
         public KitchenScreenWindow(IGameModel gameModel)
         {
             InitializeComponent();
 
 
+      
+
             VM = new KitchenScreenWindowVM(gameModel);
             DataContext = VM;
 
-
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
 
         private void OnionEllipse_MouseMove(object sender, MouseEventArgs e)
@@ -157,12 +169,21 @@ namespace HowWeDidIt
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             
+            //GameScreen screen = new GameScreen(gameModel);
+
             GameScreen screen = new GameScreen();
             screen.Show();
+            timer.Stop();
+            timer.Tick -= timer_Tick;
             Close();
 
         }
 
-        
+        void timer_Tick(object sender, EventArgs e)
+        {
+            VM.Vitality--;
+        }
+
+
     }
 }

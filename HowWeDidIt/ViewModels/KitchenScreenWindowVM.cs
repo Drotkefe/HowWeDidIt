@@ -65,63 +65,6 @@ namespace HowWeDidIt.ViewModels
         public ICommand FoodToPotCommand { get; set; }
         public ICommand UpgradeStorageCommand { get; set; }
 
-
-        //public KitchenScreenWindowVM()
-        //{
-        //    //teszthez majd használható:
-        //    //this.gm = new KitchenModel()
-        //    //{
-        //    //    Recipe = new Recipe(
-        //    //        "Pizza",                    //name
-        //    //        new List<Foods>(),       //foodItems
-        //    //        TimeSpan.FromSeconds(180),  //cooingTime
-        //    //        false,                      //Iscooced
-        //    //        50,                         //recipeScoere
-        //    //        1,                          //vitalityValue
-        //    //        100),                       //moneyValue
-
-        //    //    CollectedFoods = new Dictionary<Core.Enums.Foods, int>(),
-        //    //    FoodCapacities = new Dictionary<Core.Enums.Foods, int>(),
-        //    //    GameScore = 1234567890,
-        //    //    GarbageCapacity = 10,
-        //    //    GarbageCount = 0,
-        //    //    Money = 30,
-        //    //    Vitality = 70
-        //    //};
-
-        //    //CookingFoodItem onion = new CookingFoodItem(Core.Enums.Foods.Onion);
-        //    //CookingFoodItem carrot = new CookingFoodItem(Core.Enums.Foods.Carrot);
-        //    //CookingFoodItem potato = new CookingFoodItem(Core.Enums.Foods.Potato);
-        //    //CookingFoodItem meat = new CookingFoodItem(Core.Enums.Foods.Meat);
-        //    //CookingFoodItem egg = new CookingFoodItem(Core.Enums.Foods.Egg);
-        //    //CookingFoodItem uranium = new CookingFoodItem(Core.Enums.Foods.Uranium);
-
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Onion);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Meat);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Egg);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Potato);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-        //    //gm.Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-
-        //    //ingredients = new IngredientsVM()
-        //    //{
-        //    //    CarrotCapacity = 6,
-        //    //    OnionCapacity = 6,
-        //    //    PotatoCapacity = 6,
-        //    //    EggCapacity = 8,
-        //    //    MeatCapacity = 8,
-        //    //    UraniumCapacity = 8,
-
-        //    //    CarrotCount = 2,
-        //    //    OnionCount = 2,
-        //    //    PotatoCount = 2,
-        //    //    EggCount = 2,
-        //    //    MeatCount = 2,
-        //    //    UraniumCount = 2
-        //    //};
-        //}
-
         public KitchenScreenWindowVM() { }
         public KitchenScreenWindowVM(IGameModel model)
         {
