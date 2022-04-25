@@ -89,10 +89,10 @@ namespace HowWeDidIt.BusinessLogic
                     {
                         GameModel.CollectedFoods[foodItem.Name]++;
                     }
-                    else // if no more is needed
-                    {
-                        GameModel.GarbageCount++;
-                    }
+                    //else // if no more is needed
+                    //{
+                    //    GameModel.GarbageCount++;
+                    //}
                 }
             }            
         }        
