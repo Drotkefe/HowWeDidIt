@@ -142,7 +142,7 @@ namespace HowWeDidIt.GameRenderer
         {
             string info = "";
 
-            info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
+           // info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
 
             lock (lockObject)
             {
