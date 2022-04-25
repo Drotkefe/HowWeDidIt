@@ -181,7 +181,7 @@ namespace HowWeDidIt
 
         void timer_Tick(object sender, EventArgs e)
         {
-            VM.Vitality--;
+            VM.DecreaseHealt();
         }
 
 

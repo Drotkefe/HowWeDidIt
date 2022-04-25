@@ -5,7 +5,9 @@ using GalaSoft.MvvmLight.Command;
 using HowWeDidIt.BusinessLogic;
 using HowWeDidIt.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace HowWeDidIt.ViewModels
 {
@@ -15,6 +17,8 @@ namespace HowWeDidIt.ViewModels
         private IGameModel GM { get; }
         public IngredientsVM Ingredients { get; } // ingredientsVM property to IngredientsVM for better readability
         public RecipeVM Recipe { get; private set; }
+
+
 
         public int GameScore
         {
@@ -113,6 +117,9 @@ namespace HowWeDidIt.ViewModels
                 //OnPropertyChanged(nameof(Recipe.MoneyValue));
                 //OnPropertyChanged(nameof(Recipe.VitalityValue));
 
+
+  
+
             }, true);
 
 
@@ -153,9 +160,15 @@ namespace HowWeDidIt.ViewModels
                OnPropertyChanged(nameof(Ingredients));
                OnPropertyChanged(nameof(GM.GarbageCapacity));
                OnPropertyChanged(nameof(GM.Money));
-
+               
 
            }, true);
+        }
+
+
+        public void DecreaseHealt()
+        {
+            Vitality--;
         }
 
     }
