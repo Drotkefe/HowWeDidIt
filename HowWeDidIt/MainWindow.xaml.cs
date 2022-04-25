@@ -52,7 +52,6 @@ namespace HowWeDidIt
                 load_game_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(1800)));
                 leaderboard_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(2250)));
                 exit_button.BeginAnimation(WidthProperty, new DoubleAnimation(0, 450, TimeSpan.FromMilliseconds(3375)));
-
             };
             
         }

@@ -156,8 +156,13 @@ namespace HowWeDidIt
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            GameScreen screen = new GameScreen();
+            screen.Show();
             Close();
+
         }
 
+        
     }
 }
