@@ -22,7 +22,10 @@ namespace HowWeDidIt.BusinessLogic
         {
            
             this.gameSettings = gameSettings;
+            //if(nincs mentés)
             this.GameModel = gameModel;
+            //else
+            //game model uj ctora
             
 
         }
