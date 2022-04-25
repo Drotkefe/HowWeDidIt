@@ -197,14 +197,22 @@ namespace HowWeDidIt.ViewModels
             {
                 kitchenService.FoodToPot(typeOfFood, GM);
                 OnPropertyChanged(nameof(Ingredients));
-                OnPropertyChanged(nameof(GM.GarbageCapacity));
+                OnPropertyChanged(nameof(GM.GarbageCount));
                 OnPropertyChanged(nameof(GM.GameScore));
-
-
                 OnPropertyChanged(nameof(Recipe));
+                OnPropertyChanged(nameof(Recipe.CurrentFood));
+
+
+
+
+
+                OnPropertyChanged(nameof(Recipe.Cooked)); //????
+                OnPropertyChanged(nameof(GM.Recipe));
+
+
+
 
      
-                OnPropertyChanged(nameof(Recipe.CurrentFood));
                 //OnPropertyChanged(nameof(Recipe.FoodList));
                 //OnPropertyChanged(nameof(GM.Recipe));
 

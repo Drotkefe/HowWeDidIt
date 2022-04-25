@@ -25,7 +25,7 @@ namespace HowWeDidIt.BusinessLogic
 
             Foods caughtFood = (Foods)Enum.Parse(typeof(Foods), typeOfFood);
 
-            if (/*gameModel.GarbageCount >= gameModel.GarbageCapacity*/ false) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
+            if (/*gameModel.GarbageCount >= gameModel.GarbageCapacity*/ false) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult"); // UNCOMMENT AND DELETE FALSE !!!!!!!
             else if (gameModel.CollectedFoods[caughtFood] > 0)
             {
                 if (!gameModel.Recipe.Cooked)

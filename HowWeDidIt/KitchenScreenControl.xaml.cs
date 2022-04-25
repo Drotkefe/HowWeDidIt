@@ -47,10 +47,6 @@ namespace HowWeDidIt
 
                     DragDrop.DoDragDrop(onionEllipse, Foods.Onion.ToString(), DragDropEffects.Copy);
                 }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Onion.ToString());
-                }
             }
 
         }
@@ -62,10 +58,6 @@ namespace HowWeDidIt
                 {
                     DragDrop.DoDragDrop(carrotEllipse, Foods.Carrot.ToString(), DragDropEffects.Copy);
                 }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Carrot.ToString());
-                }
             }
         }
         private void PotatoEllipse_MouseMove(object sender, MouseEventArgs e)
@@ -75,10 +67,6 @@ namespace HowWeDidIt
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
                     DragDrop.DoDragDrop(potatoEllipse, Foods.Potato.ToString(), DragDropEffects.Copy);
-                }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Potato.ToString());
                 }
             }
         }
@@ -90,10 +78,6 @@ namespace HowWeDidIt
                 {
                     DragDrop.DoDragDrop(uraniumEllipse, Foods.Uranium.ToString(), DragDropEffects.Copy);
                 }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Uranium.ToString());
-                }
             }
         }
         private void MeatEllipse_MouseMove(object sender, MouseEventArgs e)
@@ -104,10 +88,6 @@ namespace HowWeDidIt
                 {
                     DragDrop.DoDragDrop(meatEllipse, Foods.Meat.ToString(), DragDropEffects.Copy);
                 }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Meat.ToString());
-                }
             }
         }
         private void EggEllipse_MouseMove(object sender, MouseEventArgs e)
@@ -117,10 +97,6 @@ namespace HowWeDidIt
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
                     DragDrop.DoDragDrop(eggEllipse, Foods.Egg.ToString(), DragDropEffects.Copy);
-                }
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute(Foods.Egg.ToString());
                 }
             }
         }
@@ -139,79 +115,49 @@ namespace HowWeDidIt
             }
         }
 
-        //private void GarbageButton_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    if (sender is Button EggButton/* && e.RightButton == MouseButtonState.Pressed*/)
-        //    {
-                
-        //    }
-        //}
 
-        private void GarbageButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (sender is Button garbage)
-            {
-                if (e.RightButton == MouseButtonState.Pressed)
-                {
-                    VM.UpgradeStorageCommand.Execute("Garbage"); // Send "Garbage" string to logic
-                }
-            }
-        }
 
         private void OnionEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             VM.UpgradeStorageCommand.Execute(Foods.Onion.ToString());
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CarrotEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            VM.UpgradeStorageCommand.Execute(Foods.Carrot.ToString());
+        }
+        private void PotatoEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Potato.ToString());
+        }
+        private void UraniumEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Uranium.ToString());
+        }
+        private void MeatEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Meat.ToString());
+        }
+        private void EggEllipse_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            VM.UpgradeStorageCommand.Execute(Foods.Egg.ToString());
+        }
+        private void GarbageButton_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //if (sender is Button garbage)
+            //{
+            //    if (e.RightButton == MouseButtonState.Pressed)
+            //    {
+                    VM.UpgradeStorageCommand.Execute("Garbage"); // Send "Garbage" string to logic
+                //}
+            //}
         }
 
 
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
 
-
-
-
-
-        //private void RightClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
-        //    string typeOfCapacity = default;
-
-        //    if (sender is Button button && e.RightButton == MouseButtonState.Pressed)
-        //    {
-
-        //        if (button.ToString() == "Garbage" )
-        //        {
-        //            ;
-        //        }
-
-
-        //    }
-
-        //    if (sender is Button GarbageButton/* && e.LeftButton == MouseButtonState.Pressed*/)
-        //    {
-        //        typeOfCapacity = "Garbage";
-        //    }
-
-        //    VM.UpgradeStorageCommand.Execute(typeOfCapacity);
-
-        //    //vm.SelectEntryCommand.Execute(null);
-        //}
-
-
-
-
-
-        //private void Button_Drop(object sender, DragEventArgs e)
-        //{
-        //    VM.Ingredients.OnionCount++;
-        //}
-
-        //private void Button_Click(object sender, RoutedEventArgs e) //TODO: delete
-        //{
-        //    VM.Ingredients.OnionCount++; 
-        //}
     }
 }
