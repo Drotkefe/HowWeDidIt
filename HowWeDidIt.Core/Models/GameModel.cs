@@ -15,12 +15,12 @@ namespace HowWeDidIt.Models
         public double GameAreaHeight { get; set; }
         public double GameAreaWidth { get; set; }
 
-        public MovingCaveMan CaveMan { get; private set; }
+        public MovingCaveMan CaveMan { get; set; }
         public Recipe Recipe { get; set; }
         public Dictionary<Foods, int> FoodCapacities { get; set; }
         public Dictionary<Foods, int> CollectedFoods { get; set; }
 
-        public List<MovingFoodItem> FoodItems { get; private set; }
+        public List<MovingFoodItem> FoodItems { get; set; }
         public int CollectionAreaBeginning { get; set; }
         public int CollectionAreaEnd { get; set; }
 
@@ -41,6 +41,15 @@ namespace HowWeDidIt.Models
             CollectionAreaEnd = (int)gameAreaWidth - 50;
 
             InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
+        }
+
+        public GameModel(double gameAreaWidth, double gameAreaHeight)
+        {
+            GameAreaWidth = gameAreaWidth;
+            GameAreaHeight = gameAreaHeight;
+
+            CollectionAreaBeginning = (int)gameAreaWidth / 4;
+            CollectionAreaEnd = (int)gameAreaWidth - 50;
         }
 
         private void InitDefaultValues(IGameSettings gameSettings, double gameAreaWidth, double gameAreaHeight)

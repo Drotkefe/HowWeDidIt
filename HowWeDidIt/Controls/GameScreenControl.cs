@@ -3,6 +3,7 @@ using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.GameRenderer;
 using HowWeDidIt.GameRenderer.Helpers;
 using HowWeDidIt.Models;
+using HowWeDidIt.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace HowWeDidIt.Controls
     public class GameScreenControl : FrameworkElement
     {
         IGameSettings gameSettings;
-        //IGameRepository gameRepository;
+        IGameRepository gameRepository;
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
@@ -39,8 +40,13 @@ namespace HowWeDidIt.Controls
             if (window != null) // Window loaded
             {
                 gameSettings = new GameSettings();
-                gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
-                gameLogic = new GameLogic(gameModel, gameSettings);
+                gameRepository = new GameRepository(ActualWidth,ActualHeight,gameSettings);
+
+                //itt lesz a varázslat
+                //gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
+                gameModel = gameRepository.GetGameModel();
+
+                gameLogic = new GameLogic(gameModel, gameSettings,gameRepository);
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
@@ -73,6 +79,7 @@ namespace HowWeDidIt.Controls
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             var entrance = false;
+            var window = Window.GetWindow(this);
             switch (e.Key)
             {
                 case Key.Left:
@@ -88,12 +95,16 @@ namespace HowWeDidIt.Controls
                     entrance = gameLogic.Move(gameSettings.CaveManInitXVelocity, 0);
                     break;
                 case Key.Down:
-                    new KitchenScreenWindow(gameModel).Show();
                     entrance = gameLogic.Move(0, 0);
                     if (entrance)
+                    {
                         new KitchenScreenWindow(gameModel).Show();
-                    var window = Window.GetWindow(this);
-                    window.Close();
+                        window.Hide();
+                    }
+                    break;
+                case Key.S:
+                    gameLogic.Save(gameModel);
+                    MessageBox.Show("Mentettünk");
                     break;
 
             }
