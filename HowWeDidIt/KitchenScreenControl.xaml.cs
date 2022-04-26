@@ -170,8 +170,8 @@ namespace HowWeDidIt
             
             //GameScreen screen = new GameScreen(gameModel);
 
-            GameScreen screen = new GameScreen();
-            screen.Show();
+            //GameScreen screen = new GameScreen();
+            //screen.Show();
             timer.Stop();
             timer.Tick -= timer_Tick;
             Close();

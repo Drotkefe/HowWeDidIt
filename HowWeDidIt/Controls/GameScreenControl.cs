@@ -42,10 +42,11 @@ namespace HowWeDidIt.Controls
                 gameSettings = new GameSettings();
                 gameRepository = new GameRepository(ActualWidth,ActualHeight,gameSettings);
 
-                //itt lesz a varázslat
-                //gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
-                gameModel = gameRepository.GetGameModel();
-
+                
+                gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
+               
+                //gameModel = gameRepository.GetGameModel();
+               
                 gameLogic = new GameLogic(gameModel, gameSettings,gameRepository);
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
@@ -99,7 +100,6 @@ namespace HowWeDidIt.Controls
                     if (entrance)
                     {
                         new KitchenScreenWindow(gameModel).Show();
-                        window.Hide();
                     }
                     break;
                 case Key.S:
