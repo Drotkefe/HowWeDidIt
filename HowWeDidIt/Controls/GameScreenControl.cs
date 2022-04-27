@@ -29,7 +29,6 @@ namespace HowWeDidIt.Controls
         public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
-            
         }
 
         private void HowWeDidIt_Controller_Loaded(object sender, RoutedEventArgs e)
@@ -40,14 +39,18 @@ namespace HowWeDidIt.Controls
             if (window != null) // Window loaded
             {
                 gameSettings = new GameSettings();
-                gameRepository = new GameRepository(ActualWidth,ActualHeight,gameSettings);
-
+                gameRepository = new GameRepository(ActualWidth, ActualHeight, gameSettings);
                 
-                gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
-               
-                //gameModel = gameRepository.GetGameModel();
-               
-                gameLogic = new GameLogic(gameModel, gameSettings,gameRepository);
+                if (gameRepository.GetGameModel() == null) // mentés nem létezik
+                {
+                   gameModel = new GameModel(ActualWidth, ActualHeight, gameSettings);
+                }
+                else
+                {
+                    gameModel = gameRepository.GetGameModel();
+                }
+
+                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository);
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
@@ -57,6 +60,13 @@ namespace HowWeDidIt.Controls
                 timer.Tick += Timer_Tick;
                 timer.Start();
             }
+            window.Closing += Window_Closing;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            gameLogic.Save(gameModel);
+            MessageBox.Show("Saved your current game state for later....");
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -102,10 +112,6 @@ namespace HowWeDidIt.Controls
                         new KitchenScreenWindow(gameModel).Show();
                     }
                     break;
-                case Key.S:
-                    gameLogic.Save(gameModel);
-                    MessageBox.Show("Mentettünk");
-                    break;
 
             }
             
@@ -122,5 +128,7 @@ namespace HowWeDidIt.Controls
                 gameRenderer.Display(drawingContext);
             }
         }
+
+
     }
 }

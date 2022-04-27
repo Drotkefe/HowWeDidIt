@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:HowWeDidIt.Controls"
         mc:Ignorable="d"
-        Title="GameScreen" Height="450" Width="800">
+        Title="GameScreen" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Controls:GameScreenControl x:Name="Control"></Controls:GameScreenControl>
 </Window>

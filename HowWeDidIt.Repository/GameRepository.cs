@@ -24,6 +24,11 @@ namespace HowWeDidIt.Repository
             Height = height;
         }
 
+        public GameRepository()
+        {
+
+        }
+
         public GameModel GetGameModel()
         {
             Random rnd = new Random();
@@ -31,6 +36,11 @@ namespace HowWeDidIt.Repository
             gameModel.CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
             gameModel.Recipe = new Recipe();
             List<string> lines = File.ReadAllLines("save.txt").ToList();
+            if (lines.Count == 1)
+            {
+                return null;
+            }
+
             gameModel.Vitality = int.Parse(lines[0]);
             gameModel.Money = int.Parse(lines[1]);
             gameModel.GameScore = int.Parse(lines[2]);
@@ -77,6 +87,11 @@ namespace HowWeDidIt.Repository
 
             return gameModel;
 
+        }
+
+        public void Reset_Save()
+        {
+            File.WriteAllText("save.txt", "nothing");
         }
 
         public void StoreGameModel(IGameModel gameModel)

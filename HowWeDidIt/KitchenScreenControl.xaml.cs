@@ -1,5 +1,6 @@
 ﻿using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Models;
+using HowWeDidIt.Repository;
 using HowWeDidIt.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace HowWeDidIt
     public partial class KitchenScreenWindow : Window
     {
 
-        
+        IGameRepository gameRepository = new GameRepository();
 
         public KitchenScreenWindowVM VM { get; set; }
 
@@ -35,7 +36,6 @@ namespace HowWeDidIt
         public KitchenScreenWindow(IGameModel gameModel)
         {
             InitializeComponent();
-
 
       
 
@@ -181,8 +181,16 @@ namespace HowWeDidIt
         void timer_Tick(object sender, EventArgs e)
         {
             VM.DecreaseHealt();
+            if (VM.Vitality == 0)
+            {
+                gameRepository.Reset_Save(); //mivel a játék véget ért nincs mit menteni
+                MessageBox.Show("The Game is Over");
+                SaveWindow save = new SaveWindow(VM.GameScore);
+                save.Show();
+                Close();
+            }
         }
 
-
+        
     }
 }

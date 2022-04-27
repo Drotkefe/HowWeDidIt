@@ -24,6 +24,5 @@ namespace HowWeDidIt
             InitializeComponent();
         }
 
-        
     }
 }

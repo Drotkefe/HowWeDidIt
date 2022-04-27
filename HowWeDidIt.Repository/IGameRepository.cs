@@ -11,5 +11,6 @@ namespace HowWeDidIt.Repository
     {
         GameModel GetGameModel();
         void StoreGameModel(IGameModel gameModel);
+        void Reset_Save();
     }
 }
