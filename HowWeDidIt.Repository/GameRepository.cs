@@ -36,6 +36,16 @@ namespace HowWeDidIt.Repository
             GameModel gameModel = new GameModel(Width,Height);
             gameModel.CaveMan = new MovingCaveMan(gameSettings.CaveManInitXPosition, gameSettings.CaveManInitYPosition, gameSettings.CaveManInitXVelocity, gameSettings.CaveManInitYVelocity);
             gameModel.Recipe = new Recipe();
+
+            try
+            {
+                List<string> sor = File.ReadAllLines("save.txt").ToList();
+            }
+            catch(Exception)
+            {
+                File.WriteAllText("save.txt", "nothing");
+            }
+
             List<string> lines = File.ReadAllLines("save.txt").ToList();
             if (lines.Count == 1)
             {
@@ -134,6 +144,14 @@ namespace HowWeDidIt.Repository
 
         public LeaderBoard GetLeaderBoard()
         {
+            try
+            {
+                List<string> sor = File.ReadAllLines("leaderboard.txt").ToList();
+            }
+            catch (Exception)
+            {
+                File.WriteAllText("leaderboard.txt", "");
+            }
             List<string> lines = File.ReadAllLines("leaderboard.txt").ToList();
             LeaderBoard leaderBoard = new LeaderBoard();
             foreach (var line in lines)
