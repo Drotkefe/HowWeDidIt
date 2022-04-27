@@ -26,6 +26,8 @@ namespace HowWeDidIt.Controls
         IGameRenderer gameRenderer;
         DispatcherTimer timer;
 
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+
         public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
@@ -38,6 +40,9 @@ namespace HowWeDidIt.Controls
 
             if (window != null) // Window loaded
             {
+                mediaPlayer.Open(new Uri(string.Format("{0}\\gameplay_music.mp3", AppDomain.CurrentDomain.BaseDirectory)));
+                mediaPlayer.Play();
+                mediaPlayer.Volume = 0.1;
                 gameSettings = new GameSettings();
                 gameRepository = new GameRepository(ActualWidth, ActualHeight, gameSettings);
                 

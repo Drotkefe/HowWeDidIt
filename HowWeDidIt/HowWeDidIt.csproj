@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="fire.gif" />
+    <None Remove="gameplay_music.mp3" />
     <None Remove="Images\background.jpg" />
     <None Remove="Images\background.png" />
     <None Remove="Images\FoodItems\burgonya.png" />
@@ -179,6 +180,12 @@
 
   <ItemGroup>
     <Content Include="Images\komposzt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="gameplay_music.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
