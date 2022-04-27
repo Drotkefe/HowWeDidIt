@@ -29,6 +29,7 @@
     <None Remove="Images\Kitchen\potato.png" />
     <None Remove="Images\Kitchen\trashcan.png" />
     <None Remove="Images\Kitchen\uranium.png" />
+    <None Remove="Images\komposzt.png" />
     <None Remove="Images\mozgas\1L.png" />
     <None Remove="Images\mozgas\1R.png" />
     <None Remove="Images\mozgas\2L.png" />
@@ -174,6 +175,12 @@
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\komposzt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

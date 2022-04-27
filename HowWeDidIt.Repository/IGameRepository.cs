@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Models;
+﻿using HowWeDidIt.Core.Models;
+using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace HowWeDidIt.Repository
     public interface IGameRepository
     {
         GameModel GetGameModel();
-        void StoreGameModel();
+        void StoreGameModel(IGameModel gameModel);
+        void Reset_Save();
+        LeaderBoard GetLeaderBoard(); 
+
     }
 }

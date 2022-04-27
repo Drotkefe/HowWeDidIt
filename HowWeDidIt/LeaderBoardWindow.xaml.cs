@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HowWeDidIt.Repository;
+using HowWeDidIt.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,21 @@ using System.Windows.Shapes;
 namespace HowWeDidIt
 {
     /// <summary>
-    /// Interaction logic for GameScreen.xaml
+    /// Interaction logic for LeaderBoardWindow.xaml
     /// </summary>
-    public partial class GameScreen : Window
+    public partial class LeaderBoardWindow : Window
     {
-        public GameScreen()
+       
+
+        public LeaderBoardWindow()
         {
             InitializeComponent();
+
         }
 
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace HowWeDidIt.GameRenderer
         readonly IGameSettings gameSettings;
         Brush backgroundPattern;
         ImageBrush caveManPattern;
+        ImageBrush KompostBrush;
         private object lockObject = new object();
 
         // For testing
@@ -51,12 +52,15 @@ namespace HowWeDidIt.GameRenderer
         readonly Lazy<ImageBrush> EggBrush; 
         readonly Lazy<ImageBrush> UraniumBrush;
 
+       
+
         public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
         {
             this.gameModel = gameModel;
             this.gameSettings = gameSettings;
             backgroundPattern = new ImageBrush(new BitmapImage(new System.Uri(gameSettings.BackgroudPath, System.UriKind.Relative)));
             caveManPattern = new ImageBrush(new BitmapImage(new System.Uri(gameSettings.CaveManPath, System.UriKind.Relative)));
+            KompostBrush = new ImageBrush(new BitmapImage(new System.Uri(gameSettings.KompostPath, System.UriKind.Relative)));
 
             StandR = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveManPath));
             R1 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan1R));
@@ -71,6 +75,7 @@ namespace HowWeDidIt.GameRenderer
             L4 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan4L));
             L5 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan5L));
             L6 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan6L));
+
 
             playerBrushStorage = new Dictionary<Orientations, Dictionary<int, Lazy<ImageBrush>>>()
                 {
@@ -122,10 +127,18 @@ namespace HowWeDidIt.GameRenderer
         public void Display(DrawingContext ctx)
         {
             DrawBackground(ctx);
+            DrawCompost(ctx);
             DrawCaveMan(ctx);
             DrawFoodItems(ctx);
             DrawErrors(ctx);
         }
+
+        private void DrawCompost(DrawingContext ctx)
+        {
+            var pattern=new Rect(690, 288, 120, 75);
+            ctx.DrawRectangle(KompostBrush, null, pattern);
+        }
+
         // this method is only added for testing
         private void DrawErrors(DrawingContext ctx)
         {
@@ -173,14 +186,12 @@ namespace HowWeDidIt.GameRenderer
 
         private void DrawCaveMan(DrawingContext ctx)
         {
-            var halfWidth = 20;
-            var halfHeight = 20;
             
             var pattern = new Rect(
-                gameModel.CaveMan.X - halfWidth,
-                gameModel.CaveMan.Y - halfHeight,
-                55,
-                55);
+                gameModel.CaveMan.X,
+                gameModel.CaveMan.Y,
+                75,
+                75);
      
             switch (gameModel.CaveMan.Orientation)
             {

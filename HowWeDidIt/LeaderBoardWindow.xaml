@@ -1,0 +1,49 @@
+﻿<Window x:Class="HowWeDidIt.LeaderBoardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModels="clr-namespace:HowWeDidIt.ViewModels"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Hall of Fame" Height="450" Width="600" ResizeMode="NoResize" Icon="Images/StandR.png" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ViewModels:LeaderBoardVM x:Key="VM"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource VM}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Image Source="Images/background.png"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
+        <Label Content="Player Name:" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center" FontSize="20"/>
+        <Label Content="Score:" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" FontSize="20"/>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Players}" Grid.ColumnSpan="2" HorizontalAlignment="Center" Background="Transparent" BorderBrush="Transparent">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="550" Margin="0 0 0 0" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Player_Name}" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="0" FontSize="18"/>
+                        <Label Content="{Binding Score}" Grid.Column="1" HorizontalAlignment="Center" FontSize="18"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="back" Style="{DynamicResource RoundedButton}" Content="Back To Main Menu" Grid.Row="2" Margin="100 15 100 15" Click="back_Click"  Grid.ColumnSpan="2" Background="Yellow"/>
+    </Grid>
+</Window>

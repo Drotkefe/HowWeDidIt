@@ -1,5 +1,6 @@
 ﻿using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.Models;
+using HowWeDidIt.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,16 @@ namespace HowWeDidIt.BusinessLogic
     public class GameLogic : IGameLogic
     {
         Random rnd = new Random();
-        //readonly IGameRepository gameRepository;
+        readonly IGameRepository gameRepository;
         readonly IGameSettings gameSettings;
         public IGameModel GameModel { get; private set; }
 
         public event EventHandler CallRefresh;
 
-        public GameLogic(IGameModel gameModel, IGameSettings gameSettings)
+        public GameLogic(IGameModel gameModel, IGameSettings gameSettings,IGameRepository gameRepository)
         {
-
+            this.gameRepository = gameRepository;
             this.gameSettings = gameSettings;
-            //if(nincs mentés)
             this.GameModel = gameModel;
 
         }
@@ -39,17 +39,19 @@ namespace HowWeDidIt.BusinessLogic
                 GameModel.CaveMan.Orientation = Core.Enums.Orientations.Right;
             }
             var newX = GameModel.CaveMan.X + dx;
-            if (newX > 80 && newX < GameModel.GameAreaWidth - 10)
+            if (newX > 80 && newX < GameModel.GameAreaWidth - 60)
             {
                 GameModel.CaveMan.X = newX;
                 if (newX <= 100)//entering cave
                 {
                     entrance = true;
                 }
+                if(newX >= 650)
+                {
+                    GameModel.GarbageCount = 0;
+                }
             }
             GameModel.CaveMan.MovementState = (GameModel.CaveMan.MovementState + 1) % gameSettings.MaximalAllowedMovementState;
-
-            //Thread.Sleep(70); ezt kitöröltem, mert úgy nézett ki, hogy amíg az ősember futott a hozzávalók megálltak esésükben 
 
             CallRefresh?.Invoke(this, EventArgs.Empty);
             return entrance;
@@ -95,6 +97,10 @@ namespace HowWeDidIt.BusinessLogic
                 //}
             }
             //}            
+        }
+        public void Save(IGameModel gameModel)
+        {
+            gameRepository.StoreGameModel(gameModel);
         }
     }
 }
