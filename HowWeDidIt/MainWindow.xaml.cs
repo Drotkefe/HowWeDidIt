@@ -63,7 +63,8 @@ namespace HowWeDidIt
 
         private void leaderboard_button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Still in progress");
+            LeaderBoardWindow screen = new LeaderBoardWindow();
+            screen.Show();
         }
 
     }

@@ -31,7 +31,7 @@ namespace HowWeDidIt
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (Player_Name.Text != "" && Player_Name.Text.Length < 10)
+            if (Player_Name.Text != "" && Player_Name.Text.Length < 15)
             {
                 File.AppendAllText("leaderboard.txt", $"{Player_Name.Text} {Score}\n");
                 MessageBox.Show($"~{Player_Name.Text}~ your game score is saved");
@@ -39,7 +39,7 @@ namespace HowWeDidIt
             }
             else
             {
-                MessageBox.Show("Player name should be atlast one character");
+                MessageBox.Show("Player name is incorrect");
             }
         }
 

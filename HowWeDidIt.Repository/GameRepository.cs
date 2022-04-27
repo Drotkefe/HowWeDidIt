@@ -1,5 +1,6 @@
 ﻿using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Core.GameSettings;
+using HowWeDidIt.Core.Models;
 using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
@@ -129,6 +130,21 @@ namespace HowWeDidIt.Repository
 
             File.WriteAllLines("save.txt", output);
            
+        }
+
+        public LeaderBoard GetLeaderBoard()
+        {
+            List<string> lines = File.ReadAllLines("leaderboard.txt").ToList();
+            LeaderBoard leaderBoard = new LeaderBoard();
+            foreach (var line in lines)
+            {
+                string[] entries = line.Split(" ");
+                Player player = new Player();
+                player.Player_Name = entries[0];
+                player.Score = int.Parse(entries[1]);
+                leaderBoard.players.Add(player);
+            }
+            return leaderBoard;
         }
     }
 }
