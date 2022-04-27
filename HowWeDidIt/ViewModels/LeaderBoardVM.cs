@@ -22,20 +22,21 @@ namespace HowWeDidIt.ViewModels
 
         public ObservableCollection<Player> Players { get; set; }
 
-        readonly IGameRepository gameRepository;
+        IGameRepository GameRepository = new GameRepository();
 
-        public LeaderBoardVM(IGameRepository gameRepository)
+        public LeaderBoardVM()
         {
-            this.gameRepository = gameRepository;
 
+            Players = new ObservableCollection<Player>();
             if (IsInDesignMode)
             {
+                
                 Players.Add(new Player(150, "Maci"));
                 Players.Add(new Player(550, "Laci"));
             }
             else
             {
-                var storedPlayers = gameRepository.GetLeaderBoard();
+                var storedPlayers = GameRepository.GetLeaderBoard();
                 foreach (var p in storedPlayers.players)
                 {
                     Players.Add(p);
@@ -46,9 +47,6 @@ namespace HowWeDidIt.ViewModels
 
         }
 
-        public LeaderBoardVM()
-        {
-
-        }
+        
     }
 }

@@ -138,7 +138,7 @@ namespace HowWeDidIt.Repository
             LeaderBoard leaderBoard = new LeaderBoard();
             foreach (var line in lines)
             {
-                string[] entries = line.Split(" ");
+                string[] entries = line.Split(";");
                 Player player = new Player();
                 player.Player_Name = entries[0];
                 player.Score = int.Parse(entries[1]);

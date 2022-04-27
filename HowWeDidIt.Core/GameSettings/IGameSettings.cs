@@ -52,6 +52,8 @@ namespace HowWeDidIt.Core.GameSettings
         public string FICarrotPatternPath { get; }
         public string FIEggPatternPath { get; }
         public string FIUraniumPatternPath { get; }
+
+        public string KompostPath { get; }
         #endregion
 
         int MaximalAllowedMovementState { get; set; }

@@ -10,9 +10,9 @@ namespace HowWeDidIt.Core.GameSettings
     {
         #region CaveMan
 
-        public double CaveManInitXPosition => 400;
+        public double CaveManInitXPosition => 380;
 
-        public double CaveManInitYPosition => 321;
+        public double CaveManInitYPosition => 282;
 
         public double CaveManInitXVelocity => 14;
 
@@ -45,6 +45,8 @@ namespace HowWeDidIt.Core.GameSettings
         public string FICarrotPatternPath => @"Images\FoodItems\répa.png";
         public string FIEggPatternPath => @"Images\FoodItems\tojás.png";
         public string FIUraniumPatternPath => @"Images\FoodItems\uran.png";
+
+        public string KompostPath => @"Images\komposzt.png";
 
         #endregion
 

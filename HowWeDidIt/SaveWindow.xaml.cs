@@ -33,7 +33,7 @@ namespace HowWeDidIt
         {
             if (Player_Name.Text != "" && Player_Name.Text.Length < 15)
             {
-                File.AppendAllText("leaderboard.txt", $"{Player_Name.Text} {Score}\n");
+                File.AppendAllText("leaderboard.txt", $"{Player_Name.Text};{Score}\n");
                 MessageBox.Show($"~{Player_Name.Text}~ your game score is saved");
                 Environment.Exit(0);
             }

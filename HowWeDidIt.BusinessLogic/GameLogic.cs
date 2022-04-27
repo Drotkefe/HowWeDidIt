@@ -39,12 +39,16 @@ namespace HowWeDidIt.BusinessLogic
                 GameModel.CaveMan.Orientation = Core.Enums.Orientations.Right;
             }
             var newX = GameModel.CaveMan.X + dx;
-            if (newX > 80 && newX < GameModel.GameAreaWidth - 10)
+            if (newX > 80 && newX < GameModel.GameAreaWidth - 60)
             {
                 GameModel.CaveMan.X = newX;
                 if (newX <= 100)//entering cave
                 {
                     entrance = true;
+                }
+                if(newX >= 650)
+                {
+                    GameModel.GarbageCount = 0;
                 }
             }
             GameModel.CaveMan.MovementState = (GameModel.CaveMan.MovementState + 1) % gameSettings.MaximalAllowedMovementState;
@@ -96,7 +100,6 @@ namespace HowWeDidIt.BusinessLogic
         }
         public void Save(IGameModel gameModel)
         {
-            //egy egész game modelt
             gameRepository.StoreGameModel(gameModel);
         }
     }
