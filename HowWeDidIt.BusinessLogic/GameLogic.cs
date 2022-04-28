@@ -75,29 +75,37 @@ namespace HowWeDidIt.BusinessLogic
 
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
+            GameModel.CollectedFoods[foodItem.Name]++;
+
             //if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
             //{
             //    GameModel.GarbageCount++;
             //}
             //else // it contained in the recipe
             //{
-            if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
-            {
-                GameModel.CollectedFoods.Add(foodItem.Name, 1);
-            }
-            else // if on the list
-            {
-                if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
-                {
-                    GameModel.CollectedFoods[foodItem.Name]++;
-                }
-                //else // if no more is needed
-                //{
-                //    GameModel.GarbageCount++;
-                //}
-            }
+            //if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
+            //{
+            //    GameModel.CollectedFoods.Add(foodItem.Name, 1);
+            //}
+            //else // if on the list
+            //{
+            //    if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
+            //    {
+            //        GameModel.CollectedFoods[foodItem.Name]++;
+            //    }
+            //    //else // if no more is needed
+            //    //{
+            //    //    GameModel.GarbageCount++;
+            //    //}
+            //}
             //}            
         }
+
+        public void DecreaseHealth()
+        {            
+            GameModel.Vitality--;
+        }
+
         public void Save(IGameModel gameModel)
         {
             gameRepository.StoreGameModel(gameModel);

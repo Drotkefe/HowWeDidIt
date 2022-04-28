@@ -39,7 +39,6 @@ namespace HowWeDidIt.GameRenderer.Helpers
         {
             return new RectangleGeometry(new System.Windows.Rect(0, 0, 24, 24)); // the same as in DrawFoodItems in Renderer
         }
-
     }
     
 }
