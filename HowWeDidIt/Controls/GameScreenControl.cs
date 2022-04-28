@@ -25,6 +25,7 @@ namespace HowWeDidIt.Controls
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
         DispatcherTimer timer;
+        DispatcherTimer timer_vitality;
 
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -64,6 +65,12 @@ namespace HowWeDidIt.Controls
                 timer.Interval = TimeSpan.FromMilliseconds(130);
                 timer.Tick += Timer_Tick;
                 timer.Start();
+
+
+                timer_vitality = new DispatcherTimer();
+                timer_vitality.Interval = TimeSpan.FromMilliseconds(500);
+                timer_vitality.Tick += Timer_Vitality_Tick;
+                timer_vitality.Start();
             }
             window.Closing += Window_Closing;
         }
@@ -89,6 +96,18 @@ namespace HowWeDidIt.Controls
                 }
             }
 
+            InvalidateVisual();
+        }
+        private void Timer_Vitality_Tick(object sender, EventArgs e)
+        {
+            gameLogic.DecreaseHealth();
+            if (gameModel.Vitality == 0)
+            {
+                gameRepository.Reset_Save();
+                MessageBox.Show("The Game is Over");
+                SaveWindow save = new SaveWindow(gameModel.GameScore);
+                save.Show();
+            }
             InvalidateVisual();
         }
 

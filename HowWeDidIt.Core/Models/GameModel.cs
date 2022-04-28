@@ -62,12 +62,12 @@ namespace HowWeDidIt.Models
             }
 
             FoodCapacities = new Dictionary<Foods, int>();
-            FoodCapacities.Add(Foods.Carrot, 2);
-            FoodCapacities.Add(Foods.Egg, 2);
-            FoodCapacities.Add(Foods.Meat, 2);
-            FoodCapacities.Add(Foods.Onion, 2);
-            FoodCapacities.Add(Foods.Potato, 2);
-            FoodCapacities.Add(Foods.Uranium, 2);
+            FoodCapacities.Add(Foods.Carrot, 50);
+            FoodCapacities.Add(Foods.Egg, 50);
+            FoodCapacities.Add(Foods.Meat, 50);
+            FoodCapacities.Add(Foods.Onion, 50);
+            FoodCapacities.Add(Foods.Potato, 50);
+            FoodCapacities.Add(Foods.Uranium, 50);
 
             CollectedFoods = new Dictionary<Foods, int>();
             CollectedFoods.Add(Foods.Carrot, 0);

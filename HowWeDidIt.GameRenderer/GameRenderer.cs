@@ -22,6 +22,8 @@ namespace HowWeDidIt.GameRenderer
         ImageBrush KompostBrush;
         private object lockObject = new object();
 
+        private int barLength;
+
         // For testing
         Pen blackPen = new Pen(Brushes.Black, 2);
         Typeface font = new Typeface("Comic Sans");
@@ -50,9 +52,7 @@ namespace HowWeDidIt.GameRenderer
         readonly Lazy<ImageBrush> OnionBrush;
         readonly Lazy<ImageBrush> CarrotBrush;
         readonly Lazy<ImageBrush> EggBrush; 
-        readonly Lazy<ImageBrush> UraniumBrush;
-
-       
+        readonly Lazy<ImageBrush> UraniumBrush;        
 
         public GameRenderer(IGameModel gameModel, IGameSettings gameSettings)
         {
@@ -75,8 +75,7 @@ namespace HowWeDidIt.GameRenderer
             L4 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan4L));
             L5 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan5L));
             L6 = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.CaveMan6L));
-
-
+                        
             playerBrushStorage = new Dictionary<Orientations, Dictionary<int, Lazy<ImageBrush>>>()
                 {
                     {
@@ -114,7 +113,7 @@ namespace HowWeDidIt.GameRenderer
             OnionBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIOnionPatternPath));
             CarrotBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FICarrotPatternPath));
             EggBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIEggPatternPath));
-            UraniumBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIUraniumPatternPath));
+            UraniumBrush = new Lazy<ImageBrush>(() => LoadBrush(gameSettings.FIUraniumPatternPath));          
 
         }
 
@@ -130,6 +129,7 @@ namespace HowWeDidIt.GameRenderer
             DrawCompost(ctx);
             DrawCaveMan(ctx);
             DrawFoodItems(ctx);
+            DrawVitalityBar(ctx);
             DrawErrors(ctx);
         }
 
@@ -153,9 +153,13 @@ namespace HowWeDidIt.GameRenderer
 
         private string CollectionInfo()
         {
-            string info = "";
+            string info = "\n";
 
-           // info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
+            info += "HP: " + gameModel.Vitality.ToString() + "\n";
+
+            info += "Game Score: " + gameModel.GameScore.ToString() + "\n";
+
+            info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
 
             lock (lockObject)
             {
@@ -167,14 +171,16 @@ namespace HowWeDidIt.GameRenderer
                     {
                         quantity = gameModel.CollectedFoods[fc.Key];
                     }
-                    info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
-                }
-                if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
-                {
-                    //gameModel.Recipe.AllFoodItemsCollected = true;
+                    //info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
 
-                    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
+                    info += fc.Key + ": " + quantity.ToString() + "\n";
                 }
+                //if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
+                //{
+                //    //gameModel.Recipe.AllFoodItemsCollected = true;
+
+                //    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
+                //}
             }
             return info;
         }
@@ -220,6 +226,13 @@ namespace HowWeDidIt.GameRenderer
                 ctx.DrawGeometry(GetProperFoodItemBrush(foodItem), null, foodItem.GetGeometry());
             }
         }
+
+        private void DrawVitalityBar(DrawingContext ctx)
+        {            
+            ctx.DrawRectangle(Brushes.Transparent, new Pen(Brushes.DarkGreen, 1), new Rect(5, 5, 181, 20));
+            ctx.DrawRectangle(Brushes.DarkGreen, new Pen(Brushes.Transparent, 1), new Rect(5, 5, 2*gameModel.Vitality > 0 ? 2 * gameModel.Vitality : 1, 20));
+        }
+
         private Brush GetProperFoodItemBrush(MovingFoodItem item)
         {
             Brush brush = PotatoBrush.Value;

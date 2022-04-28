@@ -17,5 +17,6 @@ namespace HowWeDidIt.BusinessLogic
         void FoodItemsFalling();
         void FoodItemCaught(MovingFoodItem foodItem);
         void Save(IGameModel gameModel);
+        void DecreaseHealth();
     }
 }
