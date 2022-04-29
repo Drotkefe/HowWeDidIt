@@ -75,19 +75,35 @@ namespace HowWeDidIt.ViewModels
             this.GM = model;
             Ingredients = new IngredientsVM(model.CollectedFoods, model.FoodCapacities)
             {
-                CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],
-                OnionCapacity = model.FoodCapacities[Core.Enums.Foods.Onion],
-                PotatoCapacity = model.FoodCapacities[Core.Enums.Foods.Potato],
-                EggCapacity = model.FoodCapacities[Core.Enums.Foods.Egg],
-                MeatCapacity = model.FoodCapacities[Core.Enums.Foods.Meat],
-                UraniumCapacity = model.FoodCapacities[Core.Enums.Foods.Uranium],
+                // this first queries whether the food item is in the dictionary and if not it assigns zero as its value
+                CarrotCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Carrot) ? model.FoodCapacities[Core.Enums.Foods.Carrot] : 0,
+                OnionCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Onion) ? model.FoodCapacities[Core.Enums.Foods.Onion] : 0,
+                PotatoCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.FoodCapacities[Core.Enums.Foods.Potato] : 0,
+                EggCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Egg) ? model.FoodCapacities[Core.Enums.Foods.Egg] : 0,
+                MeatCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Meat) ? model.FoodCapacities[Core.Enums.Foods.Meat] : 0,
+                UraniumCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Uranium) ? model.FoodCapacities[Core.Enums.Foods.Uranium] : 0,
 
-                CarrotCount = model.CollectedFoods[Core.Enums.Foods.Carrot],
-                OnionCount = model.CollectedFoods[Core.Enums.Foods.Onion],
-                PotatoCount = model.CollectedFoods[Core.Enums.Foods.Potato],
-                EggCount = model.CollectedFoods[Core.Enums.Foods.Egg],
-                MeatCount = model.CollectedFoods[Core.Enums.Foods.Meat],
-                UraniumCount = model.CollectedFoods[Core.Enums.Foods.Uranium]
+                CarrotCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Carrot) ? model.CollectedFoods[Core.Enums.Foods.Carrot] : 0,
+                OnionCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Onion) ? model.CollectedFoods[Core.Enums.Foods.Onion] : 0,
+                PotatoCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Potato] : 0,
+                EggCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Egg) ? model.CollectedFoods[Core.Enums.Foods.Egg] : 0,
+                MeatCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Meat) ? model.CollectedFoods[Core.Enums.Foods.Meat] : 0,
+                UraniumCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Uranium) ? model.CollectedFoods[Core.Enums.Foods.Uranium] : 0
+
+                // This is because if a food item is not on hte list, it gives a null reference exception.
+                //CarrotCapacity =  model.FoodCapacities[Core.Enums.Foods.Carrot],
+                //OnionCapacity =  model.FoodCapacities[Core.Enums.Foods.Onion],
+                //PotatoCapacity = model.FoodCapacities[Core.Enums.Foods.Potato],
+                //EggCapacity =  model.FoodCapacities[Core.Enums.Foods.Egg],
+                //MeatCapacity = model.FoodCapacities[Core.Enums.Foods.Meat],
+                //UraniumCapacity = model.FoodCapacities[Core.Enums.Foods.Uranium],
+
+                //CarrotCount = model.CollectedFoods[Core.Enums.Foods.Carrot],
+                //OnionCount = model.CollectedFoods[Core.Enums.Foods.Onion],
+                //PotatoCount = model.CollectedFoods[Core.Enums.Foods.Potato],
+                //EggCount = model.CollectedFoods[Core.Enums.Foods.Egg],
+                //MeatCount = model.CollectedFoods[Core.Enums.Foods.Meat],
+                //UraniumCount = model.CollectedFoods[Core.Enums.Foods.Uranium]
             };
             Recipe = new RecipeVM(model.Recipe);
 

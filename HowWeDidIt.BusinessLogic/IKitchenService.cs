@@ -17,5 +17,7 @@ namespace HowWeDidIt.BusinessLogic
         void UpgradeStorage(string typeOfCapacity, IGameModel gameModel);
 
         void FoodToPot(string typeOfFood, IGameModel gameModel);
+
+        Recipe NewRecipe();
     }
 }

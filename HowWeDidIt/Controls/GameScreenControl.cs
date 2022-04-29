@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.BusinessLogic;
+﻿using GalaSoft.MvvmLight.Messaging;
+using HowWeDidIt.BusinessLogic;
 using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.GameRenderer;
 using HowWeDidIt.GameRenderer.Helpers;
@@ -24,8 +25,10 @@ namespace HowWeDidIt.Controls
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
+        IKitchenService kitchenService;
         DispatcherTimer timer;
         DispatcherTimer timer_vitality;
+        IMessenger messenger;
 
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -55,8 +58,10 @@ namespace HowWeDidIt.Controls
                 {
                     gameModel = gameRepository.GetGameModel();
                 }
-
-                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository);
+                                
+                kitchenService = new KitchenService(messenger);
+                //gameModel.Recipe = kitchenService.NewRecipe();
+                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository, kitchenService);
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
