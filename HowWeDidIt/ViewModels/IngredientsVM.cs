@@ -21,8 +21,9 @@ namespace HowWeDidIt.ViewModels
         {
             get { return collectedFoods?.GetValueOrDefault(Foods.Onion) ?? 0; }
             set
-            {
-                SetProperty(collectedFoods[Foods.Onion], value, collectedFoods, (cf, val) => cf[Foods.Onion] = val);
+            {                
+                if (collectedFoods.ContainsKey(Foods.Onion))
+                    SetProperty(collectedFoods[Foods.Onion], value, collectedFoods, (cf, val) => cf[Foods.Onion] = val);
             }
         }
 
@@ -32,7 +33,8 @@ namespace HowWeDidIt.ViewModels
             get { return collectedFoods?.GetValueOrDefault(Foods.Carrot) ?? 0; }
             set
             {
-                SetProperty(collectedFoods[Foods.Carrot], value, collectedFoods, (cf, val) => cf[Foods.Carrot] = val);
+                if (collectedFoods.ContainsKey(Foods.Carrot))
+                    SetProperty(collectedFoods[Foods.Carrot], value, collectedFoods, (cf, val) => cf[Foods.Carrot] = val);
             }
         }
 
@@ -42,7 +44,8 @@ namespace HowWeDidIt.ViewModels
             get { return collectedFoods?.GetValueOrDefault(Foods.Potato) ?? 0; }
             set
             {
-                SetProperty(collectedFoods[Foods.Potato], value, collectedFoods, (cf, val) => cf[Foods.Potato] = val);
+                if (collectedFoods.ContainsKey(Foods.Potato))
+                    SetProperty(collectedFoods[Foods.Potato], value, collectedFoods, (cf, val) => cf[Foods.Potato] = val);
             }
         }
 
@@ -52,7 +55,9 @@ namespace HowWeDidIt.ViewModels
             get { return collectedFoods?.GetValueOrDefault(Foods.Egg) ?? 0; }
             set
             {
-                SetProperty(collectedFoods[Foods.Egg], value, collectedFoods, (cf, val) => cf[Foods.Egg] = val);
+                if (collectedFoods.ContainsKey(Foods.Egg))
+                    SetProperty(collectedFoods[Foods.Egg], value, collectedFoods, (cf, val) => cf[Foods.Egg] = val);
+                
             }
         }
 
@@ -61,7 +66,8 @@ namespace HowWeDidIt.ViewModels
             get { return collectedFoods?.GetValueOrDefault(Foods.Meat) ?? 0; }
             set
             {
-                SetProperty(collectedFoods[Foods.Meat], value, collectedFoods, (cf, val) => cf[Foods.Meat] = val);
+                if (collectedFoods.ContainsKey(Foods.Meat))
+                    SetProperty(collectedFoods[Foods.Meat], value, collectedFoods, (cf, val) => cf[Foods.Meat] = val);                
             }
         }
 
@@ -71,7 +77,8 @@ namespace HowWeDidIt.ViewModels
             get { return collectedFoods?.GetValueOrDefault(Foods.Uranium) ?? 0; }
             set
             {
-                SetProperty(collectedFoods[Foods.Uranium], value, collectedFoods, (cf, val) => cf[Foods.Uranium] = val);
+                if (collectedFoods.ContainsKey(Foods.Uranium))
+                    SetProperty(collectedFoods[Foods.Uranium], value, collectedFoods, (cf, val) => cf[Foods.Uranium] = val);
             }
         }
 
@@ -85,7 +92,8 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Onion) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Onion], value, foodCapacities, (cf, val) => cf[Foods.Onion] = val);
+                if (foodCapacities.ContainsKey(Foods.Onion))
+                    SetProperty(foodCapacities[Foods.Onion], value, foodCapacities, (cf, val) => cf[Foods.Onion] = val);
             }
         }
 
@@ -94,7 +102,8 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Carrot) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Carrot], value, foodCapacities, (cf, val) => cf[Foods.Carrot] = val);
+                if (foodCapacities.ContainsKey(Foods.Carrot))
+                    SetProperty(foodCapacities[Foods.Carrot], value, foodCapacities, (cf, val) => cf[Foods.Carrot] = val);
             }
         }
 
@@ -103,7 +112,8 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Potato) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Potato], value, foodCapacities, (cf, val) => cf[Foods.Potato] = val);
+                if (foodCapacities.ContainsKey(Foods.Potato))
+                    SetProperty(foodCapacities[Foods.Potato], value, foodCapacities, (cf, val) => cf[Foods.Potato] = val);
             }
         }
 
@@ -112,7 +122,9 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Egg) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Egg], value, foodCapacities, (cf, val) => cf[Foods.Egg] = val);
+                
+                if (foodCapacities.ContainsKey(Foods.Egg))
+                    SetProperty(foodCapacities[Foods.Egg], value, foodCapacities, (cf, val) => cf[Foods.Egg] = val);                
             }
         }
 
@@ -122,7 +134,8 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Meat) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Meat], value, foodCapacities, (cf, val) => cf[Foods.Meat] = val);
+                if (foodCapacities.ContainsKey(Foods.Meat))
+                    SetProperty(foodCapacities[Foods.Meat], value, foodCapacities, (cf, val) => cf[Foods.Meat] = val);                
             }
         }
 
@@ -131,8 +144,9 @@ namespace HowWeDidIt.ViewModels
             get { return foodCapacities?.GetValueOrDefault(Foods.Uranium) ?? 0; }
             set
             {
-                SetProperty(foodCapacities[Foods.Uranium], value, foodCapacities, (cf, val) => cf[Foods.Uranium] = val);
-            }
+                if (foodCapacities.ContainsKey(Foods.Uranium))
+                    SetProperty(foodCapacities[Foods.Uranium], value, foodCapacities, (cf, val) => cf[Foods.Uranium] = val);
+             }
         }
 
         #endregion
