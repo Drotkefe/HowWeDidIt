@@ -40,7 +40,7 @@ namespace HowWeDidIt.Models
             CollectionAreaBeginning = (int)gameAreaWidth / 4;
             CollectionAreaEnd = (int)gameAreaWidth - 50;
 
-            InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);
+            InitDefaultValues(gameSettings, gameAreaWidth, gameAreaHeight);            
         }
 
         public GameModel(double gameAreaWidth, double gameAreaHeight)
@@ -62,20 +62,20 @@ namespace HowWeDidIt.Models
             }
 
             FoodCapacities = new Dictionary<Foods, int>();
-            FoodCapacities.Add(Foods.Carrot, 50);
-            FoodCapacities.Add(Foods.Egg, 50);
-            FoodCapacities.Add(Foods.Meat, 50);
-            FoodCapacities.Add(Foods.Onion, 50);
-            FoodCapacities.Add(Foods.Potato, 50);
-            FoodCapacities.Add(Foods.Uranium, 50);
+            //FoodCapacities.Add(Foods.Carrot, 50);
+            //FoodCapacities.Add(Foods.Egg, 50);
+            //FoodCapacities.Add(Foods.Meat, 50);
+            //FoodCapacities.Add(Foods.Onion, 50);
+            //FoodCapacities.Add(Foods.Potato, 50);
+            //FoodCapacities.Add(Foods.Uranium, 50);
 
             CollectedFoods = new Dictionary<Foods, int>();
-            CollectedFoods.Add(Foods.Carrot, 0);
-            CollectedFoods.Add(Foods.Egg, 0);
-            CollectedFoods.Add(Foods.Meat, 0);
-            CollectedFoods.Add(Foods.Onion, 0);
-            CollectedFoods.Add(Foods.Potato, 0);
-            CollectedFoods.Add(Foods.Uranium, 0);
+            //CollectedFoods.Add(Foods.Carrot, 0);
+            //CollectedFoods.Add(Foods.Egg, 0);
+            //CollectedFoods.Add(Foods.Meat, 0);
+            //CollectedFoods.Add(Foods.Onion, 0);
+            //CollectedFoods.Add(Foods.Potato, 0);
+            //CollectedFoods.Add(Foods.Uranium, 0);
 
             GarbageCount = 0;
             GarbageCapacity = 10;
@@ -83,10 +83,10 @@ namespace HowWeDidIt.Models
             Money = 200;
             GameScore = 0;
 
-            Recipe = new Recipe();
-            Recipe.Name = "Pizza";
-            Recipe.FoodList = new List<Foods>();
-            Recipe.FoodList.Add(Core.Enums.Foods.Onion);
+            //Recipe = new Recipe();
+            //Recipe.Name = "Pizza";
+            //Recipe.FoodList = new List<Foods>();
+           // Recipe.FoodList.Add(Core.Enums.Foods.Onion);
             //Recipe.FoodList.Add(Core.Enums.Foods.Meat);
             //Recipe.FoodList.Add(Core.Enums.Foods.Egg);
             //Recipe.FoodList.Add(Core.Enums.Foods.Carrot);
@@ -110,15 +110,15 @@ namespace HowWeDidIt.Models
 
 
 
-            Recipe.Cooked = false;
-            Recipe.CookingTime = TimeSpan.FromSeconds(180);
-            Recipe.MoneyValue = 50;
-            Recipe.RecipeScore = 100;
+            //Recipe.Cooked = false;
+            //Recipe.CookingTime = TimeSpan.FromSeconds(180);
+            //Recipe.MoneyValue = 50;
+            //Recipe.RecipeScore = 100;
 
-            Recipe.VitalityValue = 10;
-            //Recipe.CurrentFoodIndex = 2;
-            Recipe.CurrentFoodIndex = 0;
-        }
+            //Recipe.VitalityValue = 10;
+            ////Recipe.CurrentFoodIndex = 2;
+            //Recipe.CurrentFoodIndex = 0;
+        } 
 
         // TODO: create other ctor for load data from saved game
 

@@ -1,4 +1,5 @@
-﻿using HowWeDidIt.Core.GameSettings;
+﻿using HowWeDidIt.Core.Enums;
+using HowWeDidIt.Core.GameSettings;
 using HowWeDidIt.Models;
 using HowWeDidIt.Repository;
 using System;
@@ -15,16 +16,20 @@ namespace HowWeDidIt.BusinessLogic
         Random rnd = new Random();
         readonly IGameRepository gameRepository;
         readonly IGameSettings gameSettings;
+        readonly IKitchenService kitchenService;
         public IGameModel GameModel { get; private set; }
+        public Recipe recipe; 
 
         public event EventHandler CallRefresh;
 
-        public GameLogic(IGameModel gameModel, IGameSettings gameSettings,IGameRepository gameRepository)
+        public GameLogic(IGameModel gameModel, IGameSettings gameSettings, IGameRepository gameRepository, IKitchenService kitchenService)
         {
             this.gameRepository = gameRepository;
             this.gameSettings = gameSettings;
             this.GameModel = gameModel;
-
+            this.kitchenService = kitchenService;
+            gameModel.Recipe = kitchenService.NewRecipe();
+            GetCapacities();
         }
 
         public bool Move(double dx, double dy)
@@ -46,7 +51,7 @@ namespace HowWeDidIt.BusinessLogic
                 {
                     entrance = true;
                 }
-                if(newX >= 650)
+                if (newX >= 650)
                 {
                     GameModel.GarbageCount = 0;
                 }
@@ -72,33 +77,45 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
         }
-
+        public void GetCapacities()
+        {            
+            List<Foods> distinctFoodList = GameModel.Recipe.FoodList.Select(x => x).Distinct().ToList();
+            
+            int idx = 0;
+            foreach (var food in distinctFoodList)
+            {
+                idx = GameModel.Recipe.FoodList.Where(x => x == food).Count();
+                GameModel.FoodCapacities.Add(food, idx);
+                GameModel.CollectedFoods.Add(food, 0);
+            }            
+        }
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
-            GameModel.CollectedFoods[foodItem.Name]++;
+            
+            //GameModel.CollectedFoods[foodItem.Name]++;
 
-            //if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
-            //{
-            //    GameModel.GarbageCount++;
-            //}
+            if (!GameModel.Recipe.FoodList.Contains(foodItem.Name)) // if not in the recipe, Garbage count is up
+            {
+                return;
+                //GameModel.GarbageCount++;
+            }
             //else // it contained in the recipe
             //{
             //if (!GameModel.CollectedFoods.ContainsKey(foodItem.Name)) // but not yet on the collectedFoods list, add to list
             //{
             //    GameModel.CollectedFoods.Add(foodItem.Name, 1);
             //}
-            //else // if on the list
+            else // if on the list
             //{
-            //    if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
-            //    {
-            //        GameModel.CollectedFoods[foodItem.Name]++;
-            //    }
-            //    //else // if no more is needed
-            //    //{
-            //    //    GameModel.GarbageCount++;
-            //    //}
+                if (GameModel.CollectedFoods[foodItem.Name] < GameModel.FoodCapacities[foodItem.Name]) // but not enough
+                {
+                    GameModel.CollectedFoods[foodItem.Name]++;
+                }
+                //else // if no more is needed
+                //{
+                //    GameModel.GarbageCount++;
+                //}
             //}
-            //}            
         }
 
         public void DecreaseHealth()

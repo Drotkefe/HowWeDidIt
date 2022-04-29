@@ -68,7 +68,7 @@ namespace HowWeDidIt.BusinessLogic
 
         }
 
-        private Recipe NewRecipe()
+        public Recipe NewRecipe()
         {
             
             Recipe recipe = new Recipe();
@@ -118,8 +118,11 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
 
-
-            recipe.FoodList = foods;
+            foreach (var f in foods)
+            {
+                recipe.FoodList.Add(f);
+            }
+            //recipe.FoodList = foods;
             recipe.RecipeScore = foods.Count * 5;
             recipe.CurrentFoodIndex = 0;
             recipe.Cooked = false;

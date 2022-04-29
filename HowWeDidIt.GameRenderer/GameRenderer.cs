@@ -157,6 +157,8 @@ namespace HowWeDidIt.GameRenderer
 
             info += "HP: " + gameModel.Vitality.ToString() + "\n";
 
+            info += gameModel.Recipe.Name + "\n";
+
             info += "Game Score: " + gameModel.GameScore.ToString() + "\n";
 
             info += "Garbage produced: " + gameModel.GarbageCount.ToString() + "\n";
@@ -171,16 +173,16 @@ namespace HowWeDidIt.GameRenderer
                     {
                         quantity = gameModel.CollectedFoods[fc.Key];
                     }
-                    //info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
+                    info += fc.Key + ": " + fc.Value + "- " + quantity.ToString() + "\n";
 
-                    info += fc.Key + ": " + quantity.ToString() + "\n";
+                    //info += fc.Key + ": " + quantity.ToString() + "\n";
                 }
-                //if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
-                //{
-                //    //gameModel.Recipe.AllFoodItemsCollected = true;
+                if (gameModel.CollectedFoods.Count != 0 && !gameModel.CollectedFoods.Any(x => x.Value != gameModel.FoodCapacities[x.Key]))
+                {
+                    //gameModel.Recipe.AllFoodItemsCollected = true;
 
-                //    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
-                //}
+                    info += "Step in the kitchen to cook.\n" + "Go to the entrance and press DOWN";
+                }
             }
             return info;
         }
