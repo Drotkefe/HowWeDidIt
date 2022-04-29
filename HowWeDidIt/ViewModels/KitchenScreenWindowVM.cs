@@ -86,9 +86,9 @@ namespace HowWeDidIt.ViewModels
                 CarrotCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Carrot) ? model.CollectedFoods[Core.Enums.Foods.Carrot] : 0,
                 OnionCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Onion) ? model.CollectedFoods[Core.Enums.Foods.Onion] : 0,
                 PotatoCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Potato] : 0,
-                EggCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Egg] : 0,
-                MeatCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Meat] : 0,
-                UraniumCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Uranium] : 0
+                EggCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Egg) ? model.CollectedFoods[Core.Enums.Foods.Egg] : 0,
+                MeatCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Meat) ? model.CollectedFoods[Core.Enums.Foods.Meat] : 0,
+                UraniumCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Uranium) ? model.CollectedFoods[Core.Enums.Foods.Uranium] : 0
 
                 // This is because if a food item is not on hte list, it gives a null reference exception.
                 //CarrotCapacity =  model.FoodCapacities[Core.Enums.Foods.Carrot],
