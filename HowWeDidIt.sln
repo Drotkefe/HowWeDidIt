@@ -12,21 +12,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowWeDidIt", "HowWeDidIt\Ho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowWeDidIt.Core", "HowWeDidIt.Core\HowWeDidIt.Core.csproj", "{DBBEFFDF-37B1-4281-8011-63FA38775982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowWeDidIt.BusinessLogic", "HowWeDidIt.BusinessLogic\HowWeDidIt.BusinessLogic.csproj", "{A9932AAE-CF6A-4E64-AA07-0D7880A676CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowWeDidIt.BusinessLogic", "HowWeDidIt.BusinessLogic\HowWeDidIt.BusinessLogic.csproj", "{A9932AAE-CF6A-4E64-AA07-0D7880A676CC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C28CC926-B10C-4C01-879D-886A9F76878C} = {C28CC926-B10C-4C01-879D-886A9F76878C}
 		{DBBEFFDF-37B1-4281-8011-63FA38775982} = {DBBEFFDF-37B1-4281-8011-63FA38775982}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowWeDidIt.GameRenderer", "HowWeDidIt.GameRenderer\HowWeDidIt.GameRenderer.csproj", "{D2FB789E-3D86-4CD1-A786-1B779062A308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowWeDidIt.GameRenderer", "HowWeDidIt.GameRenderer\HowWeDidIt.GameRenderer.csproj", "{D2FB789E-3D86-4CD1-A786-1B779062A308}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DBBEFFDF-37B1-4281-8011-63FA38775982} = {DBBEFFDF-37B1-4281-8011-63FA38775982}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowWeDidIt.Repository", "HowWeDidIt.Repository\HowWeDidIt.Repository.csproj", "{C28CC926-B10C-4C01-879D-886A9F76878C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowWeDidIt.Repository", "HowWeDidIt.Repository\HowWeDidIt.Repository.csproj", "{C28CC926-B10C-4C01-879D-886A9F76878C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DBBEFFDF-37B1-4281-8011-63FA38775982} = {DBBEFFDF-37B1-4281-8011-63FA38775982}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowWeDidIt.Test", "HowWeDidIt.Test\HowWeDidIt.Test.csproj", "{4293F336-E859-42C0-A1EC-E0356EC5B8BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 		{C28CC926-B10C-4C01-879D-886A9F76878C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28CC926-B10C-4C01-879D-886A9F76878C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28CC926-B10C-4C01-879D-886A9F76878C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4293F336-E859-42C0-A1EC-E0356EC5B8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4293F336-E859-42C0-A1EC-E0356EC5B8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4293F336-E859-42C0-A1EC-E0356EC5B8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4293F336-E859-42C0-A1EC-E0356EC5B8BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
