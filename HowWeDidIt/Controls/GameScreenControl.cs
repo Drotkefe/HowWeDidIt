@@ -35,18 +35,24 @@ namespace HowWeDidIt.Controls
         public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
+           
         }
+
 
         private void HowWeDidIt_Controller_Loaded(object sender, RoutedEventArgs e)
         {
             var window = Window.GetWindow(this);
             InvalidateVisual();
 
+            
+
+
             if (window != null) // Window loaded
             {
                 mediaPlayer.Open(new Uri(string.Format("{0}\\gameplay_music.mp3", AppDomain.CurrentDomain.BaseDirectory)));
                 mediaPlayer.Play();
                 mediaPlayer.Volume = 0.1;
+
                 gameSettings = new GameSettings();
                 gameRepository = new GameRepository(ActualWidth, ActualHeight, gameSettings);
                 
@@ -59,7 +65,9 @@ namespace HowWeDidIt.Controls
                     gameModel = gameRepository.GetGameModel();
                 }
                                 
+
                 kitchenService = new KitchenService(messenger); 
+
                 gameLogic = new GameLogic(gameModel, gameSettings, gameRepository, kitchenService);
                 gameLogic.InitRecipe();
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
