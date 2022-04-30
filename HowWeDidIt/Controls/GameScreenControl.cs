@@ -59,9 +59,9 @@ namespace HowWeDidIt.Controls
                     gameModel = gameRepository.GetGameModel();
                 }
                                 
-                kitchenService = new KitchenService(messenger); 
-                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository, kitchenService);
-                gameLogic.InitRecipe();
+                //kitchenService = new KitchenService(messenger); 
+                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository /*, kitchenService*/);
+                //gameLogic.InitRecipe();
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;

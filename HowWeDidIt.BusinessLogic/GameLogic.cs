@@ -16,26 +16,26 @@ namespace HowWeDidIt.BusinessLogic
         Random rnd = new Random();
         readonly IGameRepository gameRepository;
         readonly IGameSettings gameSettings;
-        readonly IKitchenService kitchenService;
+        //readonly IKitchenService kitchenService;
         public IGameModel GameModel { get; private set; }
         public Recipe recipe; 
 
         public event EventHandler CallRefresh;
 
-        public GameLogic(IGameModel gameModel, IGameSettings gameSettings, IGameRepository gameRepository, IKitchenService kitchenService)
+        public GameLogic(IGameModel gameModel, IGameSettings gameSettings, IGameRepository gameRepository /*, IKitchenService kitchenService*/)
         {
             this.gameRepository = gameRepository;
             this.gameSettings = gameSettings;
             this.GameModel = gameModel;
-            this.kitchenService = kitchenService;
+            //this.kitchenService = kitchenService;
             //InitRecipe();
         }
 
-        public void InitRecipe()
-        {
-            GameModel.Recipe = kitchenService.NewRecipe();
-            GetCapacities();
-        }
+        //public void InitRecipe()
+        //{
+        //    GameModel.Recipe = kitchenService.NewRecipe();
+        //    GetCapacities();
+        //}
 
         public bool Move(double dx, double dy)
         {
@@ -82,18 +82,18 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
         }
-        public void GetCapacities()
-        {            
-            List<Foods> distinctFoodList = GameModel.Recipe.FoodList.Select(x => x).Distinct().ToList();
+        //public void GetCapacities()
+        //{            
+        //    List<Foods> distinctFoodList = GameModel.Recipe.FoodList.Select(x => x).Distinct().ToList();
             
-            int idx = 0;
-            foreach (var food in distinctFoodList)
-            {
-                idx = GameModel.Recipe.FoodList.Where(x => x == food).Count();
-                GameModel.FoodCapacities.Add(food, idx);
-                GameModel.CollectedFoods.Add(food, 0);
-            }            
-        }
+        //    int idx = 0;
+        //    foreach (var food in distinctFoodList)
+        //    {
+        //        idx = GameModel.Recipe.FoodList.Where(x => x == food).Count();
+        //        GameModel.FoodCapacities.Add(food, idx);
+        //        GameModel.CollectedFoods.Add(food, 0);
+        //    }            
+        //}
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
             
