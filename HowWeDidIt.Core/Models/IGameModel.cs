@@ -17,14 +17,14 @@ namespace HowWeDidIt.Models
         public int CollectionAreaEnd { get; }
 
 
-        MovingCaveMan CaveMan { get; }
+        public MovingCaveMan CaveMan { get; set; }
 
-        List<MovingFoodItem> FoodItems { get; set; }
+        public List<MovingFoodItem> FoodItems { get; set; }
 
 
-        Recipe Recipe { get; set; }
-        Dictionary<Foods, int> CollectedFoods { get; }
-        Dictionary<Foods, int> FoodCapacities { get; }
+        public Recipe Recipe { get; set; }
+        public Dictionary<Foods, int> CollectedFoods { get; }
+        public Dictionary<Foods, int> FoodCapacities { get; }
         int GarbageCount { get; set; }
         int GarbageCapacity { get; set; }
         int Vitality { get; set; }

@@ -10,13 +10,13 @@ namespace HowWeDidIt.Core.GameSettings
     {
         #region CaveMan
 
-        double CaveManInitXPosition { get; }
+        public double CaveManInitXPosition { get; }
 
-        double CaveManInitYPosition { get; }
+        public double CaveManInitYPosition { get; }
 
-        double CaveManInitXVelocity { get; }
+        public double CaveManInitXVelocity { get; }
 
-        double CaveManInitYVelocity { get; }
+        public double CaveManInitYVelocity { get; }
         #endregion
 
         #region General

@@ -62,6 +62,9 @@ namespace HowWeDidIt.Core.GameSettings
 
         public double GameAreaDefaultHeight => 450; // // To be set right once it is known
 
-        public int MaximalAllowedMovementState { get; set; } = 6;        
+        public int MaximalAllowedMovementState { get; set; } = 6;
+
+
+       
     }
 }
