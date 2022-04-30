@@ -36,8 +36,8 @@ namespace HowWeDidIt
         private void New_Game_Click(object sender, RoutedEventArgs e)
         {
             GameScreen screen = new GameScreen();
-            screen.Show();
             mediaPlayer.Stop();
+            screen.Show();
             Close();
         }
 
