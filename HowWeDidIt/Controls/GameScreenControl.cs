@@ -35,24 +35,18 @@ namespace HowWeDidIt.Controls
         public GameScreenControl()
         {
             Loaded += HowWeDidIt_Controller_Loaded;
-           
         }
-
 
         private void HowWeDidIt_Controller_Loaded(object sender, RoutedEventArgs e)
         {
             var window = Window.GetWindow(this);
             InvalidateVisual();
 
-            
-
-
             if (window != null) // Window loaded
             {
                 mediaPlayer.Open(new Uri(string.Format("{0}\\gameplay_music.mp3", AppDomain.CurrentDomain.BaseDirectory)));
                 mediaPlayer.Play();
                 mediaPlayer.Volume = 0.1;
-
                 gameSettings = new GameSettings();
                 gameRepository = new GameRepository(ActualWidth, ActualHeight, gameSettings);
                 
@@ -65,9 +59,9 @@ namespace HowWeDidIt.Controls
                     gameModel = gameRepository.GetGameModel();
                 }
                                 
-                kitchenService = new KitchenService(messenger);
-                //gameModel.Recipe = kitchenService.NewRecipe();
-                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository, kitchenService);
+                //kitchenService = new KitchenService(messenger); 
+                gameLogic = new GameLogic(gameModel, gameSettings, gameRepository /*, kitchenService*/);
+                //gameLogic.InitRecipe();
                 gameRenderer = new GameRenderer.GameRenderer(gameModel, gameSettings);
                 gameLogic.CallRefresh += (sender, args) => InvalidateVisual();
                 window.KeyDown += Window_KeyDown;
@@ -79,7 +73,7 @@ namespace HowWeDidIt.Controls
 
 
                 timer_vitality = new DispatcherTimer();
-                timer_vitality.Interval = TimeSpan.FromMilliseconds(500);
+                timer_vitality.Interval = TimeSpan.FromMilliseconds(1250);
                 timer_vitality.Tick += Timer_Vitality_Tick;
                 timer_vitality.Start();
             }

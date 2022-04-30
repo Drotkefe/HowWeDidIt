@@ -11,4 +11,10 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HowWeDidIt.BusinessLogic\HowWeDidIt.BusinessLogic.csproj" />
+    <ProjectReference Include="..\HowWeDidIt.Core\HowWeDidIt.Core.csproj" />
+    <ProjectReference Include="..\HowWeDidIt.Repository\HowWeDidIt.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

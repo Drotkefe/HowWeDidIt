@@ -19,7 +19,7 @@ namespace HowWeDidIt.Models
 
         MovingCaveMan CaveMan { get; }
 
-        List<MovingFoodItem> FoodItems { get; }
+        List<MovingFoodItem> FoodItems { get; set; }
 
 
         Recipe Recipe { get; set; }

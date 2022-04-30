@@ -36,9 +36,8 @@ namespace HowWeDidIt
         private void New_Game_Click(object sender, RoutedEventArgs e)
         {
             GameScreen screen = new GameScreen();
-            mediaPlayer.Close();
+            mediaPlayer.Stop();
             screen.Show();
-            
             Close();
         }
 
@@ -67,5 +66,6 @@ namespace HowWeDidIt
             LeaderBoardWindow screen = new LeaderBoardWindow();
             screen.Show();
         }
+
     }
 }
