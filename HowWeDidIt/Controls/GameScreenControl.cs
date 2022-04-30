@@ -73,7 +73,7 @@ namespace HowWeDidIt.Controls
 
 
                 timer_vitality = new DispatcherTimer();
-                timer_vitality.Interval = TimeSpan.FromMilliseconds(500);
+                timer_vitality.Interval = TimeSpan.FromMilliseconds(1250);
                 timer_vitality.Tick += Timer_Vitality_Tick;
                 timer_vitality.Start();
             }
