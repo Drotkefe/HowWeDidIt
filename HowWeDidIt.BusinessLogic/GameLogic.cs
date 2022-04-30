@@ -82,18 +82,18 @@ namespace HowWeDidIt.BusinessLogic
                 }
             }
         }
-        //public void GetCapacities()
-        //{            
-        //    List<Foods> distinctFoodList = GameModel.Recipe.FoodList.Select(x => x).Distinct().ToList();
-            
-        //    int idx = 0;
-        //    foreach (var food in distinctFoodList)
-        //    {
-        //        idx = GameModel.Recipe.FoodList.Where(x => x == food).Count();
-        //        GameModel.FoodCapacities.Add(food, idx);
-        //        GameModel.CollectedFoods.Add(food, 0);
-        //    }            
-        //}
+        public void GetCapacities()
+        {
+            List<Foods> distinctFoodList = GameModel.Recipe.FoodList.Select(x => x).Distinct().ToList();
+
+            int idx = 0;
+            foreach (var food in distinctFoodList)
+            {
+                idx = GameModel.Recipe.FoodList.Where(x => x == food).Count();
+                GameModel.FoodCapacities.Add(food, idx);
+                GameModel.CollectedFoods.Add(food, 0);
+            }
+        }
         public void FoodItemCaught(MovingFoodItem foodItem)
         {
             
