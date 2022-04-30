@@ -14,6 +14,7 @@ namespace HowWeDidIt.BusinessLogic
 
         bool Move(double dx, double dy);
 
+        void InitRecipe();
         void FoodItemsFalling();
         void FoodItemCaught(MovingFoodItem foodItem);
         void Save(IGameModel gameModel);

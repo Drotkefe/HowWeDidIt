@@ -28,7 +28,12 @@ namespace HowWeDidIt.BusinessLogic
             this.gameSettings = gameSettings;
             this.GameModel = gameModel;
             this.kitchenService = kitchenService;
-            gameModel.Recipe = kitchenService.NewRecipe();
+            //InitRecipe();
+        }
+
+        public void InitRecipe()
+        {
+            GameModel.Recipe = kitchenService.NewRecipe();
             GetCapacities();
         }
 

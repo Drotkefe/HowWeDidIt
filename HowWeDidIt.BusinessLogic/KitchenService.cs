@@ -127,6 +127,8 @@ namespace HowWeDidIt.BusinessLogic
             recipe.CurrentFoodIndex = 0;
             recipe.Cooked = false;
 
+
+
             return recipe;
         }
 
@@ -143,8 +145,7 @@ namespace HowWeDidIt.BusinessLogic
                 gameModel.Vitality = health;
 
                 //TODO: új recept TESZT
-                gameModel.Recipe = NewRecipe();
-
+                gameModel.Recipe = NewRecipe();               
 
 
                 messenger.Send("Player healing was successful", "KitchenBlOperationResult");
