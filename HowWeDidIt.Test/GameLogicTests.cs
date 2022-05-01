@@ -14,19 +14,19 @@ namespace HowWeDidIt.Test
         [Test]
         public void DecreaseVitalityDecreasesVitalityTest()
         {
-            //var gameModel = new Mock<Models.IGameModel>();
-            //var gameSettings = new Mock<Core.GameSettings.IGameSettings>();
-            //var gameRepository = new Mock<IGameRepository>();
-            
+            var gameSettings = new Mock<Core.GameSettings.IGameSettings>();
+            var gameModel = new GameModel(800, 450, gameSettings.Object);            
+            var gameRepository = new Mock<IGameRepository>();
 
-            //var gLogic = new GameLogic(gameModel.Object, gameSettings.Object, gameRepository.Object);
 
-            //gLogic.DecreaseHealth();
+            var gLogic = new GameLogic(gameModel, gameSettings.Object, gameRepository.Object);
 
-            //int result = gameModel.Object.Vitality;
-            //int expectedResult = 0;
+            gLogic.DecreaseHealth();
 
-            //Assert.That(result, Is.EqualTo(expectedResult));
+            int result = gameModel.Vitality;
+            int expectedResult = 89;
+
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
     }
 }
