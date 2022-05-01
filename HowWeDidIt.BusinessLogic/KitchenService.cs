@@ -31,41 +31,49 @@ namespace HowWeDidIt.BusinessLogic
             {
                 if (!gameModel.Recipe.Cooked)
                 {
-                    if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 3;
-                    else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 2;
-                    else if (!caughtFood.Equals(Foods.Uranium)) gameModel.GarbageCount += 1; // if NOT uranium
-                    if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
-
-                    gameModel.CollectedFoods[caughtFood]--;
-
-                    if (gameModel.Recipe.FoodList[gameModel.Recipe.CurrentFoodIndex] == caughtFood)  // if right food
-                    {
-                        if (gameModel.Recipe.CurrentFoodIndex < gameModel.Recipe.FoodList.Count - 1)
-                        {
-                            gameModel.Recipe.CurrentFoodIndex++;
-                            messenger.Send("Food added to pot!", "KitchenBlOperationResult");
-                        }
-                        else
-                        {
-                            gameModel.Recipe.Cooked = true;
-                            gameModel.GameScore += gameModel.Recipe.RecipeScore;
-                            messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
-                        }                        
-                    }
-                    else
-                    {
-                        if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 4;
-                        else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 3;
-                        else gameModel.GarbageCount += 2;
-                        if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
-  
-                        if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
-                    }
+                    CookFood(caughtFood, gameModel);
                 }
                 else messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
             }
             else messenger.Send("There is not enough food like this.", "KitchenBlOperationResult");
 
+        }
+
+        public void CookFood(Foods caughtFood, IGameModel gameModel)
+        {
+            //4 test garbage
+            if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 3;
+            else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 2;
+            else if (!caughtFood.Equals(Foods.Uranium)) gameModel.GarbageCount += 1; // if NOT uranium
+            if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
+
+            gameModel.CollectedFoods[caughtFood]--;
+
+            if (gameModel.Recipe.FoodList[gameModel.Recipe.CurrentFoodIndex] == caughtFood)  // if right food
+            {
+                if (gameModel.Recipe.CurrentFoodIndex < gameModel.Recipe.FoodList.Count - 1)
+                {
+                    gameModel.Recipe.CurrentFoodIndex++;
+                    messenger.Send("Food added to pot!", "KitchenBlOperationResult");
+                }
+                else
+                {
+                    gameModel.Recipe.Cooked = true;
+                    gameModel.GameScore += gameModel.Recipe.RecipeScore;
+                    messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
+                }
+            }
+            else
+            {
+                messenger.Send("Wrong item cauthed", "KitchenBlOperationResult");
+
+                if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 4;
+                else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 3;
+                else gameModel.GarbageCount += 2;
+                if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;               
+            }
+
+            if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
         }
 
         public Recipe NewRecipe()
@@ -134,6 +142,8 @@ namespace HowWeDidIt.BusinessLogic
 
         public void RestoreHeathPoits(IGameModel gameModel)
         {
+
+            //3 tesz
             if (gameModel.Recipe.Cooked) //  <-------------------gameModel.Recipe.Cooked
             {
                 int health = gameModel.Vitality;
