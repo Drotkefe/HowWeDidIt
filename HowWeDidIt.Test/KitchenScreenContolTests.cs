@@ -4,18 +4,13 @@ using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Models;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HowWeDidIt.Test
 {
     [TestFixture]
     class KitchenScreenContolTests
     {
-
         static GameModel GameModelTestData()
         {
             var result = new GameModel(0, 0);
@@ -52,8 +47,6 @@ namespace HowWeDidIt.Test
             return result;
         }
 
-
-
         [Test]
         public void CreateServiceTest()
         {
@@ -87,9 +80,6 @@ namespace HowWeDidIt.Test
 
         }
 
-
-
-
         [Test]
         public void UpdateStorage_NoEnoughMoneyTest()
         {
@@ -109,7 +99,6 @@ namespace HowWeDidIt.Test
             Assert.That(gameModel.FoodCapacities[Foods.Carrot] == 2);
             messengerMock.Verify(messenger => messenger.Send("Upgrade was not successful", "KitchenBlOperationResult"), Times.Once());
         }
-
 
         [Test]
         public void SellProduct_CookedFoodTest()
@@ -150,7 +139,6 @@ namespace HowWeDidIt.Test
             messengerMock.Verify(messenger => messenger.Send("Product sell was not successful", "KitchenBlOperationResult"), Times.Once());
             Assert.That(gameModel.Recipe.Equals(oldRecipe));
         }
-
 
         [Test]
         public void RestoreHeathPoits_LowerVitalityTest()
@@ -214,11 +202,6 @@ namespace HowWeDidIt.Test
             messengerMock.Verify(messenger => messenger.Send("Player healing was not successful", "KitchenBlOperationResult"), Times.Once());
             Assert.That(gameModel.Vitality.Equals(90));
         }
-
-
-
-
-
 
         [Test]
         public void FoodToPot_FullGarbageCapacityTest()
@@ -284,38 +267,6 @@ namespace HowWeDidIt.Test
             messengerMock.Verify(messenger => messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult"), Times.Once());
             Assert.That(gameModel.CollectedFoods[Foods.Carrot].Equals(2));
         }
-
-
-        //[Test]
-        //public void FoodToPot_DishIsNotCompleteTest()
-        //{
-        //    //Arrange
-        //    var messengerMock = new Mock<IMessenger>();
-        //    var kitchenServiceMock = new Mock<KitchenService>(messengerMock.Object);
-        //    kitchenServiceMock.SetupAllProperties();
-
-        //    var gameModel = GameModelTestData();
-        //    gameModel.GarbageCount = 0;
-        //    gameModel.CollectedFoods[Foods.Carrot] = 2;
-        //    gameModel.Recipe.Cooked = false;
-        //    gameModel.Recipe.CurrentFoodIndex = 0;
-
-        //    gameModel.Recipe.FoodList.Add(Foods.Carrot);
-        //    gameModel.Recipe.FoodList.Add(Foods.Egg);
-
-
-        //    kitchenServiceMock.Setup(mock => mock.CookFood(, gameModel));
-        //    //KitchenService kitchenService = new KitchenService(messengerMock.Object);
-
-        //    // Act
-        //    kitchenService.FoodToPot(Foods.Carrot.ToString(), gameModel);
-        //    kitchenServiceMock.Object.FoodToPot(Foods.Carrot.ToString(), gameModel);
-
-        //    // Assert
-        //    kitchenService.Verify(service => service.CookFood(Foods.Carrot, gameModel), Times.Once());
-        //    //kitchenServiceMock.VerifyAll();
-        //}
-
 
         [Test]
         public void CookFood_NotGoodItemCaughtTest()
@@ -450,8 +401,5 @@ namespace HowWeDidIt.Test
             Assert.That(gameModel.GarbageCount.Equals(1));
             Assert.That(gameModel.GameScore.Equals(oldGameScore += gameModel.Recipe.RecipeScore));
         }
-
-
-
     }
 }
