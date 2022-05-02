@@ -25,10 +25,10 @@ namespace HowWeDidIt.Controls
         IGameModel gameModel;
         IGameLogic gameLogic;
         IGameRenderer gameRenderer;
-        IKitchenService kitchenService;
+        
         DispatcherTimer timer;
         DispatcherTimer timer_vitality;
-        IMessenger messenger;
+       
 
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -67,7 +67,7 @@ namespace HowWeDidIt.Controls
                 window.KeyDown += Window_KeyDown;
 
                 timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromMilliseconds(130);
+                timer.Interval = TimeSpan.FromMilliseconds(1);
                 timer.Tick += Timer_Tick;
                 timer.Start();
 
@@ -111,6 +111,8 @@ namespace HowWeDidIt.Controls
                 gameRepository.Reset_Save();
                 MessageBox.Show("The Game is Over");
                 SaveWindow save = new SaveWindow(gameModel.GameScore);
+                timer_vitality.Tick -= Timer_Vitality_Tick;
+                timer.Tick -= Timer_Tick;
                 save.Show();
             }
             InvalidateVisual();

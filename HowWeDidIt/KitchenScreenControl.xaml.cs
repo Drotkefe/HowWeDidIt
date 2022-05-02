@@ -186,6 +186,8 @@ namespace HowWeDidIt
                 gameRepository.Reset_Save(); //mivel a játék véget ért nincs mit menteni
                 MessageBox.Show("The Game is Over");
                 SaveWindow save = new SaveWindow(VM.GameScore);
+                timer.Stop();
+                timer.Tick -= timer_Tick;
                 save.Show();
                 Close();
             }
