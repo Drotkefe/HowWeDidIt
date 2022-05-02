@@ -1,24 +1,17 @@
 ﻿using CommonServiceLocator;
 using GalaSoft.MvvmLight.Command;
-//using GalaSoft.MvvmLight;
-//using GalaSoft.MvvmLight.Command;
 using HowWeDidIt.BusinessLogic;
 using HowWeDidIt.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using System;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace HowWeDidIt.ViewModels
 {
     public class KitchenScreenWindowVM : ObservableObject
     {
-
         private IGameModel GM { get; }
         public IngredientsVM Ingredients { get; } // ingredientsVM property to IngredientsVM for better readability
         public RecipeVM Recipe { get; private set; }
-
-
 
         public int GameScore
         {
@@ -61,8 +54,6 @@ namespace HowWeDidIt.ViewModels
             }
         }
 
-
-
         readonly IKitchenService kitchenService;
         public ICommand RestoreHealthPointsCommand { get; private set; }
         public ICommand SellProductCommand { get; set; }
@@ -75,21 +66,6 @@ namespace HowWeDidIt.ViewModels
             this.GM = model;
             Ingredients = new IngredientsVM(model.CollectedFoods, model.FoodCapacities)
             {
-                // this first queries whether the food item is in the dictionary and if not it assigns zero as its value
-                //CarrotCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Carrot) ? model.FoodCapacities[Core.Enums.Foods.Carrot] : 0,
-                //OnionCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Onion) ? model.FoodCapacities[Core.Enums.Foods.Onion] : 0,
-                //PotatoCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.FoodCapacities[Core.Enums.Foods.Potato] : 0,
-                //EggCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Egg) ? model.FoodCapacities[Core.Enums.Foods.Egg] : 0,
-                //MeatCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Meat) ? model.FoodCapacities[Core.Enums.Foods.Meat] : 0,
-                //UraniumCapacity = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Uranium) ? model.FoodCapacities[Core.Enums.Foods.Uranium] : 0,
-
-                //CarrotCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Carrot) ? model.CollectedFoods[Core.Enums.Foods.Carrot] : 0,
-                //OnionCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Onion) ? model.CollectedFoods[Core.Enums.Foods.Onion] : 0,
-                //PotatoCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Potato) ? model.CollectedFoods[Core.Enums.Foods.Potato] : 0,
-                //EggCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Egg) ? model.CollectedFoods[Core.Enums.Foods.Egg] : 0,
-                //MeatCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Meat) ? model.CollectedFoods[Core.Enums.Foods.Meat] : 0,
-                //UraniumCount = model.FoodCapacities.ContainsKey(Core.Enums.Foods.Uranium) ? model.CollectedFoods[Core.Enums.Foods.Uranium] : 0
-
                 // This is because if a food item is not on hte list, it gives a null reference exception.
                 CarrotCapacity = model.FoodCapacities[Core.Enums.Foods.Carrot],
                 OnionCapacity = model.FoodCapacities[Core.Enums.Foods.Onion],
@@ -126,16 +102,6 @@ namespace HowWeDidIt.ViewModels
                 Recipe = new RecipeVM(model.Recipe);
                 OnPropertyChanged(nameof(Money));
                 OnPropertyChanged(nameof(Recipe));
-
-
-                //OnPropertyChanged(nameof(Recipe.FoodList));
-                //OnPropertyChanged(nameof(Recipe.Name));
-                //OnPropertyChanged(nameof(Recipe.MoneyValue));
-                //OnPropertyChanged(nameof(Recipe.VitalityValue));
-
-
-  
-
             }, true);
 
 
@@ -143,30 +109,11 @@ namespace HowWeDidIt.ViewModels
             {
                 kitchenService.FoodToPot(typeOfFood, GM);
                 Recipe = new RecipeVM(model.Recipe);
-                //Recipe.Cooked = model.Recipe.Cooked;
-                ;
                 OnPropertyChanged(nameof(Ingredients));
                 OnPropertyChanged(nameof(GM.GarbageCount));
                 OnPropertyChanged(nameof(GM.GameScore));
                 OnPropertyChanged(nameof(Recipe));
                 OnPropertyChanged(nameof(Recipe.CurrentFood));
-
-
-
-
-
-                OnPropertyChanged(nameof(Recipe.Cooked)); //????
-                OnPropertyChanged(nameof(GM.Recipe));
-
-
-
-
-
-                //OnPropertyChanged(nameof(Recipe.FoodList));
-                //OnPropertyChanged(nameof(GM.Recipe));
-
-
-
             }, true);
 
 
@@ -176,15 +123,13 @@ namespace HowWeDidIt.ViewModels
                OnPropertyChanged(nameof(Ingredients));
                OnPropertyChanged(nameof(GM.GarbageCapacity));
                OnPropertyChanged(nameof(GM.Money));
-               
-
            }, true);
         }
 
 
         public void DecreaseHealt()
         {
-            Vitality--;
+            OnPropertyChanged(nameof(GM.Vitality));
         }
 
     }

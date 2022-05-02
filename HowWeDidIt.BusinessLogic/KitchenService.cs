@@ -3,16 +3,12 @@ using HowWeDidIt.Core.Enums;
 using HowWeDidIt.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HowWeDidIt.BusinessLogic
 {
     public class KitchenService : IKitchenService
     {
         readonly IMessenger messenger;
-        //Random random = new Random();
         RandomGenerator generator = new RandomGenerator();
 
         public KitchenService(IMessenger messenger)
@@ -22,8 +18,6 @@ namespace HowWeDidIt.BusinessLogic
 
         public void FoodToPot(string typeOfFood, IGameModel gameModel)
         {
-            ; //TODO: write game logic
-
             Foods caughtFood = (Foods)Enum.Parse(typeof(Foods), typeOfFood);
 
             if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
@@ -36,12 +30,10 @@ namespace HowWeDidIt.BusinessLogic
                 else messenger.Send("The dish is complete. Sell or heal!", "KitchenBlOperationResult");
             }
             else messenger.Send("There is not enough food like this.", "KitchenBlOperationResult");
-
         }
 
         public void CookFood(Foods caughtFood, IGameModel gameModel)
         {
-            //4 test garbage
             if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 3;
             else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 2;
             else if (!caughtFood.Equals(Foods.Uranium)) gameModel.GarbageCount += 1; // if NOT uranium
@@ -70,7 +62,7 @@ namespace HowWeDidIt.BusinessLogic
                 if (caughtFood.Equals(Foods.Meat)) gameModel.GarbageCount += 4;
                 else if (caughtFood.Equals(Foods.Egg)) gameModel.GarbageCount += 3;
                 else gameModel.GarbageCount += 2;
-                if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;               
+                if (gameModel.GarbageCount > gameModel.GarbageCapacity) gameModel.GarbageCount = gameModel.GarbageCapacity;
             }
 
             if (gameModel.GarbageCount >= gameModel.GarbageCapacity) messenger.Send("Hygenie Alert! Empty the trash.", "KitchenBlOperationResult");
@@ -78,7 +70,7 @@ namespace HowWeDidIt.BusinessLogic
 
         public Recipe NewRecipe()
         {
-            
+
             Recipe recipe = new Recipe();
             string[] names = new string[] { "Pizza", "HotDog", "Hamburger", "Gyros", "Something" };
             recipe.Name = names[generator.Random.Next(names.Length)];
@@ -86,22 +78,12 @@ namespace HowWeDidIt.BusinessLogic
             List<Foods> foods = new List<Foods>();
             int cathegory = generator.Random.Next(10);
 
-            //recipe.VitalityValue = 100000;
-            //recipe.MoneyValue = 999999;
-            //foods.Add(Foods.Carrot);
-            //foods.Add(Foods.Carrot);
-            //foods.Add(Foods.Carrot);
-            //foods.Add(Foods.Carrot);
-            //foods.Add(Foods.Potato);
-            //foods.Add(Foods.Carrot);
-            //foods.Add(Foods.Potato);
-
             if (cathegory < 5)
             {
-                recipe.VitalityValue = 10;
+                recipe.VitalityValue = 60;
                 recipe.MoneyValue = 100;
-              
-                for (int i = 0; i < generator.Random.Next(5, 12); i++)
+
+                for (int i = 0; i < generator.Random.Next(5, 7); i++)
                 {
                     foods.Add((Foods)generator.Random.Next(6));
                 }
@@ -109,18 +91,18 @@ namespace HowWeDidIt.BusinessLogic
             }
             else if (cathegory < 8)
             {
-                recipe.VitalityValue = 20;
+                recipe.VitalityValue = 80;
                 recipe.MoneyValue = 150;
-                for (int i = 0; i < generator.Random.Next(10, 15); i++)
+                for (int i = 0; i < generator.Random.Next(7, 9); i++)
                 {
                     foods.Add((Foods)generator.Random.Next(6));   // not working: sizeof(Foods)) it give 4 instead of 6
                 }
             }
             else
             {
-                recipe.VitalityValue = 30;
+                recipe.VitalityValue = 100;
                 recipe.MoneyValue = 200;
-                for (int i = 0; i < generator.Random.Next(13, 17); i++)
+                for (int i = 0; i < generator.Random.Next(9, 11); i++)
                 {
                     foods.Add((Foods)generator.Random.Next(sizeof(Foods)));
                 }
@@ -130,21 +112,17 @@ namespace HowWeDidIt.BusinessLogic
             {
                 recipe.FoodList.Add(f);
             }
-            //recipe.FoodList = foods;
+
             recipe.RecipeScore = foods.Count * 5;
             recipe.CurrentFoodIndex = 0;
             recipe.Cooked = false;
-
-
 
             return recipe;
         }
 
         public void RestoreHeathPoits(IGameModel gameModel)
         {
-
-            //3 tesz
-            if (gameModel.Recipe.Cooked) //  <-------------------gameModel.Recipe.Cooked
+            if (gameModel.Recipe.Cooked)
             {
                 int health = gameModel.Vitality;
                 health += gameModel.Recipe.VitalityValue;
@@ -154,33 +132,21 @@ namespace HowWeDidIt.BusinessLogic
                 }
                 gameModel.Vitality = health;
 
-                //TODO: új recept TESZT
-                gameModel.Recipe = NewRecipe();               
-
-
+                gameModel.Recipe = NewRecipe();
                 messenger.Send("Player healing was successful", "KitchenBlOperationResult");
             }
-            else
-            {
-                messenger.Send("Player healing was not successful", "KitchenBlOperationResult");
-            }
+            else messenger.Send("Player healing was not successful", "KitchenBlOperationResult");
         }
 
         public void SellProduct(IGameModel gameModel)
         {
-            if (gameModel.Recipe.Cooked) //  <-------------------gameModel.Recipe.Cooked
+            if (gameModel.Recipe.Cooked)
             {
                 gameModel.Money += gameModel.Recipe.MoneyValue;
-
-                //TODO: új recept teszt
                 gameModel.Recipe = NewRecipe();
-                
                 messenger.Send("Product sell was successful", "KitchenBlOperationResult");
             }
-            else
-            {
-                messenger.Send("Product sell was not successful", "KitchenBlOperationResult");
-            }
+            else messenger.Send("Product sell was not successful", "KitchenBlOperationResult");
         }
 
 
@@ -200,13 +166,9 @@ namespace HowWeDidIt.BusinessLogic
                     gameModel.FoodCapacities[foodStorage] += 2;
                     gameModel.Money -= 200;
                 }
-
                 messenger.Send("Upgrade was successful", "KitchenBlOperationResult");
             }
-            else
-            {
-                messenger.Send("Upgrade was not successful", "KitchenBlOperationResult");
-            }
+            else messenger.Send("Upgrade was not successful", "KitchenBlOperationResult");
         }
     }
 }

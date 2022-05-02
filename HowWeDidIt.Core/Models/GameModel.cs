@@ -94,33 +94,11 @@ namespace HowWeDidIt.Models
             Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
             Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
 
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-            //Recipe.FoodList.Add(Core.Enums.Foods.Uranium);
-
-
-
-
-            Recipe.Cooked = false;
-            Recipe.CookingTime = TimeSpan.FromSeconds(180);
+            Recipe.Cooked = false;           
             Recipe.MoneyValue = 50;
             Recipe.RecipeScore = 100;
-
-            Recipe.VitalityValue = 10;
-            //Recipe.CurrentFoodIndex = 2;
+            Recipe.VitalityValue = 100;
             Recipe.CurrentFoodIndex = 0;
         }
-
-        // TODO: create other ctor for load data from saved game
-
     }
 }
