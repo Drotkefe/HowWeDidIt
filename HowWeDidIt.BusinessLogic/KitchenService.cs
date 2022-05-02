@@ -152,19 +152,19 @@ namespace HowWeDidIt.BusinessLogic
 
         public void UpgradeStorage(string typeOfCapacity, IGameModel gameModel) //DONE
         {
-            if (gameModel.Money >= 200)
+            if (gameModel.Money >= 100)
             {
                 if (typeOfCapacity.Equals("Garbage"))
                 {
                     gameModel.GarbageCapacity += 2;
-                    gameModel.Money -= 200;
+                    gameModel.Money -= 100;
                 }
                 else
                 {
                     Foods foodStorage = (Foods)Enum.Parse(typeof(Foods), typeOfCapacity);
 
                     gameModel.FoodCapacities[foodStorage] += 2;
-                    gameModel.Money -= 200;
+                    gameModel.Money -= 100;
                 }
                 messenger.Send("Upgrade was successful", "KitchenBlOperationResult");
             }

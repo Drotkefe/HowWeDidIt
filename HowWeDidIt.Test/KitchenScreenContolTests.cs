@@ -89,7 +89,7 @@ namespace HowWeDidIt.Test
             kitchenServiceMock.SetupAllProperties();
 
             var gameModel = GameModelTestData();
-            gameModel.Money = 199;
+            gameModel.Money = 99;
 
 
             // Act
