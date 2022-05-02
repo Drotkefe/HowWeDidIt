@@ -112,7 +112,6 @@ namespace HowWeDidIt.Controls
                 MessageBox.Show("The Game is Over");
                 SaveWindow save = new SaveWindow(gameModel.GameScore);
                 timer_vitality.Tick -= Timer_Vitality_Tick;
-                timer.Tick -= Timer_Tick;
                 save.Show();
             }
             InvalidateVisual();
